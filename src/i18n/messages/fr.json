@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "properties": "Propriétés",
+    "destinations": "Destinations",
+    "services": "Services",
+    "guides": "Guides",
+    "about": "À propos",
+    "contact": "Contact",
+    "consultation": "Consultation"
+  },
+  "hero": {
+    "tag": "Immobilier de Prestige · Israël",
+    "title1": "L'excellence immobilière",
+    "title2": "au cœur d'Israël",
+    "subtitle": "Maison Israël accompagne les francophones dans l'acquisition des propriétés les plus exclusives de Tel Aviv, Jérusalem et Herzliya.",
+    "cta_properties": "Voir les propriétés",
+    "cta_consult": "Consultation gratuite"
+  },
+  "stats": {
+    "years": "Années d'expérience",
+    "transactions": "Transactions réalisées",
+    "satisfaction": "Clients satisfaits",
+    "offices": "Bureaux en Israël"
+  },
+  "featured": {
+    "tag": "Sélection exclusive",
+    "title": "Propriétés d'Exception",
+    "all": "Toutes les propriétés"
+  },
+  "destinations": {
+    "tag": "Nos marchés",
+    "title": "Destinations Phares",
+    "tel_aviv_desc": "La ville qui ne dort jamais",
+    "jerusalem_desc": "Éternelle et intemporelle",
+    "herzliya_desc": "Le quartier diplomatique",
+    "netanya_desc": "La Riviera israélienne"
+  },
+  "cta_band": {
+    "title": "Votre projet commence par une conversation",
+    "subtitle": "Consultation confidentielle, sans engagement. Nos experts vous répondent sous 24h.",
+    "button": "Prendre rendez-vous"
+  },
+  "properties": {
+    "page_tag": "Notre portefeuille",
+    "page_title": "Propriétés d'Exception",
+    "available": "disponibles",
+    "none_title": "Aucune propriété disponible",
+    "none_sub": "Contactez-nous pour découvrir nos biens off-market.",
+    "surface": "m²",
+    "rooms": "pièces",
+    "yield": "ROI",
+    "status_actif": "Disponible",
+    "status_vendu": "Vendu",
+    "status_sous_compromis": "Sous compromis",
+    "status_loue": "Loué",
+    "ask_visit": "Demander une visite",
+    "whatsapp": "WhatsApp",
+    "description": "Description",
+    "features": "Caractéristiques",
+    "interested": "Vous intéresse ?",
+    "ask_info": "Demander des informations",
+    "reply_time": "Réponse sous 24h · Confidentialité garantie"
+  },
+  "contact": {
+    "tag": "Parlons de votre projet",
+    "title": "Prendre contact",
+    "coords": "Nos coordonnées",
+    "address_label": "Tel Aviv (siège)",
+    "address": "12 Boulevard Rothschild\nTel Aviv, 67021",
+    "phone_label": "Téléphone",
+    "email_label": "Email",
+    "hours_label": "Horaires",
+    "hours": "Dim–Jeu 9h–19h\nVen 9h–14h",
+    "name": "Nom",
+    "email": "Email",
+    "phone": "Téléphone",
+    "message": "Message",
+    "send": "Envoyer le message",
+    "sending": "Envoi...",
+    "sent_title": "Message envoyé",
+    "sent_sub": "Nous vous répondons sous 24h.",
+    "guarantee": "Réponse garantie sous 24h · Confidentialité totale",
+    "name_ph": "Jean Dupont",
+    "email_ph": "jean@exemple.com",
+    "phone_ph": "+33 6 12 34 56 78",
+    "message_ph": "Décrivez votre projet..."
+  },
+  "footer": {
+    "tagline": "Spécialiste de l'immobilier de prestige en Israël depuis 2009. Accompagnement exclusif pour la clientèle francophone.",
+    "destinations": "Destinations",
+    "services": "Services",
+    "purchase": "Achat",
+    "rental": "Location",
+    "investment": "Investissement",
+    "aliyah": "Aliyah",
+    "faq": "FAQ",
+    "about": "À propos",
+    "contact_title": "Contact",
+    "hours": "Dim–Jeu 9h–19h",
+    "rights": "Tous droits réservés.",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "scroll": "Défiler"
+  },
+  "lang": {
+    "fr": "Français",
+    "en": "English",
+    "he": "עברית"
+  },
+  "about": {
+    "tag": "Notre histoire",
+    "title": "Maison Israël",
+    "history_tag": "Depuis 2009",
+    "history_title": "Une agence fondée sur la passion de l'immobilier israélien",
+    "team_tag": "Notre équipe",
+    "team_title": "Des experts à votre service",
+    "values_tag": "Nos valeurs",
+    "values_title": "Ce qui nous distingue",
+    "timeline_tag": "Notre parcours",
+    "cta_title": "Rencontrons-nous",
+    "cta_sub": "Nos experts sont disponibles pour une consultation confidentielle, sans engagement.",
+    "cta_btn": "Prendre rendez-vous"
+  },
+  "services": {
+    "tag": "Nos expertises",
+    "title": "Services sur Mesure",
+    "subtitle": "De l'acquisition à la gestion, un accompagnement complet pour votre projet immobilier en Israël.",
+    "process_title": "Notre processus"
+  },
+  "guides": {
+    "tag": "Ressources",
+    "title": "Guides & Actualités",
+    "subtitle": "Tout ce que vous devez savoir sur l'immobilier en Israël.",
+    "read_more": "Lire l'article",
+    "no_articles": "Aucun article publié pour le moment.",
+    "published_on": "Publié le"
+  },
+  "villes": {
+    "properties_tag": "Biens disponibles",
+    "properties_title": "Propriétés dans cette ville",
+    "neighborhoods_tag": "Les quartiers",
+    "cta_title": "Votre projet dans cette ville"
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "nav": {
+    "properties": "Properties",
+    "destinations": "Destinations",
+    "services": "Services",
+    "guides": "Guides",
+    "about": "About",
+    "contact": "Contact",
+    "consultation": "Consultation"
+  },
+  "hero": {
+    "tag": "Luxury Real Estate · Israel",
+    "title1": "Real estate excellence",
+    "title2": "at the heart of Israel",
+    "subtitle": "Maison Israël guides French-speaking clients in acquiring the most exclusive properties in Tel Aviv, Jerusalem and Herzliya.",
+    "cta_properties": "View properties",
+    "cta_consult": "Free consultation"
+  },
+  "stats": {
+    "years": "Years of experience",
+    "transactions": "Completed transactions",
+    "satisfaction": "Satisfied clients",
+    "offices": "Offices in Israel"
+  },
+  "featured": {
+    "tag": "Exclusive selection",
+    "title": "Exceptional Properties",
+    "all": "All properties"
+  },
+  "destinations": {
+    "tag": "Our markets",
+    "title": "Prime Destinations",
+    "tel_aviv_desc": "The city that never sleeps",
+    "jerusalem_desc": "Eternal and timeless",
+    "herzliya_desc": "The diplomatic quarter",
+    "netanya_desc": "The Israeli Riviera"
+  },
+  "cta_band": {
+    "title": "Your project starts with a conversation",
+    "subtitle": "Confidential consultation, no commitment. Our experts reply within 24 hours.",
+    "button": "Book an appointment"
+  },
+  "properties": {
+    "page_tag": "Our portfolio",
+    "page_title": "Exceptional Properties",
+    "available": "available",
+    "none_title": "No properties available",
+    "none_sub": "Contact us to discover our off-market listings.",
+    "surface": "sqm",
+    "rooms": "rooms",
+    "yield": "Yield",
+    "status_actif": "Available",
+    "status_vendu": "Sold",
+    "status_sous_compromis": "Under offer",
+    "status_loue": "Rented",
+    "ask_visit": "Request a viewing",
+    "whatsapp": "WhatsApp",
+    "description": "Description",
+    "features": "Features",
+    "interested": "Interested?",
+    "ask_info": "Request information",
+    "reply_time": "Reply within 24h · Full confidentiality"
+  },
+  "contact": {
+    "tag": "Let's talk about your project",
+    "title": "Get in touch",
+    "coords": "Our details",
+    "address_label": "Tel Aviv (HQ)",
+    "address": "12 Rothschild Boulevard\nTel Aviv, 67021",
+    "phone_label": "Phone",
+    "email_label": "Email",
+    "hours_label": "Opening hours",
+    "hours": "Sun–Thu 9am–7pm\nFri 9am–2pm",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending...",
+    "sent_title": "Message sent",
+    "sent_sub": "We'll get back to you within 24 hours.",
+    "guarantee": "Reply within 24h · Full confidentiality",
+    "name_ph": "John Smith",
+    "email_ph": "john@example.com",
+    "phone_ph": "+44 7700 900123",
+    "message_ph": "Describe your project..."
+  },
+  "footer": {
+    "tagline": "Specialist in luxury real estate in Israel since 2009. Exclusive service for French-speaking clients.",
+    "destinations": "Destinations",
+    "services": "Services",
+    "purchase": "Purchase",
+    "rental": "Rental",
+    "investment": "Investment",
+    "aliyah": "Aliyah",
+    "faq": "FAQ",
+    "about": "About",
+    "contact_title": "Contact",
+    "hours": "Sun–Thu 9am–7pm",
+    "rights": "All rights reserved.",
+    "legal": "Legal notice",
+    "privacy": "Privacy policy",
+    "scroll": "Scroll"
+  },
+  "lang": {
+    "fr": "Français",
+    "en": "English",
+    "he": "עברית"
+  },
+  "about": {
+    "tag": "Our story",
+    "title": "Maison Israël",
+    "history_tag": "Since 2009",
+    "history_title": "An agency built on a passion for Israeli real estate",
+    "team_tag": "Our team",
+    "team_title": "Experts at your service",
+    "values_tag": "Our values",
+    "values_title": "What sets us apart",
+    "timeline_tag": "Our journey",
+    "cta_title": "Let's meet",
+    "cta_sub": "Our experts are available for a confidential consultation, no commitment required.",
+    "cta_btn": "Book an appointment"
+  },
+  "services": {
+    "tag": "Our expertise",
+    "title": "Tailored Services",
+    "subtitle": "From acquisition to management, comprehensive support for your real estate project in Israel.",
+    "process_title": "Our process"
+  },
+  "guides": {
+    "tag": "Resources",
+    "title": "Guides & News",
+    "subtitle": "Everything you need to know about real estate in Israel.",
+    "read_more": "Read article",
+    "no_articles": "No articles published yet.",
+    "published_on": "Published on"
+  },
+  "villes": {
+    "properties_tag": "Available properties",
+    "properties_title": "Properties in this city",
+    "neighborhoods_tag": "Neighborhoods",
+    "cta_title": "Your project in this city"
+  }
+}
