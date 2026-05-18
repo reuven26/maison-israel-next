@@ -5,6 +5,7 @@ import type { Locale } from '@/i18n/config'
 import { getMessages } from '@/i18n'
 import BienGallery from '@/components/public/BienGallery'
 import BienContactCard from '@/components/public/BienContactCard'
+import PropertyMap from '@/components/public/PropertyMap'
 
 export const revalidate = 60
 
@@ -79,6 +80,16 @@ export default async function BienPage({ params }: { params: Promise<{ locale: s
                 </div>
               </>
             )}
+
+            {/* Map — emplacement du bien */}
+            <div style={{ marginTop: '3.5rem' }}>
+              <PropertyMap
+                ville={bien.ville}
+                quartier={bien.quartier ?? null}
+                locale={locale}
+                isRTL={isRTL}
+              />
+            </div>
           </div>
 
           {/* Contact card */}
