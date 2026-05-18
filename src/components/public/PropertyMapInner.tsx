@@ -105,11 +105,12 @@ export default function PropertyMapInner({ ville, quartier, locale, isRTL }: Pro
           zoom={zoom}
           zoomControl={false}
           scrollWheelZoom={false}
+          attributionControl={false}
           style={{ height: '420px', width: '100%', background: '#D6D6D6' }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
-            url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+            url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
           />
           <ZoomControl position="bottomright" />
 
@@ -144,7 +145,7 @@ export default function PropertyMapInner({ ville, quartier, locale, isRTL }: Pro
 
         <style>{`
           .leaflet-tile-pane {
-            filter: grayscale(100%) brightness(0.82) contrast(1.05) !important;
+            filter: saturate(0.55) brightness(0.9) !important;
           }
           @keyframes prop-pulse {
             0%   { transform: scale(0.5); opacity: 0.9; }

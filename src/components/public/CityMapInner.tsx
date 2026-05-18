@@ -99,12 +99,13 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
         zoom={city.zoom}
         zoomControl={false}
         scrollWheelZoom={false}
+        attributionControl={false}
         style={{ height: '520px', width: '100%', background: '#D6D6D6' }}
       >
-        {/* Light grey tile layer – CartoDB Positron */}
+        {/* CartoDB Voyager — same style as Barnes/Mapbox Streets */}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
         />
 
         <ZoomControl position="bottomright" />
@@ -163,9 +164,9 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
       </MapContainer>
 
       <style>{`
-        /* Grey tile filter */
+        /* Voyager tile filter — slight desaturation, matches Barnes "gris clair" */
         .leaflet-tile-pane {
-          filter: grayscale(100%) brightness(0.82) contrast(1.05) !important;
+          filter: saturate(0.55) brightness(0.9) !important;
         }
 
         /* Popup — light theme */
