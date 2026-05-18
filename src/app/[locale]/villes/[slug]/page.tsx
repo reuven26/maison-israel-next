@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import type { Bien } from '@/types'
 import type { Locale } from '@/i18n/config'
 import { getMessages } from '@/i18n'
+import CityMap from '@/components/public/CityMap'
 
 export const revalidate = 60
 
@@ -365,6 +366,32 @@ export default async function VillePage({ params }: { params: Promise<{ locale: 
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* INTERACTIVE MAP */}
+      <section style={{ padding: '6rem 2rem', background: '#111214', direction: isRTL ? 'rtl' : 'ltr' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <p style={{ fontSize: '0.7rem', letterSpacing: isRTL ? '0' : '0.3em', textTransform: isRTL ? 'none' : 'uppercase', color: '#C8A96E', marginBottom: '0.8rem' }}>
+              {locale === 'he' ? 'מפת השכונות' : locale === 'en' ? 'Neighbourhood Map' : 'Carte des Quartiers'}
+            </p>
+            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300, color: '#FAFAF9', marginBottom: '0.8rem' }}>
+              {locale === 'he' ? `גלו את ${cityName}` : locale === 'en' ? `Explore ${cityName}` : `Explorer ${cityName}`}
+            </h2>
+            <div style={{ width: '60px', height: '1px', background: '#C8A96E', margin: '0 auto' }} />
+          </div>
+
+          <CityMap
+            slug={slug}
+            neighborhoods={cityData.neighborhoods}
+            lang={lang}
+            isRTL={isRTL}
+          />
+
+          <p style={{ textAlign: 'center', marginTop: '1.2rem', fontSize: '0.75rem', color: '#8A8B91', letterSpacing: '0.05em' }}>
+            {locale === 'he' ? 'לחץ על סמן לפרטים על השכונה' : locale === 'en' ? 'Click a marker for neighbourhood details' : 'Cliquez sur un marqueur pour les détails du quartier'}
+          </p>
         </div>
       </section>
 

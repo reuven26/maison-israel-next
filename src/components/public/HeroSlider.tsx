@@ -4,29 +4,19 @@ import { useState, useEffect } from 'react'
 
 const SLIDES = [
   {
-    src: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=2200&auto=format&fit=crop&q=85',
-    city: 'Tel Aviv',
-    label: 'La Ville Blanche',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?w=2200&auto=format&fit=crop&q=85',
+    src: '/hero/slide1.jpg',
     city: 'Jérusalem',
-    label: 'Éternelle & Intemporelle',
+    label: 'Résidence de Prestige',
   },
   {
-    src: 'https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=2200&auto=format&fit=crop&q=85',
-    city: 'Tel Aviv',
-    label: 'Front de Mer',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1549877452-9c387954fbc2?w=2200&auto=format&fit=crop&q=85',
+    src: '/hero/slide2.jpg',
     city: 'Jérusalem',
-    label: 'Vieille Ville',
+    label: 'Architecture & Raffinement',
   },
   {
-    src: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=2200&auto=format&fit=crop&q=85',
-    city: 'Herzliya Pituah',
-    label: 'Résidences de Prestige',
+    src: '/hero/slide3.jpg',
+    city: 'Jérusalem',
+    label: 'Exclusivité & Élégance',
   },
 ]
 
