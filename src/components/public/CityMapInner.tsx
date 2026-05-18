@@ -100,7 +100,7 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
         zoomControl={false}
         scrollWheelZoom={false}
         attributionControl={false}
-        style={{ height: '520px', width: '100%', background: '#D6D6D6' }}
+        style={{ height: '520px', width: '100%', background: '#aad3df' }}
       >
         {/* CartoDB Voyager — same style as Barnes/Mapbox Streets */}
         <TileLayer
@@ -164,11 +164,6 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
       </MapContainer>
 
       <style>{`
-        /* Voyager tile filter — slight desaturation, matches Barnes "gris clair" */
-        .leaflet-tile-pane {
-          filter: saturate(0.55) brightness(0.9) !important;
-        }
-
         /* Popup — light theme */
         .city-map-popup .leaflet-popup-content-wrapper {
           background: #FAFAF9;

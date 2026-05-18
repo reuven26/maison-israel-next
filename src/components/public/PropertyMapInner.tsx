@@ -106,7 +106,7 @@ export default function PropertyMapInner({ ville, quartier, locale, isRTL }: Pro
           zoomControl={false}
           scrollWheelZoom={false}
           attributionControl={false}
-          style={{ height: '420px', width: '100%', background: '#D6D6D6' }}
+          style={{ height: '420px', width: '100%', background: '#aad3df' }}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
@@ -144,9 +144,6 @@ export default function PropertyMapInner({ ville, quartier, locale, isRTL }: Pro
         </MapContainer>
 
         <style>{`
-          .leaflet-tile-pane {
-            filter: saturate(0.55) brightness(0.9) !important;
-          }
           @keyframes prop-pulse {
             0%   { transform: scale(0.5); opacity: 0.9; }
             100% { transform: scale(2.6); opacity: 0; }
