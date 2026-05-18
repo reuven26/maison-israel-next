@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, ZoomControl } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
@@ -72,18 +71,18 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
   })
 
   return (
-    <div style={{ position: 'relative', borderRadius: '2px', overflow: 'hidden' }}>
+    <div style={{ position: 'relative', borderRadius: '2px', overflow: 'hidden', border: '1px solid rgba(200,169,110,0.15)' }}>
       <MapContainer
         center={city.center}
         zoom={city.zoom}
         zoomControl={false}
         scrollWheelZoom={false}
-        style={{ height: '520px', width: '100%', background: '#111214' }}
+        style={{ height: '520px', width: '100%', background: '#D6D6D6' }}
       >
-        {/* Dark tile layer – CartoDB Dark Matter */}
+        {/* Light grey tile layer – CartoDB Positron */}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
         />
 
         <ZoomControl position="bottomright" />
@@ -93,17 +92,17 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
           position={city.center}
           icon={L.divIcon({
             html: `
-              <div style="position:relative;width:24px;height:24px">
-                <div style="position:absolute;inset:0;border-radius:50%;background:rgba(200,169,110,0.25);animation:pulse-ring 2s ease-out infinite"></div>
-                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:#C8A96E;box-shadow:0 0 10px rgba(200,169,110,0.8)"></div>
+              <div style="position:relative;width:28px;height:28px">
+                <div style="position:absolute;inset:0;border-radius:50%;background:rgba(200,169,110,0.3);animation:pulse-ring 2s ease-out infinite"></div>
+                <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:14px;height:14px;border-radius:50%;background:#C8A96E;border:2.5px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.3)"></div>
               </div>`,
             className: '',
-            iconSize: [24, 24],
-            iconAnchor: [12, 12],
+            iconSize: [28, 28],
+            iconAnchor: [14, 14],
           })}
         >
           <Popup className="city-map-popup">
-            <strong style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1rem', color: '#C8A96E' }}>
+            <strong style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1rem', color: '#9A7B42' }}>
               {slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}
             </strong>
           </Popup>
@@ -117,21 +116,21 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
             icon={L.divIcon({
               html: `
                 <div style="display:flex;flex-direction:column;align-items:center;gap:3px">
-                  <div style="width:10px;height:10px;border-radius:50%;background:#C8A96E;border:2px solid rgba(255,255,255,0.35);box-shadow:0 0 6px rgba(200,169,110,0.55)"></div>
-                  <div style="font-size:9px;font-family:DM Sans,sans-serif;color:#C8A96E;letter-spacing:0.04em;white-space:nowrap;background:rgba(10,10,11,0.7);padding:1px 5px;border-radius:2px">${pin.name}</div>
+                  <div style="width:11px;height:11px;border-radius:50%;background:#C8A96E;border:2px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,0.25)"></div>
+                  <div style="font-size:9px;font-family:DM Sans,sans-serif;color:#2D2D2D;font-weight:600;letter-spacing:0.03em;white-space:nowrap;background:rgba(255,255,255,0.88);padding:1px 6px;border-radius:2px;box-shadow:0 1px 4px rgba(0,0,0,0.12)">${pin.name}</div>
                 </div>`,
               className: '',
-              iconSize: [90, 30],
-              iconAnchor: [45, 5],
+              iconSize: [120, 30],
+              iconAnchor: [60, 5],
             })}
           >
             <Popup className="city-map-popup">
-              <div style={{ minWidth: '180px', direction: isRTL ? 'rtl' : 'ltr' }}>
-                <p style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1rem', color: '#C8A96E', marginBottom: '4px', fontWeight: 600 }}>
+              <div style={{ minWidth: '185px', direction: isRTL ? 'rtl' : 'ltr' }}>
+                <p style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.05rem', color: '#9A7B42', marginBottom: '5px', fontWeight: 600 }}>
                   {pin.name}
                 </p>
                 {pin.desc && (
-                  <p style={{ fontSize: '0.8rem', color: '#D4D5D8', lineHeight: 1.5, margin: 0 }}>{pin.desc}</p>
+                  <p style={{ fontSize: '0.8rem', color: '#4A4A4A', lineHeight: 1.55, margin: 0 }}>{pin.desc}</p>
                 )}
               </div>
             </Popup>
@@ -140,40 +139,51 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
       </MapContainer>
 
       <style>{`
-        /* Leaflet popup dark theme */
+        /* Grey tile filter — desaturate + darken CartoDB Positron */
+        .leaflet-tile-pane {
+          filter: grayscale(100%) brightness(0.82) contrast(1.05) !important;
+        }
+
+        /* Popup — light theme */
         .city-map-popup .leaflet-popup-content-wrapper {
-          background: #141416;
-          border: 1px solid rgba(200,169,110,0.25);
-          border-radius: 2px;
-          box-shadow: 0 8px 32px rgba(0,0,0,0.6);
-          color: #FAFAF9;
+          background: #FAFAF9;
+          border: 1px solid rgba(200,169,110,0.4);
+          border-radius: 3px;
+          box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+          color: #2D2D2D;
         }
         .city-map-popup .leaflet-popup-tip {
-          background: #141416;
+          background: #FAFAF9;
         }
         .city-map-popup .leaflet-popup-close-button {
-          color: #C8A96E !important;
+          color: #9A7B42 !important;
+          font-size: 16px !important;
         }
+
         /* Pulse animation for city centre */
         @keyframes pulse-ring {
-          0%   { transform: scale(0.6); opacity: 0.8; }
-          100% { transform: scale(2.2); opacity: 0; }
+          0%   { transform: scale(0.6); opacity: 0.85; }
+          100% { transform: scale(2.4); opacity: 0; }
         }
-        /* Hide default attribution box overlap */
+
+        /* Attribution */
         .leaflet-control-attribution {
-          background: rgba(10,10,11,0.7) !important;
-          color: rgba(255,255,255,0.3) !important;
+          background: rgba(255,255,255,0.75) !important;
+          color: rgba(0,0,0,0.35) !important;
           font-size: 9px !important;
         }
-        .leaflet-control-attribution a { color: rgba(200,169,110,0.5) !important; }
+        .leaflet-control-attribution a { color: rgba(154,123,66,0.7) !important; }
+
         /* Zoom buttons */
         .leaflet-control-zoom a {
-          background: #141416 !important;
-          color: #C8A96E !important;
-          border-color: rgba(200,169,110,0.2) !important;
+          background: #fff !important;
+          color: #2D2D2D !important;
+          border-color: rgba(0,0,0,0.15) !important;
+          font-weight: 400 !important;
         }
         .leaflet-control-zoom a:hover {
-          background: rgba(200,169,110,0.15) !important;
+          background: rgba(200,169,110,0.12) !important;
+          color: #9A7B42 !important;
         }
       `}</style>
     </div>
