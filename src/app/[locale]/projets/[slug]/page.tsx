@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { notFound } from 'next/navigation'
+import type { Metadata } from 'next'
 import type { Bien } from '@/types'
 import type { Locale } from '@/i18n/config'
 import { getMessages } from '@/i18n'
@@ -8,6 +9,39 @@ import BienContactCard from '@/components/public/BienContactCard'
 import PropertyMap from '@/components/public/PropertyMap'
 
 export const revalidate = 60
+
+const SITE_BASE = 'https://immobilierenisrael.com'
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const { locale, slug } = await params
+  const supabase = await createClient()
+  const { data: bien } = await supabase.from('biens').select('nom,description,image_principale,ville,quartier,prix_display,type').eq('slug', slug).single()
+  if (!bien) return {}
+  const title = `${bien.nom} — ${bien.type ?? 'Bien'} ${bien.quartier ?? bien.ville} | Maison Israël`
+  const description = (bien.description ?? '').slice(0, 155) || `${bien.type ?? ''} à ${bien.quartier ?? bien.ville}, ${bien.prix_display ?? ''}.`
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `${SITE_BASE}/${locale}/projets/${slug}`,
+      languages: {
+        fr: `${SITE_BASE}/fr/projets/${slug}`,
+        en: `${SITE_BASE}/en/projets/${slug}`,
+        he: `${SITE_BASE}/he/projets/${slug}`,
+        'x-default': `${SITE_BASE}/fr/projets/${slug}`,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: `${SITE_BASE}/${locale}/projets/${slug}`,
+      siteName: 'Maison Israël',
+      type: 'website',
+      images: bien.image_principale ? [{ url: bien.image_principale, alt: bien.nom }] : undefined,
+      locale: locale === 'he' ? 'he_IL' : locale === 'en' ? 'en_US' : 'fr_FR',
+    },
+  }
+}
 
 export default async function BienPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params
@@ -19,6 +53,44 @@ export default async function BienPage({ params }: { params: Promise<{ locale: s
   const { data: bien } = await supabase.from('biens').select('*').eq('slug', slug).single()
   if (!bien) notFound()
 
+  const BASE_URL = 'https://immobilierenisrael.com'
+
+  // RealEstateListing JSON-LD
+  const listingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    '@id': `${BASE_URL}/${locale}/projets/${slug}`,
+    name: bien.nom,
+    description: bien.description?.slice(0, 280),
+    image: [bien.image_principale, ...(bien.images ?? [])].slice(0, 8),
+    sku: bien.reference ?? bien.slug,
+    category: bien.type,
+    offers: {
+      '@type': 'Offer',
+      url: `${BASE_URL}/${locale}/projets/${slug}`,
+      availability: bien.statut === 'actif' ? 'https://schema.org/InStock' : 'https://schema.org/SoldOut',
+      priceCurrency: 'ILS',
+      price: typeof bien.prix === 'number' ? bien.prix : undefined,
+      seller: { '@type': 'Organization', name: 'Maison Israël' },
+    },
+    additionalProperty: [
+      { '@type': 'PropertyValue', name: 'Surface', value: `${bien.surface} m²` },
+      ...(bien.pieces ? [{ '@type': 'PropertyValue', name: 'Rooms', value: bien.pieces }] : []),
+      ...(bien.ville ? [{ '@type': 'PropertyValue', name: 'City', value: bien.ville }] : []),
+      ...(bien.quartier ? [{ '@type': 'PropertyValue', name: 'Neighborhood', value: bien.quartier }] : []),
+    ],
+  }
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: locale === 'he' ? 'בית' : locale === 'en' ? 'Home' : 'Accueil', item: `${BASE_URL}/${locale}` },
+      { '@type': 'ListItem', position: 2, name: locale === 'he' ? 'נכסים' : locale === 'en' ? 'Properties' : 'Propriétés', item: `${BASE_URL}/${locale}/projets` },
+      { '@type': 'ListItem', position: 3, name: bien.nom, item: `${BASE_URL}/${locale}/projets/${slug}` },
+    ],
+  }
+
   const stats = [
     [isRTL ? 'שטח' : (locale === 'en' ? 'Surface' : 'Surface'), `${bien.surface} ${p.surface}`],
     ...(bien.pieces ? [[isRTL ? 'חדרים' : (locale === 'en' ? 'Rooms' : 'Pièces'), `${bien.pieces} ${p.rooms}`]] : []),
@@ -28,6 +100,8 @@ export default async function BienPage({ params }: { params: Promise<{ locale: s
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(listingSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <div style={{ paddingTop: '80px' }} />
       <div style={{ height: '70vh', overflow: 'hidden', position: 'relative' }}>
         <img src={bien.image_principale} alt={bien.nom} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />

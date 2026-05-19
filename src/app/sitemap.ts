@@ -1,20 +1,25 @@
 import type { MetadataRoute } from 'next'
 import { locales, defaultLocale } from '@/i18n/config'
+import { JOURNAL_ARTICLES } from '@/data/journal-articles'
+import { QUARTIERS } from '@/data/quartiers'
 
 const BASE_URL = 'https://immobilierenisrael.com'
 
-const villes = ['tel-aviv', 'jerusalem', 'netanya', 'herzliya-pituah', 'caesarea', 'sde-dov', 'neve-tzedek', 'rothschild']
+const villes = ['tel-aviv', 'jerusalem', 'netanya', 'herzliya-pituah', 'caesarea']
 
 const staticPaths = [
   { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
   { path: '/projets', priority: 0.9, changeFrequency: 'weekly' as const },
+  { path: '/quartiers', priority: 0.85, changeFrequency: 'weekly' as const },
+  { path: '/off-market', priority: 0.85, changeFrequency: 'weekly' as const },
+  { path: '/journal', priority: 0.85, changeFrequency: 'weekly' as const },
   { path: '/services', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/guides', priority: 0.8, changeFrequency: 'weekly' as const },
   { path: '/about', priority: 0.7, changeFrequency: 'monthly' as const },
   { path: '/contact', priority: 0.7, changeFrequency: 'yearly' as const },
 ]
 
-const blogArticles = [
+const legacyGuides = [
   'prix-immobilier-israel-2026',
   'aliyah-immobilier-guide-complet',
   'fiscalite-immobilier-israel-francais',
@@ -31,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
   const entries: MetadataRoute.Sitemap = []
 
+  // Static pages × locales
   for (const { path, priority, changeFrequency } of staticPaths) {
     for (const locale of locales) {
       entries.push({
@@ -43,24 +49,52 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // City pages
   for (const ville of villes) {
     for (const locale of locales) {
       entries.push({
         url: `${BASE_URL}/${locale}/villes/${ville}`,
         lastModified,
         changeFrequency: 'weekly',
-        priority: 0.85,
+        priority: 0.9,
         alternates: alternates(`/villes/${ville}`),
       })
     }
   }
 
-  for (const slug of blogArticles) {
+  // Neighborhood pages (highest-intent SEO assets)
+  for (const q of QUARTIERS) {
+    for (const locale of locales) {
+      entries.push({
+        url: `${BASE_URL}/${locale}/quartiers/${q.city}/${q.slug}`,
+        lastModified,
+        changeFrequency: 'weekly',
+        priority: 0.88,
+        alternates: alternates(`/quartiers/${q.city}/${q.slug}`),
+      })
+    }
+  }
+
+  // Journal articles
+  for (const article of JOURNAL_ARTICLES) {
+    for (const locale of locales) {
+      entries.push({
+        url: `${BASE_URL}/${locale}/journal/${article.slug}`,
+        lastModified: new Date(article.publishedAt),
+        changeFrequency: 'monthly',
+        priority: 0.8,
+        alternates: alternates(`/journal/${article.slug}`),
+      })
+    }
+  }
+
+  // Legacy guides (kept for SEO equity)
+  for (const slug of legacyGuides) {
     entries.push({
       url: `${BASE_URL}/fr/guides/${slug}`,
       lastModified,
       changeFrequency: 'monthly',
-      priority: 0.9,
+      priority: 0.7,
     })
   }
 
