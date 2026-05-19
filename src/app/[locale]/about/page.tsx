@@ -1,6 +1,50 @@
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 import { getMessages } from '@/i18n'
+
+const BASE_URL = 'https://immobilierenisrael.com'
+
+const ABOUT_META: Record<Locale, { title: string; description: string }> = {
+  fr: {
+    title: 'À Propos — Maison Israël depuis 2009',
+    description: "Maison Israël accompagne les acheteurs internationaux dans l'acquisition d'immobilier de prestige en Israël depuis 2009. Notre histoire, notre méthode, notre engagement.",
+  },
+  en: {
+    title: 'About — Maison Israël since 2009',
+    description: 'Maison Israël has supported international buyers in luxury Israeli real estate since 2009. Our story, method, and commitment.',
+  },
+  he: {
+    title: 'אודות — מייזון ישראל מאז 2009',
+    description: 'מייזון ישראל מלווה קונים בינלאומיים בנדל"ן יוקרה ישראלי מאז 2009.',
+  },
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  const meta = ABOUT_META[(locale as Locale) || 'fr'] ?? ABOUT_META.fr
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: {
+      canonical: `${BASE_URL}/${locale}/about`,
+      languages: {
+        fr: `${BASE_URL}/fr/about`,
+        en: `${BASE_URL}/en/about`,
+        he: `${BASE_URL}/he/about`,
+        'x-default': `${BASE_URL}/fr/about`,
+      },
+    },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `${BASE_URL}/${locale}/about`,
+      siteName: 'Maison Israël',
+      type: 'website',
+      locale: locale === 'he' ? 'he_IL' : locale === 'en' ? 'en_US' : 'fr_FR',
+    },
+  }
+}
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params

@@ -17,9 +17,10 @@ const STATUS_COLORS: Record<string, string> = {
 interface Props {
   locale: string
   isRTL: boolean
+  variant?: 'full' | 'inline'
 }
 
-export default function OffMarketGate({ locale, isRTL }: Props) {
+export default function OffMarketGate({ locale, isRTL, variant = 'inline' }: Props) {
   const [unlocked, setUnlocked] = useState(false)
   const [input, setInput]       = useState('')
   const [wrong, setWrong]       = useState(false)
@@ -65,6 +66,65 @@ export default function OffMarketGate({ locale, isRTL }: Props) {
 
   // ── PASSWORD GATE ───────────────────────────────────────────────────────────
   if (!unlocked) {
+    // ── INLINE variant — compact form for embedding within SEO page ──────────
+    if (variant === 'inline') {
+      return (
+        <>
+          <style>{`
+            @keyframes omShake {
+              0%,100%{ transform:translateX(0) }
+              20%    { transform:translateX(-8px) }
+              40%    { transform:translateX(8px) }
+              60%    { transform:translateX(-6px) }
+              80%    { transform:translateX(6px) }
+            }
+            .om-shake { animation: omShake 0.5s ease; }
+          `}</style>
+          <div style={{ maxWidth: '440px', margin: '0 auto', direction: dir }}>
+            <form onSubmit={tryPassword} className={shake ? 'om-shake' : ''}>
+              <div style={{ position: 'relative', marginBottom: '0.8rem' }}>
+                <input
+                  type="password"
+                  value={input}
+                  onChange={(e) => { setInput(e.target.value); setWrong(false) }}
+                  placeholder={locale === 'he' ? 'הכנס קוד...' : locale === 'en' ? 'Enter access code…' : "Code d'accès…"}
+                  style={{
+                    width: '100%', padding: '0.95rem 1.2rem',
+                    background: '#111214',
+                    border: `1px solid ${wrong ? 'rgba(239,68,68,0.6)' : 'rgba(200,169,110,0.25)'}`,
+                    color: '#FAFAF9', fontSize: '0.95rem',
+                    fontFamily: 'DM Sans, sans-serif',
+                    letterSpacing: '0.2em',
+                    outline: 'none', textAlign: 'center',
+                    direction: 'ltr',
+                  }}
+                />
+              </div>
+              {wrong && (
+                <p style={{ fontSize: '0.76rem', color: '#F87171', marginBottom: '0.8rem', textAlign: 'center' }}>
+                  {locale === 'he' ? 'קוד שגוי' : locale === 'en' ? 'Incorrect code' : 'Code incorrect'}
+                </p>
+              )}
+              <button
+                type="submit"
+                style={{
+                  width: '100%', padding: '0.95rem',
+                  background: '#C8A96E', color: '#0A0A0B',
+                  border: 'none', cursor: 'pointer',
+                  fontFamily: 'DM Sans, sans-serif',
+                  fontSize: '0.7rem', fontWeight: 700,
+                  letterSpacing: '0.25em', textTransform: 'uppercase',
+                }}
+              >
+                {locale === 'he' ? 'גישה' : locale === 'en' ? 'Unlock portfolio' : 'Déverrouiller le portfolio'}
+              </button>
+            </form>
+          </div>
+        </>
+      )
+    }
+
+    // ── FULL variant — original full-page gate ──────────────────────────────
     return (
       <>
         <style>{`

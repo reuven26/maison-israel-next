@@ -1,9 +1,53 @@
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
+import type { Metadata } from 'next'
 import type { Bien } from '@/types'
 import type { Locale } from '@/i18n/config'
 import { getMessages } from '@/i18n'
 import PropertyCard from '@/components/public/PropertyCard'
+
+const BASE_URL = 'https://immobilierenisrael.com'
+
+const PROJETS_META: Record<Locale, { title: string; description: string }> = {
+  fr: {
+    title: "Propriétés Disponibles — Immobilier de Prestige en Israël | Maison Israël",
+    description: "Découvrez notre sélection de propriétés de prestige en Israël — penthouses, villas, appartements à Tel Aviv, Jérusalem, Herzliya Pituah, Césarée.",
+  },
+  en: {
+    title: 'Available Properties — Luxury Real Estate in Israel | Maison Israël',
+    description: 'Discover our selection of luxury properties in Israel — penthouses, villas, apartments in Tel Aviv, Jerusalem, Herzliya Pituah, Caesarea.',
+  },
+  he: {
+    title: 'נכסים זמינים — נדל"ן יוקרה בישראל | מייזון ישראל',
+    description: 'גלו את מבחר נכסי היוקרה שלנו בישראל.',
+  },
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  const meta = PROJETS_META[(locale as Locale) || 'fr'] ?? PROJETS_META.fr
+  return {
+    title: meta.title,
+    description: meta.description,
+    alternates: {
+      canonical: `${BASE_URL}/${locale}/projets`,
+      languages: {
+        fr: `${BASE_URL}/fr/projets`,
+        en: `${BASE_URL}/en/projets`,
+        he: `${BASE_URL}/he/projets`,
+        'x-default': `${BASE_URL}/fr/projets`,
+      },
+    },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `${BASE_URL}/${locale}/projets`,
+      siteName: 'Maison Israël',
+      type: 'website',
+      locale: locale === 'he' ? 'he_IL' : locale === 'en' ? 'en_US' : 'fr_FR',
+    },
+  }
+}
 
 export const revalidate = 60
 
