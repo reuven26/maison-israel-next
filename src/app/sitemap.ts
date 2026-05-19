@@ -9,7 +9,7 @@ const BASE_URL = 'https://immobilierenisrael.com'
 
 const villes = ['tel-aviv', 'jerusalem', 'netanya', 'herzliya-pituah', 'caesarea']
 
-const staticTrustPaths = ['/equipe', '/notre-methode', '/biens']
+const staticTrustPaths = ['/equipe', '/notre-methode', '/biens', '/temoignages', '/presse', '/faq']
 
 const staticPaths = [
   { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
