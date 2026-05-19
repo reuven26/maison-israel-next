@@ -234,6 +234,41 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         </div>
       </section>
 
+      {/* Service deep-dives */}
+      <section style={{ padding: '5rem 2rem', background: '#0F1012', borderTop: '1px solid rgba(200,169,110,0.1)', direction: isRTL ? 'rtl' : 'ltr' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <p style={{ fontSize: '0.7rem', color: '#C8A96E', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '0.8rem' }}>
+              {locale === 'he' ? 'מבט מעמיק' : locale === 'en' ? 'Deep Dives' : 'Approfondir'}
+            </p>
+            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 300, color: '#FAFAF9', marginBottom: '0.8rem' }}>
+              {locale === 'he' ? 'השירותים שלנו בפירוט' : locale === 'en' ? 'Our Services in Detail' : 'Nos services en détail'}
+            </h2>
+            <div style={{ width: '60px', height: '1px', background: '#C8A96E', margin: '0 auto' }} />
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
+            {[
+              { slug: 'recherche-personnalisee', titleFr: 'Recherche Personnalisée', titleEn: 'Private Search', titleHe: 'חיפוש פרטי', descFr: 'Un brief, un conseiller, un accès off-market.', descEn: 'A brief, an advisor, off-market access.', descHe: 'בריף, יועץ, גישה.' },
+              { slug: 'off-market', titleFr: 'Accès Off-Market', titleEn: 'Off-Market Access', titleHe: 'גישה למחוץ-לשוק', descFr: '35–50 % des transactions premium sont invisibles.', descEn: '35–50% of premium transactions are invisible.', descHe: '35%–50% מהעסקאות בלתי נראות.' },
+              { slug: 'estimation', titleFr: 'Estimation & Valorisation', titleEn: 'Valuation', titleHe: 'הערכה', descFr: 'Vente, succession, refinancement, achat.', descEn: 'Sale, estate, refinancing, purchase.', descHe: 'מכירה, ירושה, מימון.' },
+              { slug: 'conseil-investissement', titleFr: 'Conseil en Investissement', titleEn: 'Investment Advisory', titleHe: 'ייעוץ השקעות', descFr: "L'immobilier israélien comme classe d'actif.", descEn: 'Israeli real estate as an asset class.', descHe: 'נדל"ן ישראלי כסוג נכס.' },
+            ].map((s) => (
+              <Link key={s.slug} href={`/${locale}/services/${s.slug}`} style={{ textDecoration: 'none', background: '#141416', padding: '2rem', display: 'block', borderBottom: '2px solid #C8A96E', transition: 'transform 0.3s' }}>
+                <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.35rem', color: '#FAFAF9', fontWeight: 400, marginBottom: '0.6rem' }}>
+                  {locale === 'he' ? s.titleHe : locale === 'en' ? s.titleEn : s.titleFr}
+                </h3>
+                <p style={{ color: '#8A8B91', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '1rem' }}>
+                  {locale === 'he' ? s.descHe : locale === 'en' ? s.descEn : s.descFr}
+                </p>
+                <span style={{ color: '#C8A96E', fontSize: '0.7rem', letterSpacing: '0.15em', textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif" }}>
+                  {locale === 'he' ? 'גלה ←' : locale === 'en' ? 'Discover →' : 'Découvrir →'}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA BAND */}
       <section style={{ background: '#C8A96E', padding: '4rem 2rem', textAlign: 'center', direction: isRTL ? 'rtl' : 'ltr' }}>
         <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', color: '#0A0A0B', marginBottom: '1rem', fontWeight: 400 }}>

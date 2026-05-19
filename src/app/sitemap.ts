@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { locales, defaultLocale } from '@/i18n/config'
 import { JOURNAL_ARTICLES } from '@/data/journal-articles'
 import { QUARTIERS } from '@/data/quartiers'
+import { SERVICES, CLIENTELE } from '@/data/services-clientele'
 
 const BASE_URL = 'https://immobilierenisrael.com'
 
@@ -14,6 +15,7 @@ const staticPaths = [
   { path: '/off-market', priority: 0.85, changeFrequency: 'weekly' as const },
   { path: '/journal', priority: 0.85, changeFrequency: 'weekly' as const },
   { path: '/services', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/clientele', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/guides', priority: 0.8, changeFrequency: 'weekly' as const },
   { path: '/about', priority: 0.7, changeFrequency: 'monthly' as const },
   { path: '/contact', priority: 0.7, changeFrequency: 'yearly' as const },
@@ -71,6 +73,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: 'weekly',
         priority: 0.88,
         alternates: alternates(`/quartiers/${q.city}/${q.slug}`),
+      })
+    }
+  }
+
+  // Service sub-pages
+  for (const s of SERVICES) {
+    for (const locale of locales) {
+      entries.push({
+        url: `${BASE_URL}/${locale}/services/${s.slug}`,
+        lastModified,
+        changeFrequency: 'monthly',
+        priority: 0.82,
+        alternates: alternates(`/services/${s.slug}`),
+      })
+    }
+  }
+
+  // Clientele sub-pages
+  for (const c of CLIENTELE) {
+    for (const locale of locales) {
+      entries.push({
+        url: `${BASE_URL}/${locale}/clientele/${c.slug}`,
+        lastModified,
+        changeFrequency: 'monthly',
+        priority: 0.82,
+        alternates: alternates(`/clientele/${c.slug}`),
       })
     }
   }
