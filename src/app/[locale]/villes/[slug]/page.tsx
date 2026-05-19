@@ -201,6 +201,52 @@ const CITY_DATA: Record<string, {
       },
     ],
   },
+  'caesarea': {
+    nom: { fr: 'Césarée', en: 'Caesarea', he: 'קיסריה' },
+    img: 'https://images.unsplash.com/photo-1582610116397-edb318620f90?w=1600&auto=format&fit=crop&q=80',
+    desc: {
+      fr: "Césarée est l'une des deux enclaves ultra-prime d'Israël, fondée dans sa forme moderne dans les années 1950 à travers un partenariat entre la famille Rothschild et l'État d'Israël. Communauté résidentielle planifiée à faible densité, organisée autour d'un terrain de golf, avec des contrôles architecturaux stricts. Les terrains parmi les plus grands du pays.",
+      en: "Caesarea is one of Israel's two ultra-prime enclaves, founded in its modern form in the 1950s through a partnership between the Rothschild family and the State of Israel. A planned, low-density residential community organised around a golf course, with strict architectural controls. Among the largest residential lots in the country.",
+      he: "קיסריה היא אחת משתי המובלעות האולטרה-פרימיום של ישראל, נוסדה בצורתה המודרנית בשנות ה-50 בשותפות בין משפחת רוטשילד למדינת ישראל.",
+    },
+    population: '5 200',
+    prix_m2: '40 000 – 80 000 ₪',
+    dbVille: 'Césarée',
+    neighborhoods: [
+      {
+        name: 'Césarée Aleph',
+        desc: {
+          fr: "La section originale autour du terrain de golf, incluant les rues les plus proches de la mer. Le cœur de prestige de la communauté.",
+          en: "The original section surrounding the golf course, including the streets closest to the sea. The prestige core of the community.",
+          he: "החלק המקורי סביב מסלול הגולף, כולל הרחובות הקרובים ביותר לים.",
+        },
+      },
+      {
+        name: 'Quartier du Golf',
+        desc: {
+          fr: "Sections 13 et 14, les villas contemporaines les plus ambitieuses d'Israël. Opportunités de construction neuve.",
+          en: "Sections 13 and 14, Israel's most ambitious contemporary villas. New construction opportunities.",
+          he: "חלקים 13 ו-14, הוילות העכשוויות השאפתניות ביותר בישראל.",
+        },
+      },
+      {
+        name: 'Bord de Mer',
+        desc: {
+          fr: "Frontage mer direct, propriétés rares et tightly held. Vues panoramiques sur la Méditerranée.",
+          en: "Direct sea frontage, rare and tightly held properties. Panoramic Mediterranean views.",
+          he: "חזית ים ישירה, נכסים נדירים.",
+        },
+      },
+      {
+        name: 'Parc Archéologique',
+        desc: {
+          fr: "Propriétés adjacentes au site antique romain de Césarée. Patrimoine et vue mer combinés.",
+          en: "Properties adjacent to the ancient Roman site of Caesarea. Heritage and sea views combined.",
+          he: "נכסים סמוכים לאתר הרומי העתיק של קיסריה.",
+        },
+      },
+    ],
+  },
 }
 
 export default async function VillePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {

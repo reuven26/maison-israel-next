@@ -3,10 +3,13 @@ import { locales, defaultLocale } from '@/i18n/config'
 import { JOURNAL_ARTICLES } from '@/data/journal-articles'
 import { QUARTIERS } from '@/data/quartiers'
 import { SERVICES, CLIENTELE } from '@/data/services-clientele'
+import { PROPERTY_TYPES } from '@/data/property-types'
 
 const BASE_URL = 'https://immobilierenisrael.com'
 
 const villes = ['tel-aviv', 'jerusalem', 'netanya', 'herzliya-pituah', 'caesarea']
+
+const staticTrustPaths = ['/equipe', '/notre-methode', '/biens']
 
 const staticPaths = [
   { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
@@ -73,6 +76,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: 'weekly',
         priority: 0.88,
         alternates: alternates(`/quartiers/${q.city}/${q.slug}`),
+      })
+    }
+  }
+
+  // Trust pages
+  for (const path of staticTrustPaths) {
+    for (const locale of locales) {
+      entries.push({
+        url: `${BASE_URL}/${locale}${path}`,
+        lastModified,
+        changeFrequency: 'monthly',
+        priority: 0.78,
+        alternates: alternates(path),
+      })
+    }
+  }
+
+  // Property type sub-pages
+  for (const t of PROPERTY_TYPES) {
+    for (const locale of locales) {
+      entries.push({
+        url: `${BASE_URL}/${locale}/biens/${t.slug}`,
+        lastModified,
+        changeFrequency: 'weekly',
+        priority: 0.85,
+        alternates: alternates(`/biens/${t.slug}`),
       })
     }
   }

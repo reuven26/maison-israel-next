@@ -22,12 +22,14 @@ export default function Navbar({ locale, messages }: NavbarProps) {
   const journalLabel = locale === 'he' ? 'יומן' : locale === 'en' ? 'Journal' : 'Journal'
   const quartiersLabel = locale === 'he' ? 'שכונות' : locale === 'en' ? 'Neighborhoods' : 'Quartiers'
   const offMarketLabel = locale === 'he' ? 'מחוץ לשוק' : 'Off-Market'
+  const clienteleLabel = locale === 'he' ? 'לקוחות' : locale === 'en' ? 'Clientele' : 'Clientèle'
 
   const navLinks = [
     { href: `/${locale}/projets`, label: nav.properties },
     { href: `/${locale}/quartiers`, label: quartiersLabel },
     { href: `/${locale}/off-market`, label: offMarketLabel },
     { href: `/${locale}/services`, label: nav.services },
+    { href: `/${locale}/clientele`, label: clienteleLabel },
     { href: `/${locale}/journal`, label: journalLabel },
     { href: `/${locale}/contact`, label: nav.contact },
   ]
