@@ -100,12 +100,14 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
         zoomControl={false}
         scrollWheelZoom={false}
         attributionControl={false}
-        style={{ height: '520px', width: '100%', background: '#aad3df' }}
+        style={{ height: '520px', width: '100%', background: '#d4dadc' }}
       >
-        {/* CartoDB Voyager — same style as Barnes/Mapbox Streets */}
+        {/* Mapbox Light v11 — the exact style used by Barnes */}
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>'
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
+          attribution='&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          url={`https://api.mapbox.com/styles/v1/mapbox/light-v11/tiles/{z}/{x}/{y}?access_token=${process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? ''}`}
+          tileSize={512}
+          zoomOffset={-1}
         />
 
         <ZoomControl position="bottomright" />
