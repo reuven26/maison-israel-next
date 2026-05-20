@@ -178,6 +178,28 @@ export default function Navbar({ locale, messages }: NavbarProps) {
           </div>
         </div>
       )}
+
+      {/* Mobile bottom tab bar — glassmorphism, thumb-friendly */}
+      <nav className="mobile-tab-bar" style={{ direction: isRTL ? 'rtl' : 'ltr' }} aria-label="Mobile navigation">
+        {[
+          { href: `/${locale}`, label: locale === 'he' ? 'בית' : locale === 'en' ? 'Home' : 'Accueil', exact: true,
+            icon: <path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10" /> },
+          { href: `/${locale}/projets`, label: nav.properties,
+            icon: <><rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" /></> },
+          { href: `/${locale}/quartiers`, label: quartiersLabel,
+            icon: <><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></> },
+          { href: `/${locale}/contact`, label: nav.contact,
+            icon: <><rect x="2" y="4" width="20" height="16" rx="1" /><path d="M22 6l-10 7L2 6" /></> },
+        ].map((item) => {
+          const active = item.exact ? (pathname === item.href || pathname === `${item.href}/`) : pathname.startsWith(item.href)
+          return (
+            <Link key={item.href} href={item.href} className="mobile-tab" style={{ color: active ? '#C8A96E' : 'rgba(250,248,244,0.55)' }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">{item.icon}</svg>
+              <span>{item.label}</span>
+            </Link>
+          )
+        })}
+      </nav>
     </>
   )
 }

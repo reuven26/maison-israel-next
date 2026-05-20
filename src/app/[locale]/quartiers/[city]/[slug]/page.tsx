@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
@@ -117,7 +118,7 @@ export default async function QuartierPage({ params }: { params: Promise<{ local
       {/* Hero */}
       <section style={{ position: 'relative', height: '70vh', minHeight: '500px', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: '#0A0A0B' }} />
-        <img src={q.hero} alt={q.names[l]} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.5 }} />
+        <Image src={q.hero} alt={q.names[l]} fill priority sizes="100vw" style={{ objectFit: 'cover', opacity: 0.5 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,10,11,0.9) 0%, rgba(10,10,11,0.2) 60%)' }} />
 
         <div style={{ position: 'absolute', bottom: '4rem', left: 0, right: 0, padding: '0 2rem', textAlign: 'center', direction: isRTL ? 'rtl' : 'ltr' }}>

@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Bien } from '@/types'
@@ -322,10 +323,13 @@ export default async function VillePage({ params }: { params: Promise<{ locale: 
       {/* HERO */}
       <div style={{ position: 'relative', height: '70vh', minHeight: '500px', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: '#0A0A0B' }} />
-        <img
+        <Image
           src={cityData.img}
           alt={cityName}
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.45 }}
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', opacity: 0.45 }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,10,11,0.85) 0%, rgba(10,10,11,0.2) 60%)' }} />
         <div style={{ position: 'absolute', bottom: '4rem', left: '50%', transform: 'translateX(-50%)', width: '100%', maxWidth: '800px', padding: '0 2rem', textAlign: 'center', direction: isRTL ? 'rtl' : 'ltr' }}>

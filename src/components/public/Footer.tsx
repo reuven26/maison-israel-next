@@ -151,7 +151,7 @@ export default function Footer({ locale, messages }: FooterProps) {
 
       {/* WhatsApp sticky */}
       <a href="https://wa.me/972555002640" target="_blank" rel="noopener noreferrer"
-        aria-label="WhatsApp"
+        aria-label="WhatsApp" className="wa-float"
         style={{
           position: 'fixed', bottom: '2rem', right: isRTL ? 'auto' : '2rem', left: isRTL ? '2rem' : 'auto',
           background: '#25D366', color: '#fff',

@@ -287,6 +287,47 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </section>
 
+      {/* ── INTERNATIONAL INVESTORS ─────────────────────── */}
+      <section style={{ background: '#08080A', padding: '120px 2rem', borderTop: '1px solid rgba(200,169,110,0.08)', borderBottom: '1px solid rgba(200,169,110,0.08)', direction: isRTL ? 'rtl' : 'ltr' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <Reveal style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <p style={{ fontSize: '0.7rem', letterSpacing: isRTL ? '0' : '0.3em', textTransform: isRTL ? 'none' : 'uppercase', color: '#C8A96E', marginBottom: '1.2rem', fontFamily: "'DM Sans', sans-serif" }}>
+              {locale === 'he' ? 'משקיעים בינלאומיים' : locale === 'en' ? 'International Investors' : 'Investisseurs Internationaux'}
+            </p>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 300, color: '#FAF8F4', lineHeight: 1.1, maxWidth: '16ch', margin: '0 auto' }}>
+              {locale === 'he' ? 'ישראל כסוג נכס' : locale === 'en' ? 'Israel as an asset class' : "L'immobilier israélien comme classe d'actif"}
+            </h2>
+          </Reveal>
+
+          <Reveal style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '2rem 0', marginBottom: '3.5rem' }}>
+            {[
+              { fig: '3–8%', label: { fr: 'Rendement locatif brut', en: 'Gross rental yield', he: 'תשואת שכירות ברוטו' } },
+              { fig: locale === 'he' ? 'אפס' : '0', label: { fr: 'Restriction de nationalité', en: 'Nationality restriction', he: 'הגבלת אזרחות' } },
+              { fig: '10 ' + (locale === 'he' ? 'שנים' : locale === 'en' ? 'yrs' : 'ans'), label: { fr: 'Exonération oleh (Art. 14)', en: 'Oleh exemption (Art. 14)', he: 'פטור עולה (סעיף 14)' } },
+              { fig: '50%', label: { fr: 'Financement non-résident', en: 'Non-resident financing', he: 'מימון תושב חוץ' } },
+            ].map((s, i) => (
+              <div key={i} style={{ flex: '1 1 auto', minWidth: '180px', textAlign: 'center', borderInlineStart: i === 0 ? 'none' : '1px solid rgba(200,169,110,0.18)', padding: '0 1.5rem' }}>
+                <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.4rem, 5vw, 3.6rem)', fontWeight: 300, color: '#C8A96E', lineHeight: 1, marginBottom: '0.8rem' }}>{s.fig}</div>
+                <div style={{ fontSize: '0.74rem', color: '#8A8780', letterSpacing: '0.06em', fontFamily: "'DM Sans', sans-serif" }}>{s.label[locale === 'he' ? 'he' : locale === 'en' ? 'en' : 'fr']}</div>
+              </div>
+            ))}
+          </Reveal>
+
+          <Reveal style={{ textAlign: 'center' }}>
+            <p style={{ color: 'rgba(216,212,204,0.7)', fontSize: '1rem', lineHeight: 1.85, maxWidth: '620px', margin: '0 auto 2.4rem', fontFamily: "'DM Sans', sans-serif" }}>
+              {locale === 'he'
+                ? 'אנו מיישרים כל רכישה עם האסטרטגיה הפיננסית הרחבה של הלקוח — תשואה מול שימור, גידור שקלי, ותכנון לפני עלייה.'
+                : locale === 'en'
+                ? 'We align each acquisition with the client\'s wider wealth strategy — yield versus preservation, shekel hedging, and pre-aliyah planning.'
+                : "Nous alignons chaque acquisition sur la stratégie patrimoniale globale du client — rendement contre préservation, couverture en shekel, et planification ante-aliyah."}
+            </p>
+            <Link href={`/${locale}/clientele/investisseurs-internationaux`} className="btn-ghost-dark">
+              {locale === 'he' ? 'ייעוץ השקעות' : locale === 'en' ? 'Investment advisory' : 'Conseil en investissement'}
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ── INSTAGRAM FEED ──────────────────────────────── */}
       <InstagramFeed locale={locale} messages={messages} />
 

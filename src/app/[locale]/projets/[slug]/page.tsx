@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import type { Bien } from '@/types'
@@ -146,7 +147,7 @@ export default async function BienPage({ params }: { params: Promise<{ locale: s
 
       {/* ── CINEMATIC HERO — fullscreen ───────────────────── */}
       <section style={{ height: '100vh', minHeight: '640px', overflow: 'hidden', position: 'relative' }}>
-        <img src={bien.image_principale} alt={bien.nom} className="bien-hero-img" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+        <Image src={bien.image_principale} alt={bien.nom} fill priority sizes="100vw" className="bien-hero-img" style={{ objectFit: 'cover' }} />
         {/* cinematic gradient */}
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(8,8,10,0.5) 0%, rgba(8,8,10,0.05) 30%, rgba(8,8,10,0.3) 60%, rgba(8,8,10,0.92) 100%)' }} />
 
