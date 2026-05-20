@@ -44,6 +44,7 @@ export default function Footer({ locale, messages }: FooterProps) {
   /* ── Column 5 — Resources & Trust ──── */
   const resources: [string, string][] = [
     ['Journal', `/${l}/journal`],
+    [locale === 'he' ? 'מצפה השוק' : locale === 'en' ? 'Market Report' : 'Observatoire', `/${l}/observatoire`],
     [locale === 'he' ? 'סוגי נכסים' : locale === 'en' ? 'Property Types' : 'Types de biens', `/${l}/biens`],
     [locale === 'he' ? 'הצוות שלנו' : locale === 'en' ? 'Our Team' : 'Notre équipe', `/${l}/equipe`],
     [locale === 'he' ? 'השיטה שלנו' : locale === 'en' ? 'Our Method' : 'Notre méthode', `/${l}/notre-methode`],

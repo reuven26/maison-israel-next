@@ -15,6 +15,7 @@ const staticPaths = [
   { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
   { path: '/projets', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: '/quartiers', priority: 0.85, changeFrequency: 'weekly' as const },
+  { path: '/observatoire', priority: 0.9, changeFrequency: 'monthly' as const },
   { path: '/off-market', priority: 0.85, changeFrequency: 'weekly' as const },
   { path: '/journal', priority: 0.85, changeFrequency: 'weekly' as const },
   { path: '/services', priority: 0.8, changeFrequency: 'monthly' as const },
