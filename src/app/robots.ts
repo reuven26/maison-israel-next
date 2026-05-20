@@ -9,7 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [
           '/admin/',
           '/api/',
-          '/*/off-market',
           '/_next/',
           '/*?utm_*',
           '/*?fbclid=*',
