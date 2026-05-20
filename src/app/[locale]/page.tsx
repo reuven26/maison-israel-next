@@ -262,18 +262,20 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
           <Reveal className="cities-mosaic">
             {[
-              { ville: 'Tel Aviv', slug: 'tel-aviv', img: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=900&auto=format&fit=crop&q=80', desc: m.destinations.tel_aviv_desc, tall: true },
-              { ville: locale === 'he' ? 'ירושלים' : 'Jérusalem', slug: 'jerusalem', img: 'https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?w=600&auto=format&fit=crop&q=80', desc: m.destinations.jerusalem_desc, tall: false },
-              { ville: 'Herzliya Pituah', slug: 'herzliya-pituah', img: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&auto=format&fit=crop&q=80', desc: m.destinations.herzliya_desc, tall: false },
-              { ville: locale === 'he' ? 'נתניה' : 'Netanya', slug: 'netanya', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&auto=format&fit=crop&q=80', desc: m.destinations.netanya_desc, tall: false },
+              { ville: 'Tel Aviv', slug: 'tel-aviv', img: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=900&auto=format&fit=crop&q=80', desc: m.destinations.tel_aviv_desc },
+              { ville: locale === 'he' ? 'ירושלים' : 'Jérusalem', slug: 'jerusalem', img: 'https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?w=700&auto=format&fit=crop&q=80', desc: m.destinations.jerusalem_desc },
+              { ville: 'Herzliya Pituah', slug: 'herzliya-pituah', img: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&auto=format&fit=crop&q=80', desc: m.destinations.herzliya_desc },
+              { ville: locale === 'he' ? 'קיסריה' : 'Césarée', slug: 'caesarea', img: 'https://images.unsplash.com/photo-1582610116397-edb318620f90?w=700&auto=format&fit=crop&q=80', desc: locale === 'he' ? 'יוקרה חופית' : locale === 'en' ? 'Coastal ultra-prime' : 'Ultra-prime côtier' },
+              { ville: locale === 'he' ? 'נתניה' : 'Netanya', slug: 'netanya', img: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&auto=format&fit=crop&q=80', desc: m.destinations.netanya_desc },
+              { ville: locale === 'he' ? 'סביון' : 'Savyon', slug: 'savyon', img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&auto=format&fit=crop&q=80', desc: locale === 'he' ? 'מובלעת הווילות' : locale === 'en' ? 'The villa enclave' : 'L\'enclave des villas' },
             ].map(d => (
-              <div key={d.slug} className={d.tall ? 'city-card-tall' : ''} style={{ position: 'relative' }}>
+              <div key={d.slug} style={{ position: 'relative' }}>
                 <Link href={`/${locale}/villes/${d.slug}`} className="city-card-inner">
                   <img src={d.img} alt={d.ville} />
                   <div className="city-overlay" />
                   <div className="city-info">
-                    <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: d.tall ? '48px' : '28px', fontWeight: 400, color: '#FAFAF9', lineHeight: 1, marginBottom: '6px' }}>{d.ville}</div>
-                    <div style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#E8D5A3', textTransform: 'uppercase' }}>{d.desc}</div>
+                    <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '32px', fontWeight: 400, color: '#FAFAF9', lineHeight: 1, marginBottom: '7px' }}>{d.ville}</div>
+                    <div style={{ fontSize: '10px', letterSpacing: '0.2em', color: '#E8D5A3', textTransform: 'uppercase' }}>{d.desc}</div>
                   </div>
                   <div className="city-arrow">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8A96E" strokeWidth="1.5"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>

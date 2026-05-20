@@ -7,7 +7,7 @@ import { PROPERTY_TYPES } from '@/data/property-types'
 
 const BASE_URL = 'https://immobilierenisrael.com'
 
-const villes = ['tel-aviv', 'jerusalem', 'netanya', 'herzliya-pituah', 'caesarea']
+const villes = ['tel-aviv', 'jerusalem', 'netanya', 'herzliya-pituah', 'caesarea', 'savyon']
 
 const staticTrustPaths = ['/equipe', '/notre-methode', '/biens', '/temoignages', '/presse', '/faq']
 

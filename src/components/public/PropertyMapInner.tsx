@@ -49,6 +49,19 @@ const COORDS: Record<string, { default: LatLng; [q: string]: LatLng }> = {
   'Caesarea': {
     default: [32.4991, 34.8938],
   },
+  'Césarée': {
+    default:               [32.5012, 34.8950],
+    'Césarée Aleph':       [32.5012, 34.8903],
+    'Quartier du Golf':    [32.4920, 34.9010],
+    'Bord de Mer':         [32.5060, 34.8875],
+  },
+  'Savyon': {
+    default:          [32.0533, 34.8742],
+    'Vieux Savyon':   [32.0540, 34.8730],
+    'Nouveau Savyon': [32.0490, 34.8780],
+    'Ganei Yehuda':   [32.0610, 34.8800],
+    'Neve Savyon':    [32.0560, 34.8695],
+  },
   'Tel Aviv-Yafo': {
     default:         [32.0553, 34.7618],
     'Neve Tzedek':   [32.0596, 34.7650],

@@ -60,6 +60,28 @@ const CITY_COORDS: Record<string, {
       { key: 'Kikar HaAtzmaut', names: { fr: "Pl. de l'Indép.", en: 'Independence Sq.',   he: 'כיכר העצמאות'        }, lat: 32.3310, lng: 34.8565 },
     ],
   },
+  'caesarea': {
+    center: [32.5012, 34.8950],
+    zoom: 14,
+    names: { fr: 'Césarée', en: 'Caesarea', he: 'קיסריה' },
+    neighborhoods: [
+      { key: 'Césarée Aleph',      names: { fr: 'Césarée Aleph',      en: 'Caesarea Aleph',   he: "קיסריה א'"        }, lat: 32.5012, lng: 34.8903 },
+      { key: 'Quartier du Golf',   names: { fr: 'Quartier du Golf',   en: 'Golf Quarter',     he: 'רובע הגולף'       }, lat: 32.4920, lng: 34.9010 },
+      { key: 'Bord de Mer',        names: { fr: 'Bord de Mer',        en: 'Seafront',         he: 'חזית הים'         }, lat: 32.5060, lng: 34.8875 },
+      { key: 'Parc Archéologique', names: { fr: 'Parc Archéologique', en: 'Archaeological',   he: 'הפארק הארכאולוגי' }, lat: 32.5020, lng: 34.8930 },
+    ],
+  },
+  'savyon': {
+    center: [32.0533, 34.8742],
+    zoom: 14,
+    names: { fr: 'Savyon', en: 'Savyon', he: 'סביון' },
+    neighborhoods: [
+      { key: 'Vieux Savyon',    names: { fr: 'Vieux Savyon',    en: 'Old Savyon',    he: 'סביון הוותיקה'  }, lat: 32.0540, lng: 34.8730 },
+      { key: 'Nouveau Savyon',  names: { fr: 'Nouveau Savyon',  en: 'New Savyon',    he: 'סביון החדשה'    }, lat: 32.0490, lng: 34.8780 },
+      { key: 'Ganei Yehuda',    names: { fr: 'Ganei Yehuda',    en: 'Ganei Yehuda',  he: 'גני יהודה'      }, lat: 32.0610, lng: 34.8800 },
+      { key: 'Neve Savyon',     names: { fr: 'Neve Savyon',     en: 'Neve Savyon',   he: 'נווה סביון'     }, lat: 32.0560, lng: 34.8695 },
+    ],
+  },
 }
 
 /* ── Props ───────────────────────────────────────────────── */

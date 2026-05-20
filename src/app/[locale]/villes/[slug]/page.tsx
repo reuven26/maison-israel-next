@@ -247,6 +247,52 @@ const CITY_DATA: Record<string, {
       },
     ],
   },
+  'savyon': {
+    nom: { fr: 'Savyon', en: 'Savyon', he: 'סביון' },
+    img: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&auto=format&fit=crop&q=80',
+    desc: {
+      fr: "Savyon est l'adresse la plus exclusive du centre d'Israël — une enclave résidentielle de villas sur de vastes terrains, à quinze minutes de Tel Aviv. Conçue dans les années 1950 sur le modèle des banlieues-jardins anglaises, elle abrite l'élite économique du pays dans une discrétion absolue. Densité minimale, verdure maximale, prix parmi les plus élevés du pays.",
+      en: "Savyon is the most exclusive address in central Israel — a residential enclave of villas on vast plots, fifteen minutes from Tel Aviv. Designed in the 1950s on the model of English garden suburbs, it houses the country's economic elite in absolute discretion. Minimal density, maximal greenery, among the highest prices in the country.",
+      he: "סביון היא הכתובת הבלעדית ביותר במרכז ישראל — מובלעת מגורים של וילות על מגרשים נרחבים, חמש עשרה דקות מתל אביב. מינימום צפיפות, מקסימום ירק.",
+    },
+    population: '3 400',
+    prix_m2: '35 000 – 70 000 ₪',
+    dbVille: 'Savyon',
+    neighborhoods: [
+      {
+        name: 'Vieux Savyon',
+        desc: {
+          fr: "Le cœur historique, ses villas d'origine sur des terrains d'un dunam et plus, autour du country club. L'adresse la plus prestigieuse.",
+          en: "The historic core — original villas on plots of a dunam or more, around the country club. The most prestigious address.",
+          he: "הלב ההיסטורי, וילות מקוריות על מגרשים גדולים סביב הקאנטרי קלאב.",
+        },
+      },
+      {
+        name: 'Nouveau Savyon',
+        desc: {
+          fr: "Villas contemporaines de grand standing, architecture moderne, jardins paysagers et piscines privées.",
+          en: "High-end contemporary villas, modern architecture, landscaped gardens and private pools.",
+          he: "וילות עכשוויות ברמה גבוהה, אדריכלות מודרנית, גינות ובריכות.",
+        },
+      },
+      {
+        name: 'Ganei Yehuda',
+        desc: {
+          fr: "Secteur résidentiel familial adjacent, plus accessible, prisé des familles recherchant l'espace près de Savyon.",
+          en: "Adjacent family residential area, more accessible, favoured by families seeking space near Savyon.",
+          he: "אזור מגורים משפחתי סמוך, נגיש יותר, מבוקש על ידי משפחות.",
+        },
+      },
+      {
+        name: 'Neve Savyon',
+        desc: {
+          fr: "Quartier résidentiel verdoyant en bordure de l'enclave, villas et maisons individuelles.",
+          en: "Leafy residential neighbourhood on the edge of the enclave, villas and single-family houses.",
+          he: "שכונת מגורים ירוקה בשולי המובלעת.",
+        },
+      },
+    ],
+  },
 }
 
 export default async function VillePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
