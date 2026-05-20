@@ -7,6 +7,7 @@ import InstagramFeed from '@/components/public/InstagramFeed'
 import HeroSearch from '@/components/public/HeroSearch'
 import HeroSlider from '@/components/public/HeroSlider'
 import PropertyCard from '@/components/public/PropertyCard'
+import Reveal from '@/components/public/Reveal'
 
 export const revalidate = 60
 
@@ -30,6 +31,24 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     'Accompagnement · 100% Francophone',
   ]
 
+  // Cinematic hero copy
+  const heroCopy = {
+    eyebrow: locale === 'he' ? 'נדל"ן יוקרה · ישראל' : locale === 'en' ? 'Luxury Real Estate · Israel' : 'Immobilier de Prestige · Israël',
+    title: locale === 'he' ? 'גישה דיסקרטית לנכסים הנדירים ביותר בישראל'
+      : locale === 'en' ? "Discreet access to Israel's rarest addresses"
+      : "Un accès discret aux adresses les plus rares d'Israël",
+  }
+
+  // Editorial manifesto
+  const manifesto = {
+    eyebrow: locale === 'he' ? 'מאז 2009' : locale === 'en' ? 'Since 2009' : 'Depuis 2009',
+    line: locale === 'he'
+      ? 'אנו מלווים מספר מצומצם של משפחות ומשקיעים — לא בתפקיד של פורטל, אלא כיועץ פרטי. פחות נכסים, אך הנכונים.'
+      : locale === 'en'
+      ? 'We work with a small number of families and investors — not as a portal, but as a private advisor. Fewer properties, but the right ones.'
+      : "Nous accompagnons un nombre restreint de familles et d'investisseurs — non comme un portail, mais comme un conseiller privé. Moins de propriétés, mais les bonnes.",
+  }
+
   return (
     <>
       <style>{`
@@ -51,15 +70,44 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           .editorial-2col { grid-template-columns: 1fr !important; }
           .editorial-img-wrap { display:none; }
         }
+
+        /* Hero entrance — staggered cinematic fade-up */
+        @keyframes heroFadeUp {
+          from { opacity: 0; transform: translateY(26px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .hero-fade-1 { animation: heroFadeUp 1.4s cubic-bezier(0.16,1,0.3,1) 0.3s both; }
+        .hero-fade-2 { animation: heroFadeUp 1.4s cubic-bezier(0.16,1,0.3,1) 0.55s both; }
+        .hero-fade-3 { animation: heroFadeUp 1.4s cubic-bezier(0.16,1,0.3,1) 0.85s both; }
+
+        /* Scroll indicator — gold filament that draws + drifts */
+        .hero-scroll-line {
+          width: 1px; height: 54px;
+          background: linear-gradient(to bottom, #C8A96E, rgba(200,169,110,0));
+          transform-origin: top;
+          animation: scrollDraw 2.4s cubic-bezier(0.16,1,0.3,1) infinite;
+        }
+        @keyframes scrollDraw {
+          0%   { transform: scaleY(0); opacity: 0; }
+          35%  { transform: scaleY(1); opacity: 1; }
+          70%  { transform: scaleY(1); opacity: 1; }
+          100% { transform: scaleY(1) translateY(20px); opacity: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .hero-fade-1, .hero-fade-2, .hero-fade-3 { animation: none; opacity: 1; }
+          .hero-scroll-line { animation: none; }
+        }
       `}</style>
 
       {/* ── HERO ─────────────────────────────────────────── */}
       <section style={{
         position: 'relative',
         height: '100vh',
-        minHeight: '700px',
+        minHeight: '760px',
         overflow: 'hidden',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         direction: isRTL ? 'rtl' : 'ltr',
@@ -67,15 +115,46 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         {/* Image slider */}
         <HeroSlider />
 
-        {/* Dark gradient overlay */}
+        {/* Cinematic gradient — deeper at edges, breathes in the middle */}
         <div style={{
           position: 'absolute', inset: 0, zIndex: 1,
-          background: 'linear-gradient(180deg, rgba(10,10,11,0.25) 0%, rgba(10,10,11,0.18) 35%, rgba(10,10,11,0.55) 75%, rgba(10,10,11,0.88) 100%)',
+          background: 'linear-gradient(180deg, rgba(8,8,10,0.45) 0%, rgba(8,8,10,0.12) 30%, rgba(8,8,10,0.35) 62%, rgba(8,8,10,0.92) 100%)',
         }} />
 
-        {/* Search bar — centered */}
-        <div style={{ position: 'relative', zIndex: 2, width: '100%', paddingTop: '80px' }}>
-          <HeroSearch locale={locale} isRTL={isRTL} />
+        {/* Hero content — editorial title + search */}
+        <div style={{ position: 'relative', zIndex: 2, width: '100%', paddingTop: '80px', textAlign: 'center' }}>
+          {/* Eyebrow */}
+          <p className="hero-fade-1" style={{
+            fontFamily: "'DM Sans', sans-serif", fontSize: '0.68rem', fontWeight: 500,
+            letterSpacing: '0.4em', textTransform: isRTL ? 'none' : 'uppercase',
+            color: '#C8A96E', marginBottom: '1.6rem',
+          }}>
+            {heroCopy.eyebrow}
+          </p>
+
+          {/* Editorial headline */}
+          <h1 className="hero-fade-2" style={{
+            fontFamily: "'Cormorant Garamond', serif",
+            fontSize: 'clamp(2.2rem, 5.5vw, 4.6rem)',
+            fontWeight: 300, color: '#FAF8F4', lineHeight: 1.04,
+            letterSpacing: '-0.01em', maxWidth: '15ch', margin: '0 auto 2.6rem',
+            textShadow: '0 2px 40px rgba(0,0,0,0.4)',
+          }}>
+            {heroCopy.title}
+          </h1>
+
+          {/* Search bar */}
+          <div className="hero-fade-3">
+            <HeroSearch locale={locale} isRTL={isRTL} />
+          </div>
+        </div>
+
+        {/* Scroll indicator — animated gold filament */}
+        <div style={{ position: 'absolute', bottom: '2.2rem', left: '50%', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.8rem' }}>
+          <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.58rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(250,248,244,0.5)' }}>
+            {locale === 'he' ? 'גלה' : locale === 'en' ? 'Scroll' : 'Découvrir'}
+          </span>
+          <span className="hero-scroll-line" />
         </div>
       </section>
 
@@ -90,6 +169,19 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           ))}
         </div>
       </div>
+
+      {/* ── MANIFESTO ───────────────────────────────────── */}
+      <section style={{ background: '#08080A', padding: '120px 2rem', direction: isRTL ? 'rtl' : 'ltr' }}>
+        <Reveal style={{ maxWidth: '820px', margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.68rem', fontWeight: 500, letterSpacing: '0.35em', textTransform: isRTL ? 'none' : 'uppercase', color: '#C8A96E', marginBottom: '2rem' }}>
+            {manifesto.eyebrow}
+          </p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(1.5rem, 3vw, 2.4rem)', fontWeight: 300, fontStyle: 'italic', color: 'rgba(250,248,244,0.92)', lineHeight: 1.5, letterSpacing: '0.005em' }}>
+            {manifesto.line}
+          </p>
+          <div style={{ width: '60px', height: '1px', background: 'linear-gradient(90deg, transparent, #C8A96E, transparent)', margin: '2.6rem auto 0' }} />
+        </Reveal>
+      </section>
 
       {/* ── EDITORIAL ───────────────────────────────────── */}
       <section style={{ padding: '100px 3rem', maxWidth: '1400px', margin: '0 auto', direction: isRTL ? 'rtl' : 'ltr' }}>
@@ -140,7 +232,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* ── FEATURED PROPERTIES ─────────────────────────── */}
       <section style={{ background: '#111214', padding: '100px 3rem', direction: isRTL ? 'rtl' : 'ltr' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '60px', flexWrap: 'wrap', gap: '1.5rem' }}>
+          <Reveal style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '60px', flexWrap: 'wrap', gap: '1.5rem' }}>
             <div>
               <div className="eyebrow"><span>{m.featured.tag}</span></div>
               <h2 className="section-title-dark">{m.featured.title}</h2>
@@ -148,10 +240,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <Link href={`/${locale}/projets`} style={{ fontSize: '11px', letterSpacing: '0.15em', color: '#C8A96E', textDecoration: 'none', textTransform: 'uppercase', border: '1px solid rgba(200,169,110,0.3)', padding: '10px 20px', transition: 'all 0.3s' }}>
               {m.featured.all} →
             </Link>
-          </div>
+          </Reveal>
 
           <div className="grid-properties">
-            {(biens ?? []).map((bien: Bien) => <PropertyCard key={bien.id} bien={bien} locale={locale} messages={messages} />)}
+            {(biens ?? []).map((bien: Bien, i: number) => (
+              <Reveal key={bien.id} delay={(i % 3) * 140}>
+                <PropertyCard bien={bien} locale={locale} messages={messages} />
+              </Reveal>
+            ))}
           </div>
         </div>
       </section>
@@ -159,12 +255,12 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* ── CITIES MOSAIC ───────────────────────────────── */}
       <section style={{ padding: '100px 3rem', direction: isRTL ? 'rtl' : 'ltr' }}>
         <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-          <div style={{ marginBottom: '60px' }}>
+          <Reveal style={{ marginBottom: '60px' }}>
             <div className="eyebrow"><span>{m.destinations.tag}</span></div>
             <h2 className="section-title-dark">{m.destinations.title}</h2>
-          </div>
+          </Reveal>
 
-          <div className="cities-mosaic">
+          <Reveal className="cities-mosaic">
             {[
               { ville: 'Tel Aviv', slug: 'tel-aviv', img: 'https://images.unsplash.com/photo-1534430480872-3498386e7856?w=900&auto=format&fit=crop&q=80', desc: m.destinations.tel_aviv_desc, tall: true },
               { ville: locale === 'he' ? 'ירושלים' : 'Jérusalem', slug: 'jerusalem', img: 'https://images.unsplash.com/photo-1538970272646-f61fabb3a8a2?w=600&auto=format&fit=crop&q=80', desc: m.destinations.jerusalem_desc, tall: false },
@@ -185,7 +281,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 </Link>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
@@ -243,7 +339,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <section style={{ position: 'relative', padding: '100px 3rem', textAlign: 'center', overflow: 'hidden', direction: isRTL ? 'rtl' : 'ltr' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'url(https://images.unsplash.com/photo-1543728069-a3f97c5a2f32?w=1400&auto=format&fit=crop&q=70) center/cover', opacity: 0.12 }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #0A0A0B 0%, #111214 100%)' }} />
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '760px', margin: '0 auto' }}>
+        <Reveal style={{ position: 'relative', zIndex: 2, maxWidth: '760px', margin: '0 auto' }}>
           <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 300, color: '#FAFAF9', marginBottom: '18px', lineHeight: 1.1 }}>
             {m.cta_band.title.split(' ').slice(0, -2).join(' ')} <em style={{ fontStyle: 'italic', color: '#E8D5A3' }}>{m.cta_band.title.split(' ').slice(-2).join(' ')}</em>
           </h2>
@@ -256,7 +352,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               WhatsApp
             </a>
           </div>
-        </div>
+        </Reveal>
       </section>
     </>
   )
