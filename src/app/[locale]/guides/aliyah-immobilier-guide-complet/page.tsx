@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import GuideTldr from '@/components/public/GuideTldr'
 
 const BASE_URL = 'https://immobilierenisrael.com'
 const SLUG = 'aliyah-immobilier-guide-complet'
@@ -42,6 +43,20 @@ const breadcrumb = {
   ],
 }
 
+const TLDR = "Coordonner aliyah et achat immobilier change la fiscalité : acheter avant l'aliyah soumet à la taxe d'achat non-résident (8–10 %), tandis qu'acheter en tant qu'oleh hadash ouvre des taux réduits (souvent 0,5 % puis 5 %) et dix ans d'exonération sur les revenus de source étrangère. Le bon séquencement — souvent obtenir la Teoudat Oleh avant l'acquisition de la résidence principale — peut économiser plusieurs dizaines de milliers d'euros. Les quartiers francophones de référence : Colonie Allemande et Baka à Jérusalem, le Nord Ancien à Tel Aviv, Ir Yamim à Netanya."
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: "Vaut-il mieux acheter avant ou après l'aliyah ?", acceptedAnswer: { '@type': 'Answer', text: "Acheter après l'aliyah, en tant qu'oleh hadash, ouvre des taux de taxe d'achat réduits (souvent 0,5 % puis 5 %). Acheter avant sécurise le bien mais au taux non-résident (8–10 %). Le bon séquencement dépend de votre calendrier et du marché ciblé." } },
+    { '@type': 'Question', name: 'Quels avantages fiscaux pour un oleh hadash qui achète ?', acceptedAnswer: { '@type': 'Answer', text: "Taux de Mas Rechisha réduits sur la résidence principale, exonération de dix ans sur les revenus et plus-values de source étrangère, et exemption sur les pensions étrangères (article 14)." } },
+    { '@type': 'Question', name: 'Peut-on acheter un bien en Israël avant de finaliser son aliyah ?', acceptedAnswer: { '@type': 'Answer', text: "Oui, en tant que non-résident. Les bénéfices oleh peuvent ensuite être appliqués sous certaines conditions de timing — d'où l'importance d'une planification ante-aliyah." } },
+    { '@type': 'Question', name: 'Quels quartiers privilégier pour une famille francophone ?', acceptedAnswer: { '@type': 'Answer', text: "La Colonie Allemande, Baka et le Vieux Katamon à Jérusalem ; le Nord Ancien et Ramat Aviv à Tel Aviv ; Ir Yamim et le centre à Netanya." } },
+    { '@type': 'Question', name: 'Maison Israël accompagne-t-elle les projets aliyah + immobilier ?', acceptedAnswer: { '@type': 'Answer', text: "Oui : calendrier coordonné, mise en relation avec un avocat fiscal spécialisé olim et la banque adaptée, sélection du quartier selon le profil familial, et accès aux avantages oleh hadash." } },
+  ],
+}
+
 const ths = { background: '#1C1D20', color: '#C8A96E', padding: '10px 14px', textAlign: 'left' as const, fontSize: '0.8rem', letterSpacing: '0.05em', fontWeight: 600 }
 const tds = { padding: '10px 14px', borderBottom: '1px solid rgba(200,169,110,0.08)', color: '#8A8B91', fontSize: '0.9rem' }
 
@@ -60,6 +75,7 @@ export default function AliyahImmobilierPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* HERO */}
       <div style={{ position: 'relative', height: '55vh', minHeight: '380px', overflow: 'hidden' }}>
@@ -80,6 +96,8 @@ export default function AliyahImmobilierPage() {
           <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>Mis à jour le 17 mai 2026 · 10 min de lecture</p>
         </div>
       </div>
+
+      <GuideTldr text={TLDR} />
 
       {/* CONTENT */}
       <section style={{ padding: '4rem 2rem 6rem', background: '#0A0A0B' }}>

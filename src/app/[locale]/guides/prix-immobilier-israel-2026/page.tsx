@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import GuideTldr from '@/components/public/GuideTldr'
 
 const BASE_URL = 'https://immobilierenisrael.com'
 const SLUG = 'prix-immobilier-israel-2026'
@@ -43,6 +44,20 @@ const breadcrumb = {
   ],
 }
 
+const TLDR = "En 2026, l'immobilier de prestige israélien se négocie entre ~12 600 et 30 200 €/m² selon la ville : Tel Aviv est le marché le plus cher (jusqu'à ~30 200 €/m² en prime), suivi de Herzliya Pituah et de Jérusalem (jusqu'à ~23 900 €/m²). Netanya reste la plus accessible (~3 500–5 500 €/m²). Les villas ultra-prime débutent autour de 3,5 M€ à Savyon et dépassent 45 M€ en front de mer à Herzliya Pituah."
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: 'Combien coûte un appartement de prestige à Tel Aviv en 2026 ?', acceptedAnswer: { '@type': 'Answer', text: "Le segment prime à Tel Aviv (Neve Tzedek, Rothschild, tours Park Tzameret) se négocie entre ~17 600 et 30 200 €/m² en 2026." } },
+    { '@type': 'Question', name: "Quelle est la ville la plus chère d'Israël pour l'immobilier ?", acceptedAnswer: { '@type': 'Answer', text: "Tel Aviv au m² (jusqu'à ~30 200 €/m² en prime). En valeur absolue, Herzliya Pituah détient le sommet avec des villas front de mer dépassant 45 M€." } },
+    { '@type': 'Question', name: 'Quelle ville offre le meilleur rapport prix en Israël ?', acceptedAnswer: { '@type': 'Answer', text: "Netanya reste la plus accessible du segment international (~3 500–5 500 €/m²), avec une forte communauté francophone." } },
+    { '@type': 'Question', name: "Quel est le prix d'entrée d'une villa de prestige en Israël ?", acceptedAnswer: { '@type': 'Answer', text: "Environ 3,5 M€ à Savyon, 4,5 M€ à Césarée et 7,5 M€ à Herzliya Pituah ; les biens trophées dépassent 28–45 M€." } },
+    { '@type': 'Question', name: "Les prix de l'immobilier de luxe montent-ils en Israël ?", acceptedAnswer: { '@type': 'Answer', text: "Oui. Le segment prime affiche +3 à +6 % sur un an selon la ville en 2026, Jérusalem en tête (+5,8 %), porté par la demande internationale." } },
+  ],
+}
+
 const ths = { background: '#1C1D20', color: '#C8A96E', padding: '10px 14px', textAlign: 'left' as const, fontSize: '0.8rem', letterSpacing: '0.05em', fontWeight: 600 }
 const tds = { padding: '10px 14px', borderBottom: '1px solid rgba(200,169,110,0.08)', color: '#8A8B91', fontSize: '0.9rem' }
 
@@ -51,6 +66,7 @@ export default function PrixImmobilierPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* HERO */}
       <div style={{ position: 'relative', height: '55vh', minHeight: '380px', overflow: 'hidden' }}>
@@ -71,6 +87,8 @@ export default function PrixImmobilierPage() {
           <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>Mis à jour le 17 mai 2026 · Par l'équipe Maison Israël · 8 min de lecture</p>
         </div>
       </div>
+
+      <GuideTldr text={TLDR} />
 
       {/* CONTENT */}
       <section style={{ padding: '4rem 2rem 6rem', background: '#0A0A0B' }}>

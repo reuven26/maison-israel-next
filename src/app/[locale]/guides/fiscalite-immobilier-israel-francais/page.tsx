@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import GuideTldr from '@/components/public/GuideTldr'
 
 const BASE_URL = 'https://immobilierenisrael.com'
 const SLUG = 'fiscalite-immobilier-israel-francais'
@@ -42,6 +43,20 @@ const breadcrumb = {
   ],
 }
 
+const TLDR = "Un Français qui achète en Israël paie le Mas Rechisha (taxe d'achat) de 8 à 10 % en tant que non-résident, sans exonération de première résidence. Les loyers sont imposables dans les deux pays, mais la convention fiscale franco-israélienne de 1995 accorde un crédit d'impôt évitant la double imposition. Un oleh hadash bénéficie de taux d'achat réduits (0,5 % puis 5 %) et d'une exonération de dix ans sur les revenus de source étrangère."
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: "Quelle taxe d'achat paie un Français non-résident en Israël ?", acceptedAnswer: { '@type': 'Answer', text: "Le Mas Rechisha : 8 % sur la première tranche (~6 M NIS) et 10 % au-delà, sans exonération de première résidence pour les non-résidents." } },
+    { '@type': 'Question', name: 'Comment sont imposés les loyers israéliens pour un résident français ?', acceptedAnswer: { '@type': 'Answer', text: "En Israël : exonération sous ~5 654 ILS/mois, forfait 10 % sur le loyer brut, ou régime réel. En France, ces revenus sont imposables mais la convention de 1995 prévoit un crédit d'impôt évitant la double imposition." } },
+    { '@type': 'Question', name: "L'immobilier israélien entre-t-il dans l'assiette de l'IFI ?", acceptedAnswer: { '@type': 'Answer', text: "Oui. Un résident fiscal français détenant un bien immobilier en Israël l'inclut dans son patrimoine taxable à l'IFI au-delà de 1,3 M€, sous réserve des règles de la convention." } },
+    { '@type': 'Question', name: 'Quels avantages fiscaux pour un oleh hadash ?', acceptedAnswer: { '@type': 'Answer', text: "Taux de Mas Rechisha réduits sur la résidence principale (souvent 0,5 % puis 5 %), exonération de dix ans sur les revenus et plus-values de source étrangère, et exemption sur les pensions étrangères." } },
+    { '@type': 'Question', name: "Quel est l'impôt sur la plus-value à la revente ?", acceptedAnswer: { '@type': 'Answer', text: "Le Mas Shevach s'applique à 25 % sur la plus-value ajustée de l'inflation pour les non-résidents. Des allègements existent pour les détentions longues." } },
+  ],
+}
+
 const ths = { background: '#1C1D20', color: '#C8A96E', padding: '10px 14px', textAlign: 'left' as const, fontSize: '0.8rem', letterSpacing: '0.05em', fontWeight: 600 }
 const tds = { padding: '10px 14px', borderBottom: '1px solid rgba(200,169,110,0.08)', color: '#8A8B91', fontSize: '0.9rem' }
 const warning = {
@@ -59,6 +74,7 @@ export default function FiscaliteImmobilierPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
       {/* HERO */}
       <div style={{ position: 'relative', height: '55vh', minHeight: '380px', overflow: 'hidden' }}>
@@ -79,6 +95,8 @@ export default function FiscaliteImmobilierPage() {
           <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>Mis à jour le 17 mai 2026 · 12 min de lecture</p>
         </div>
       </div>
+
+      <GuideTldr text={TLDR} />
 
       {/* CONTENT */}
       <section style={{ padding: '4rem 2rem 6rem', background: '#0A0A0B' }}>
