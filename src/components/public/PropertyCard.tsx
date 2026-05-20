@@ -10,8 +10,8 @@ interface Props {
   messages: Record<string, any>
 }
 
-// Signature luxury easing — slow, soft exit
-const EASE = 'cubic-bezier(0.16, 1, 0.3, 1)'
+// Signature luxury easing token (defined in globals.css :root)
+const EASE = 'var(--ease-luxe)'
 
 export default function PropertyCard({ bien, locale, messages }: Props) {
   const p = messages.properties

@@ -66,7 +66,7 @@ export default function Reveal({
       style={{
         opacity: shown ? 1 : 0,
         transform: shown ? 'translateY(0)' : `translateY(${distance}px)`,
-        transition: `opacity ${duration}ms cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform ${duration}ms cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+        transition: `opacity ${duration}ms var(--ease-luxe) ${delay}ms, transform ${duration}ms var(--ease-luxe) ${delay}ms`,
         willChange: 'opacity, transform',
         ...style,
       }}

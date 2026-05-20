@@ -3,23 +3,79 @@
 @import "tailwindcss";
 
 /* ============================================================
-   DESIGN TOKENS
+   DESIGN TOKENS — Maison Israël "Quiet Luxury" system
+   Single source of truth. Legacy aliases kept for back-compat.
 ============================================================ */
 :root {
-  --gold: #C8A96E;
+  /* ── Obsidian / surfaces ──────────────────────────────── */
+  --ink-900: #08080A;   /* deepest matte black — primary bg */
+  --ink-800: #0E0F11;   /* charcoal — alternate sections */
+  --ink-700: #16171A;   /* cards, raised surfaces */
+  --ink-600: #1E2024;   /* hover surfaces */
+
+  /* ── Champagne / gold (rare accent) ───────────────────── */
+  --gold-400: #D4B888;  /* champagne light — accent text */
+  --gold-500: #C8A96E;  /* signature gold — filets, dots */
+  --gold-600: #9A7B42;  /* deep gold — on light backgrounds */
+  --gold-glow: rgba(200, 169, 110, 0.12);
+
+  /* ── Stone / warm neutrals ────────────────────────────── */
+  --stone-100: #FAF8F4; /* warm off-white — titles on dark */
+  --stone-300: #D8D4CC; /* light body text */
+  --stone-500: #8A8780; /* secondary text (mist) */
+  --stone-700: #4A4843; /* tertiary, disabled */
+
+  /* ── Glass (very subtle) ──────────────────────────────── */
+  --glass: rgba(20, 21, 24, 0.55);
+  --glass-border: rgba(212, 184, 136, 0.14);
+  --glass-blur: blur(24px) saturate(1.1);
+
+  /* ── Typography ───────────────────────────────────────── */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  /* fluid type scale */
+  --type-display-xl: clamp(3rem, 8vw, 7rem);
+  --type-display-l:  clamp(2.2rem, 5vw, 4rem);
+  --type-display-m:  clamp(1.6rem, 3vw, 2.4rem);
+  --type-body-l: 1.25rem;
+  --type-body: 1rem;
+  --type-caption: 0.72rem;
+  --type-eyebrow: 0.7rem;
+  --ls-eyebrow: 0.35em;
+
+  /* ── Motion ───────────────────────────────────────────── */
+  --ease-luxe: cubic-bezier(0.16, 1, 0.3, 1);   /* signature soft exit */
+  --ease-veil: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-micro: 0.4s;
+  --dur-base: 0.8s;
+  --dur-reveal: 1.4s;
+  --dur-cinema: 1.8s;
+
+  /* ── Spacing scale (8px base) ─────────────────────────── */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 40px;
+  --space-5: 64px;
+  --space-6: 104px;
+  --space-7: 168px;
+
+  /* ── Legacy aliases (do not remove — used across codebase) */
+  --gold: var(--gold-500);
   --gold-light: #E8D5A3;
-  --gold-dark: #9A7B47;
+  --gold-dark: var(--gold-600);
   --obsidian: #0A0A0B;
   --deep: #111214;
   --charcoal: #1C1D20;
   --smoke: #2A2B2F;
   --ash: #4A4B50;
-  --mist: #8A8B91;
+  --mist: var(--stone-500);
   --pearl: #D4D5D8;
   --white: #FAFAF9;
   --ivory: #F5F3EE;
-  --border: rgba(200, 169, 110, 0.15);
-  --ease-luxury: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --border: var(--glass-border);
+  --ease-luxury: var(--ease-luxe);
   --ease-dramatic: cubic-bezier(0.76, 0, 0.24, 1);
 }
 

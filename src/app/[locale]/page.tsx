@@ -76,16 +76,16 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           from { opacity: 0; transform: translateY(26px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        .hero-fade-1 { animation: heroFadeUp 1.4s cubic-bezier(0.16,1,0.3,1) 0.3s both; }
-        .hero-fade-2 { animation: heroFadeUp 1.4s cubic-bezier(0.16,1,0.3,1) 0.55s both; }
-        .hero-fade-3 { animation: heroFadeUp 1.4s cubic-bezier(0.16,1,0.3,1) 0.85s both; }
+        .hero-fade-1 { animation: heroFadeUp var(--dur-reveal) var(--ease-luxe) 0.3s both; }
+        .hero-fade-2 { animation: heroFadeUp var(--dur-reveal) var(--ease-luxe) 0.55s both; }
+        .hero-fade-3 { animation: heroFadeUp var(--dur-reveal) var(--ease-luxe) 0.85s both; }
 
         /* Scroll indicator — gold filament that draws + drifts */
         .hero-scroll-line {
           width: 1px; height: 54px;
-          background: linear-gradient(to bottom, #C8A96E, rgba(200,169,110,0));
+          background: linear-gradient(to bottom, var(--gold-500), rgba(200,169,110,0));
           transform-origin: top;
-          animation: scrollDraw 2.4s cubic-bezier(0.16,1,0.3,1) infinite;
+          animation: scrollDraw 2.4s var(--ease-luxe) infinite;
         }
         @keyframes scrollDraw {
           0%   { transform: scaleY(0); opacity: 0; }
