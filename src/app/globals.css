@@ -40,14 +40,18 @@ body {
    RESPONSIVE GRIDS
 ============================================================ */
 
-/* Properties grid: 1 col mobile → 2 col tablet → 3 col desktop */
+/* Properties grid: 1 col mobile → 2 col tablet → 3 col large desktop
+   Portrait 4:5 editorial cards — generous vertical rhythm */
 .grid-properties {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem 2rem;
+  gap: 3.5rem 2.5rem;
 }
 @media (min-width: 640px) {
   .grid-properties { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1200px) {
+  .grid-properties { grid-template-columns: repeat(3, 1fr); gap: 4rem 2.5rem; }
 }
 
 /* Destinations: 1 col → 2 col → 4 col */
