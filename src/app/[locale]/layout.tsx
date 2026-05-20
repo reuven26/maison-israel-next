@@ -81,6 +81,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     },
     verification: {
       google: 'VDCOThFMTXEjFmpzQk35x5uj8chLXjTO_iazr7N0EsI',
+      other: {
+        'msvalidate.01': '584BA01C63E44AE28D767078C4BAE6C3',
+      },
     },
   }
 }
