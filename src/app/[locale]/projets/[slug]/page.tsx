@@ -7,8 +7,43 @@ import { getMessages } from '@/i18n'
 import BienGallery from '@/components/public/BienGallery'
 import BienContactCard from '@/components/public/BienContactCard'
 import PropertyMap from '@/components/public/PropertyMap'
+import Reveal from '@/components/public/Reveal'
 
 export const revalidate = 60
+
+/* Evocative lifestyle copy by city — emotional storytelling layer */
+const LIFESTYLE: Record<string, { fr: string; en: string; he: string }> = {
+  'Tel Aviv': {
+    fr: "Le matin commence par la lumière méditerranéenne sur le boulevard, un café à Neve Tzedek, la mer à quelques pas. Tel Aviv ne se visite pas — elle se vit, entre Bauhaus blanc et énergie créative ininterrompue.",
+    en: 'The morning begins with Mediterranean light on the boulevard, a coffee in Neve Tzedek, the sea a few steps away. Tel Aviv is not visited — it is lived, between white Bauhaus and uninterrupted creative energy.',
+    he: 'הבוקר מתחיל באור הים-תיכוני על השדרה, קפה בנווה צדק, הים במרחק צעדים. תל אביב לא מבקרים — אותה חיים.',
+  },
+  'Jérusalem': {
+    fr: "À Jérusalem, la pierre dorée capte la lumière différemment à chaque heure. Vivre ici, c'est habiter une ville qui porte trois mille ans de profondeur — et le calme rare de ses rues bordées de pins.",
+    en: 'In Jerusalem, the golden stone catches the light differently every hour. To live here is to inhabit a city carrying three thousand years of depth — and the rare calm of its pine-lined streets.',
+    he: 'בירושלים, האבן הזהובה לוכדת את האור אחרת בכל שעה. לגור כאן זה לשכון בעיר הנושאת שלושת אלפים שנות עומק.',
+  },
+  'Herzliya Pituah': {
+    fr: "Derrière les hauts murs de jardin, la discrétion absolue. Herzliya Pituah réunit ce que peu d'adresses au monde offrent ensemble : la mer, l'espace, la sécurité, et le silence.",
+    en: 'Behind the high garden walls, absolute discretion. Herzliya Pituah brings together what few addresses in the world offer at once: the sea, space, security, and silence.',
+    he: 'מאחורי חומות הגן הגבוהות, דיסקרטיות מוחלטת. הרצליה פיתוח מאחדת את מה שמעט כתובות בעולם מציעות יחד.',
+  },
+  'Netanya': {
+    fr: "Les falaises tombent vers une mer infinie. Netanya conjugue l'art de vivre méditerranéen et une douceur que les familles internationales ont fait leur.",
+    en: 'The cliffs fall toward an endless sea. Netanya combines Mediterranean living with a gentleness that international families have made their own.',
+    he: 'הצוקים יורדים אל ים אינסופי. נתניה משלבת אורח חיים ים-תיכוני עם רכות שמשפחות בינלאומיות אימצו.',
+  },
+  'Césarée': {
+    fr: "Entre le parcours de golf et les vestiges romains, Césarée cultive une rareté tranquille. De grandes villas, des jardins matures, et la Méditerranée pour seul horizon.",
+    en: 'Between the golf course and the Roman ruins, Caesarea cultivates a quiet rarity. Large villas, mature gardens, and the Mediterranean as the only horizon.',
+    he: 'בין מסלול הגולף לחורבות הרומיות, קיסריה מטפחת נדירות שקטה. וילות גדולות, גינות בוגרות, והים התיכון כאופק יחיד.',
+  },
+}
+const LIFESTYLE_FALLBACK = {
+  fr: "Une adresse où l'architecture, la lumière et l'emplacement se rencontrent. Un lieu pensé pour durer, au-delà des tendances.",
+  en: 'An address where architecture, light, and location meet. A place made to endure, beyond trends.',
+  he: 'כתובת שבה אדריכלות, אור ומיקום נפגשים. מקום שנועד להחזיק מעמד, מעבר למגמות.',
+}
 
 const SITE_BASE = 'https://immobilierenisrael.com'
 
@@ -102,71 +137,117 @@ export default async function BienPage({ params }: { params: Promise<{ locale: s
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(listingSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-      <div style={{ paddingTop: '80px' }} />
-      <div style={{ height: '70vh', overflow: 'hidden', position: 'relative' }}>
-        <img src={bien.image_principale} alt={bien.nom} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,10,11,0.6) 0%, transparent 50%)' }} />
+
+      <style>{`
+        @keyframes bienKen { from { transform: scale(1.0); } to { transform: scale(1.08); } }
+        .bien-hero-img { animation: bienKen 12s var(--ease-luxe) forwards; }
+        @media (prefers-reduced-motion: reduce) { .bien-hero-img { animation: none; } }
+      `}</style>
+
+      {/* ── CINEMATIC HERO — fullscreen ───────────────────── */}
+      <section style={{ height: '100vh', minHeight: '640px', overflow: 'hidden', position: 'relative' }}>
+        <img src={bien.image_principale} alt={bien.nom} className="bien-hero-img" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+        {/* cinematic gradient */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(8,8,10,0.5) 0%, rgba(8,8,10,0.05) 30%, rgba(8,8,10,0.3) 60%, rgba(8,8,10,0.92) 100%)' }} />
+
         {bien.badge && (
-          <div style={{ position: 'absolute', top: '2rem', [isRTL ? 'right' : 'left']: '2rem', background: '#C8A96E', color: '#0A0A0B', padding: '0.4rem 1rem', fontSize: '0.7rem', textTransform: 'uppercase', fontWeight: 600 }}>
+          <div style={{ position: 'absolute', top: '6.5rem', [isRTL ? 'right' : 'left']: '2.5rem', display: 'inline-flex', alignItems: 'center', gap: 8, background: 'rgba(8,8,10,0.4)', backdropFilter: 'blur(10px)', border: '1px solid rgba(212,184,136,0.3)', color: '#FAF8F4', padding: '7px 14px', fontSize: '0.65rem', letterSpacing: '0.28em', textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif" }}>
+            <span style={{ width: 4, height: 4, borderRadius: '50%', background: 'var(--gold-500)' }} />
             {bien.badge}
           </div>
         )}
-        <div style={{ position: 'absolute', bottom: '3rem', [isRTL ? 'right' : 'left']: '3rem', color: '#fff', direction: isRTL ? 'rtl' : 'ltr' }}>
-          <p style={{ fontSize: '0.75rem', color: '#C8A96E', letterSpacing: isRTL ? '0' : '0.2em', textTransform: isRTL ? 'none' : 'uppercase', marginBottom: '0.5rem' }}>
+
+        <Reveal style={{ position: 'absolute', bottom: '4rem', [isRTL ? 'right' : 'left']: '3rem', [isRTL ? 'left' : 'right']: '3rem', color: '#fff', direction: isRTL ? 'rtl' : 'ltr' }} distance={36}>
+          <p style={{ fontSize: '0.72rem', color: 'var(--gold-500)', letterSpacing: isRTL ? '0' : '0.3em', textTransform: isRTL ? 'none' : 'uppercase', marginBottom: '1rem', fontFamily: "'DM Sans', sans-serif" }}>
             {bien.quartier ? `${bien.quartier} · ${bien.ville}` : bien.ville}
           </p>
-          <h1 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 300, marginBottom: '0.5rem' }}>{bien.nom}</h1>
-          <p style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.8rem', color: '#C8A96E' }}>{bien.prix_display}</p>
-        </div>
-      </div>
+          <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2.4rem, 6vw, 5rem)', fontWeight: 300, lineHeight: 1.02, marginBottom: '1rem', letterSpacing: '-0.01em', maxWidth: '18ch' }}>
+            {bien.nom}
+          </h1>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', fontWeight: 300, color: '#FAF8F4' }}>
+            {bien.prix_display && bien.prix_display.trim() ? bien.prix_display : (locale === 'he' ? 'מחיר לפי בקשה' : locale === 'en' ? 'Price on request' : 'Prix sur demande')}
+          </p>
+        </Reveal>
+      </section>
 
-      {/* Gallery */}
+      {/* ── ARCHITECTURAL STAT ROW ────────────────────────── */}
+      <section style={{ background: '#08080A', borderBottom: '1px solid rgba(200,169,110,0.1)', direction: isRTL ? 'rtl' : 'ltr' }}>
+        <Reveal style={{ maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem', display: 'flex', flexWrap: 'wrap', gap: '2rem 0', justifyContent: 'center' }}>
+          {stats.map(([label, value], i) => (
+            <div key={label} style={{
+              flex: '1 1 auto', minWidth: '150px', textAlign: 'center',
+              borderInlineStart: i === 0 ? 'none' : '1px solid rgba(200,169,110,0.18)',
+              padding: '0 1.5rem',
+            }}>
+              <div style={{ fontSize: '0.62rem', color: 'var(--gold-500)', letterSpacing: '0.22em', textTransform: 'uppercase', marginBottom: '0.7rem', fontFamily: "'DM Sans', sans-serif" }}>{label}</div>
+              <div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.7rem', fontWeight: 300, color: '#FAF8F4' }}>{value}</div>
+            </div>
+          ))}
+        </Reveal>
+      </section>
+
+      {/* ── EDITORIAL DESCRIPTION ─────────────────────────── */}
+      <section style={{ padding: '6rem 2rem', background: '#0A0A0B', direction: isRTL ? 'rtl' : 'ltr' }}>
+        <Reveal style={{ maxWidth: '720px', margin: '0 auto', textAlign: isRTL ? 'right' : 'left' }}>
+          <p style={{ fontSize: '0.7rem', color: 'var(--gold-500)', letterSpacing: '0.3em', textTransform: isRTL ? 'none' : 'uppercase', marginBottom: '1.2rem', fontFamily: "'DM Sans', sans-serif" }}>
+            {p.description}
+          </p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", color: 'rgba(250,248,244,0.9)', lineHeight: 1.7, fontSize: 'clamp(1.3rem, 2.2vw, 1.6rem)', fontWeight: 300, fontStyle: 'italic' }}>
+            {bien.description}
+          </p>
+        </Reveal>
+      </section>
+
+      {/* ── GALLERY (full-bleed) ──────────────────────────── */}
       {bien.images && bien.images.length > 0 && (
         <BienGallery images={bien.images} mainImage={bien.image_principale} nom={bien.nom} />
       )}
 
-      <section style={{ padding: '4rem 2rem', background: '#0A0A0B', direction: isRTL ? 'rtl' : 'ltr' }}>
+      {/* ── LIFESTYLE STORYTELLING ────────────────────────── */}
+      <section style={{ position: 'relative', padding: '8rem 2rem', overflow: 'hidden', direction: isRTL ? 'rtl' : 'ltr' }}>
+        <div style={{ position: 'absolute', inset: 0, background: `url(${bien.image_principale}) center/cover`, opacity: 0.14 }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, #0A0A0B 0%, rgba(10,10,11,0.85) 50%, #0A0A0B 100%)' }} />
+        <Reveal style={{ position: 'relative', maxWidth: '760px', margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ fontSize: '0.7rem', color: 'var(--gold-500)', letterSpacing: '0.3em', textTransform: isRTL ? 'none' : 'uppercase', marginBottom: '1.6rem', fontFamily: "'DM Sans', sans-serif" }}>
+            {locale === 'he' ? `לחיות ב${bien.quartier ?? bien.ville}` : locale === 'en' ? `Living in ${bien.quartier ?? bien.ville}` : `Vivre à ${bien.quartier ?? bien.ville}`}
+          </p>
+          <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(1.5rem, 3vw, 2.3rem)', fontWeight: 300, color: 'rgba(250,248,244,0.92)', lineHeight: 1.5, fontStyle: 'italic' }}>
+            {(LIFESTYLE[bien.ville] ?? LIFESTYLE_FALLBACK)[locale === 'he' ? 'he' : locale === 'en' ? 'en' : 'fr']}
+          </p>
+          <div style={{ width: '60px', height: '1px', background: 'linear-gradient(90deg, transparent, var(--gold-500), transparent)', margin: '2.6rem auto 0' }} />
+        </Reveal>
+      </section>
+
+      {/* ── DETAILS: features + map + contact ─────────────── */}
+      <section style={{ padding: '5rem 2rem', background: '#0A0A0B', direction: isRTL ? 'rtl' : 'ltr' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }} className="grid-detail">
           <div>
-            {/* Stats grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '2px', marginBottom: '3rem', background: 'rgba(200,169,110,0.08)' }}>
-              {stats.map(([label, value]) => (
-                <div key={label} style={{ background: '#111214', padding: '1.2rem', textAlign: 'center' }}>
-                  <div style={{ fontSize: '10px', color: '#C8A96E', letterSpacing: isRTL ? '0' : '0.2em', textTransform: isRTL ? 'none' : 'uppercase', marginBottom: '6px' }}>{label}</div>
-                  <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.4rem', color: '#FAFAF9' }}>{value}</div>
-                </div>
-              ))}
-            </div>
-
-            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.8rem', fontWeight: 400, color: '#FAFAF9', marginBottom: '1rem' }}>{p.description}</h2>
-            <p style={{ color: '#8A8B91', lineHeight: 1.9, fontSize: '1rem', marginBottom: '2.5rem' }}>{bien.description}</p>
-
             {bien.caracteristiques?.length > 0 && (
-              <>
-                <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.8rem', fontWeight: 400, color: '#FAFAF9', marginBottom: '1rem' }}>{p.features}</h2>
+              <Reveal style={{ marginBottom: '3.5rem' }}>
+                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.9rem', fontWeight: 300, color: '#FAF8F4', marginBottom: '1.4rem' }}>{p.features}</h2>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '0.5rem' }}>
                   {bien.caracteristiques.map((c: string) => (
-                    <div key={c} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.6rem 0', borderBottom: '1px solid rgba(200,169,110,0.1)' }}>
-                      <span style={{ color: '#C8A96E', fontSize: '0.8rem' }}>✦</span>
-                      <span style={{ fontSize: '0.9rem', color: '#D4D5D8' }}>{c}</span>
+                    <div key={c} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.7rem 0', borderBottom: '1px solid rgba(200,169,110,0.1)' }}>
+                      <span style={{ color: 'var(--gold-500)', fontSize: '0.7rem' }}>✦</span>
+                      <span style={{ fontSize: '0.92rem', color: '#D8D4CC' }}>{c}</span>
                     </div>
                   ))}
                 </div>
-              </>
+              </Reveal>
             )}
 
-            {/* Map — emplacement du bien */}
-            <div style={{ marginTop: '3.5rem' }}>
+            {/* Map */}
+            <Reveal>
               <PropertyMap
                 ville={bien.ville}
                 quartier={bien.quartier ?? null}
                 locale={locale}
                 isRTL={isRTL}
               />
-            </div>
+            </Reveal>
           </div>
 
-          {/* Contact card */}
+          {/* Contact card — sticky */}
           <div className="detail-contact-card">
             <BienContactCard
               bienNom={bien.nom}
