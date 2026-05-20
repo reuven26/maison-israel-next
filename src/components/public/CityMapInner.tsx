@@ -100,12 +100,12 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
         zoomControl={false}
         scrollWheelZoom={false}
         attributionControl={false}
-        style={{ height: '520px', width: '100%', background: '#d4dadc' }}
+        style={{ height: '520px', width: '100%', background: '#0E0F11' }}
       >
-        {/* Mapbox Light v11 — the exact style used by Barnes */}
+        {/* Mapbox Dark v11 — cinematic monochromatic luxury */}
         <TileLayer
           attribution='&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url={`https://api.mapbox.com/styles/v1/mapbox/light-v11/tiles/{z}/{x}/{y}?access_token=${process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? ''}`}
+          url={`https://api.mapbox.com/styles/v1/mapbox/dark-v11/tiles/{z}/{x}/{y}?access_token=${process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? ''}`}
           tileSize={512}
           zoomOffset={-1}
         />
@@ -127,7 +127,7 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
           })}
         >
           <Popup className="city-map-popup">
-            <strong style={{ fontFamily: labelFont, fontSize: '1.05rem', color: '#9A7B42', direction: isRTL ? 'rtl' : 'ltr', display: 'block' }}>
+            <strong style={{ fontFamily: labelFont, fontSize: '1.05rem', color: '#D4B888', direction: isRTL ? 'rtl' : 'ltr', display: 'block' }}>
               {cityLabel}
             </strong>
           </Popup>
@@ -140,9 +140,9 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
             position={[pin.lat, pin.lng]}
             icon={L.divIcon({
               html: `
-                <div style="display:flex;flex-direction:column;align-items:center;gap:4px;direction:${isRTL ? 'rtl' : 'ltr'}">
-                  <div style="width:11px;height:11px;border-radius:50%;background:#C8A96E;border:2px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,0.25);flex-shrink:0"></div>
-                  <div style="font-size:${isRTL ? '11px' : '12px'};font-family:${labelFont};color:#1A1A1A;font-weight:${isRTL ? '500' : '600'};letter-spacing:${isRTL ? '0' : '0.02em'};white-space:nowrap;background:rgba(255,255,255,0.92);padding:2px 7px;border-radius:2px;box-shadow:0 1px 4px rgba(0,0,0,0.12);line-height:1.4">${pin.label}</div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:5px;direction:${isRTL ? 'rtl' : 'ltr'}">
+                  <div style="width:10px;height:10px;border-radius:50%;background:#C8A96E;border:1.5px solid rgba(250,248,244,0.85);box-shadow:0 0 10px rgba(200,169,110,0.6);flex-shrink:0"></div>
+                  <div style="font-size:${isRTL ? '11px' : '12px'};font-family:${labelFont};color:#FAF8F4;font-weight:${isRTL ? '500' : '500'};letter-spacing:${isRTL ? '0' : '0.04em'};white-space:nowrap;background:rgba(8,8,10,0.72);backdrop-filter:blur(8px);padding:3px 9px;border:1px solid rgba(212,184,136,0.2);border-radius:2px;line-height:1.4">${pin.label}</div>
                 </div>`,
               className: '',
               iconSize: [160, 34],
@@ -151,11 +151,11 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
           >
             <Popup className="city-map-popup">
               <div style={{ minWidth: '185px', direction: isRTL ? 'rtl' : 'ltr' }}>
-                <p style={{ fontFamily: labelFont, fontSize: '1.1rem', color: '#9A7B42', marginBottom: '5px', fontWeight: 600, lineHeight: 1.3 }}>
+                <p style={{ fontFamily: labelFont, fontSize: '1.1rem', color: '#D4B888', marginBottom: '5px', fontWeight: 600, lineHeight: 1.3 }}>
                   {pin.label}
                 </p>
                 {pin.desc && (
-                  <p style={{ fontFamily: isRTL ? `system-ui, 'Segoe UI', Arial, sans-serif` : `'DM Sans', system-ui, sans-serif`, fontSize: '0.8rem', color: '#4A4A4A', lineHeight: 1.6, margin: 0 }}>
+                  <p style={{ fontFamily: isRTL ? `system-ui, 'Segoe UI', Arial, sans-serif` : `'DM Sans', system-ui, sans-serif`, fontSize: '0.8rem', color: '#D8D4CC', lineHeight: 1.6, margin: 0 }}>
                     {pin.desc}
                   </p>
                 )}
@@ -165,18 +165,21 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
         ))}
       </MapContainer>
 
+      {/* Cinematic vignette — subtle darkening at the edges */}
+      <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 400, boxShadow: 'inset 0 0 120px 20px rgba(8,8,10,0.55)' }} />
+
       <style>{`
-        /* Popup — light theme */
+        /* Popup — dark cinematic theme */
         .city-map-popup .leaflet-popup-content-wrapper {
-          background: #FAFAF9;
-          border: 1px solid rgba(200,169,110,0.4);
+          background: #16171A;
+          border: 1px solid rgba(212,184,136,0.25);
           border-radius: 3px;
-          box-shadow: 0 6px 24px rgba(0,0,0,0.15);
-          color: #2D2D2D;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+          color: #FAF8F4;
         }
-        .city-map-popup .leaflet-popup-tip { background: #FAFAF9; }
+        .city-map-popup .leaflet-popup-tip { background: #16171A; border: 1px solid rgba(212,184,136,0.25); }
         .city-map-popup .leaflet-popup-close-button {
-          color: #9A7B42 !important;
+          color: #C8A96E !important;
           font-size: 16px !important;
         }
 
@@ -186,24 +189,25 @@ export default function CityMapInner({ slug, neighborhoods, lang, isRTL }: Props
           100% { transform: scale(2.4); opacity: 0; }
         }
 
-        /* Attribution */
+        /* Attribution — dark */
         .leaflet-control-attribution {
-          background: rgba(255,255,255,0.75) !important;
-          color: rgba(0,0,0,0.35) !important;
+          background: rgba(8,8,10,0.6) !important;
+          color: rgba(250,248,244,0.3) !important;
           font-size: 9px !important;
         }
-        .leaflet-control-attribution a { color: rgba(154,123,66,0.7) !important; }
+        .leaflet-control-attribution a { color: rgba(200,169,110,0.5) !important; }
 
-        /* Zoom */
+        /* Zoom — dark glass */
         .leaflet-control-zoom a {
-          background: #fff !important;
-          color: #2D2D2D !important;
-          border-color: rgba(0,0,0,0.15) !important;
+          background: rgba(22,23,26,0.85) !important;
+          color: #C8A96E !important;
+          border-color: rgba(212,184,136,0.2) !important;
           font-weight: 400 !important;
+          backdrop-filter: blur(8px);
         }
         .leaflet-control-zoom a:hover {
-          background: rgba(200,169,110,0.12) !important;
-          color: #9A7B42 !important;
+          background: rgba(200,169,110,0.18) !important;
+          color: #FAF8F4 !important;
         }
       `}</style>
     </div>

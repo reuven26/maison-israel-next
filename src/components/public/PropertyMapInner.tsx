@@ -106,12 +106,12 @@ export default function PropertyMapInner({ ville, quartier, locale, isRTL }: Pro
           zoomControl={false}
           scrollWheelZoom={false}
           attributionControl={false}
-          style={{ height: '420px', width: '100%', background: '#d4dadc' }}
+          style={{ height: '420px', width: '100%', background: '#0E0F11' }}
         >
-          {/* Mapbox Light v11 — exact match for the Barnes map style */}
+          {/* Mapbox Dark v11 — cinematic monochromatic luxury */}
           <TileLayer
             attribution='&copy; <a href="https://www.mapbox.com/about/maps/">Mapbox</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-            url={`https://api.mapbox.com/styles/v1/mapbox/light-v11/tiles/{z}/{x}/{y}?access_token=${process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? ''}`}
+            url={`https://api.mapbox.com/styles/v1/mapbox/dark-v11/tiles/{z}/{x}/{y}?access_token=${process.env.NEXT_PUBLIC_MAPBOX_TOKEN ?? ''}`}
             tileSize={512}
             zoomOffset={-1}
           />
@@ -137,7 +137,7 @@ export default function PropertyMapInner({ ville, quartier, locale, isRTL }: Pro
               html: `
                 <div style="position:relative;width:24px;height:24px">
                   <div style="position:absolute;inset:0;border-radius:50%;background:rgba(200,169,110,0.28);animation:prop-pulse 2s ease-out infinite"></div>
-                  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:#C8A96E;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.25)"></div>
+                  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:12px;height:12px;border-radius:50%;background:#C8A96E;border:2px solid rgba(250,248,244,0.85);box-shadow:0 0 12px rgba(200,169,110,0.7)"></div>
                 </div>`,
               className: '',
               iconSize: [24, 24],
@@ -146,25 +146,29 @@ export default function PropertyMapInner({ ville, quartier, locale, isRTL }: Pro
           />
         </MapContainer>
 
+        {/* Cinematic vignette */}
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 400, boxShadow: 'inset 0 0 100px 16px rgba(8,8,10,0.55)' }} />
+
         <style>{`
           @keyframes prop-pulse {
             0%   { transform: scale(0.5); opacity: 0.9; }
             100% { transform: scale(2.6); opacity: 0; }
           }
           .leaflet-control-attribution {
-            background: rgba(255,255,255,0.7) !important;
-            color: rgba(0,0,0,0.3) !important;
+            background: rgba(8,8,10,0.6) !important;
+            color: rgba(250,248,244,0.3) !important;
             font-size: 9px !important;
           }
-          .leaflet-control-attribution a { color: rgba(154,123,66,0.6) !important; }
+          .leaflet-control-attribution a { color: rgba(200,169,110,0.5) !important; }
           .leaflet-control-zoom a {
-            background: #fff !important;
-            color: #2D2D2D !important;
-            border-color: rgba(0,0,0,0.12) !important;
+            background: rgba(22,23,26,0.85) !important;
+            color: #C8A96E !important;
+            border-color: rgba(212,184,136,0.2) !important;
+            backdrop-filter: blur(8px);
           }
           .leaflet-control-zoom a:hover {
-            background: rgba(200,169,110,0.1) !important;
-            color: #9A7B42 !important;
+            background: rgba(200,169,110,0.18) !important;
+            color: #FAF8F4 !important;
           }
         `}</style>
       </div>
