@@ -4,6 +4,8 @@ import Image from 'next/image'
 import { getBienNom } from '@/types'
 import type { Bien } from '@/types'
 import type { Locale } from '@/i18n/config'
+import type { Metadata } from 'next'
+import { alternatesFor } from '@/lib/seo'
 import { getMessages } from '@/i18n'
 import InstagramFeed from '@/components/public/InstagramFeed'
 import PressStrip from '@/components/public/PressStrip'
@@ -13,6 +15,12 @@ import PropertyCard from '@/components/public/PropertyCard'
 import Reveal from '@/components/public/Reveal'
 
 export const revalidate = 60
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  // Titre et description viennent du layout ; ici seulement canonical et hreflang.
+  return { alternates: alternatesFor(locale, '') }
+}
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params

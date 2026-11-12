@@ -3,9 +3,37 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import type { Article } from '@/types'
 import type { Locale } from '@/i18n/config'
+import type { Metadata } from 'next'
+import { alternatesFor, clip } from '@/lib/seo'
 import { getMessages } from '@/i18n'
 
 export const revalidate = 60
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const { locale, slug } = await params
+  const supabase = await createClient()
+  const { data: article } = await supabase
+    .from('articles')
+    .select('titre, extrait, image')
+    .eq('slug', slug)
+    .eq('statut', 'publie')
+    .single()
+  if (!article) return {}
+  const description = clip(article.extrait || '')
+  const alt = alternatesFor(locale, `/guides/${slug}`)
+  return {
+    title: article.titre,
+    description,
+    alternates: alt,
+    openGraph: {
+      type: 'article',
+      title: article.titre,
+      description,
+      url: alt.canonical,
+      ...(article.image ? { images: [{ url: article.image }] } : {}),
+    },
+  }
+}
 
 export default async function GuideDetailPage({ params }: { params: Promise<{ locale: string; slug: string }> }) {
   const { locale, slug } = await params

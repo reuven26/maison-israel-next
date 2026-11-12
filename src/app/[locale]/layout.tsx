@@ -35,10 +35,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const l = (locales.includes(locale as Locale) ? locale : 'fr') as Locale
   const m = META[l]
 
-  const languages: Record<string, string> = {}
-  for (const loc of locales) languages[loc] = `${BASE_URL}/${loc}`
-  languages['x-default'] = `${BASE_URL}/fr`
-
   return {
     metadataBase: new URL(BASE_URL),
     title: { default: m.title, template: `%s | Maison Israël` },
@@ -52,10 +48,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     authors: [{ name: 'Maison Israël' }],
     creator: 'Maison Israël',
     publisher: 'Maison Israël',
-    alternates: {
-      canonical: `${BASE_URL}/${l}`,
-      languages,
-    },
     openGraph: {
       type: 'website',
       locale: m.ogLocale,

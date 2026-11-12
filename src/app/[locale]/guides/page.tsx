@@ -2,9 +2,32 @@ import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
 import type { Article } from '@/types'
 import type { Locale } from '@/i18n/config'
+import type { Metadata } from 'next'
+import { alternatesFor } from '@/lib/seo'
 import { getMessages } from '@/i18n'
 
 export const revalidate = 60
+
+const GUIDES_META = {
+  fr: {
+    title: 'Guides immobiliers en Israël',
+    description: "Guides pratiques pour acheter, investir et vous installer en Israël : fiscalité, prix immobiliers, aliyah.",
+  },
+  en: {
+    title: 'Real estate guides for Israel',
+    description: 'Practical guides to buying, investing and settling in Israel: taxes, property prices, aliyah.',
+  },
+  he: {
+    title: 'מדריכי נדל"ן בישראל',
+    description: 'מדריכים מעשיים לרכישה, השקעה והתיישבות בישראל: מיסוי, מחירי נדל"ן ועלייה.',
+  },
+} as const
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  const lang = (locale === 'en' || locale === 'he' ? locale : 'fr') as keyof typeof GUIDES_META
+  return { ...GUIDES_META[lang], alternates: alternatesFor(locale, '/guides') }
+}
 
 export default async function GuidesPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params

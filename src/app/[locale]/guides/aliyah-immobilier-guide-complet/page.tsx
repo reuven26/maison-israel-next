@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { languagesFor } from '@/lib/seo'
 import Link from 'next/link'
 import GuideTldr from '@/components/public/GuideTldr'
 
@@ -9,7 +10,7 @@ const CANONICAL = `${BASE_URL}/fr/guides/${SLUG}`
 export const metadata: Metadata = {
   title: 'Aliyah et Immobilier : Guide Complet 2026 pour Acheter en Israël',
   description: 'Tout ce qu\'il faut savoir pour acheter un bien immobilier en Israël avant ou après son Aliyah. Avantages fiscaux Oleh Hadash, calendrier, erreurs à éviter.',
-  alternates: { canonical: CANONICAL },
+  alternates: { canonical: CANONICAL, languages: languagesFor(`/guides/${SLUG}`) },
   openGraph: {
     type: 'article',
     locale: 'fr_FR',

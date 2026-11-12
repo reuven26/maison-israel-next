@@ -1,4 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
+import type { Metadata } from 'next'
+import { alternatesFor, clip } from '@/lib/seo'
 import { optImg } from '@/lib/img'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -295,6 +297,27 @@ const CITY_DATA: Record<string, {
       },
     ],
   },
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug: string }> }): Promise<Metadata> {
+  const { locale, slug } = await params
+  const city = CITY_DATA[slug]
+  if (!city) return {}
+  const lang: 'fr' | 'en' | 'he' = locale === 'en' || locale === 'he' ? locale : 'fr'
+  const nom = city.nom[lang]
+  const title = lang === 'fr'
+    ? `Immobilier de luxe à ${nom}`
+    : lang === 'en'
+      ? `Luxury real estate in ${nom}`
+      : `נדל"ן יוקרה ב${nom}`
+  const description = clip(city.desc[lang])
+  const alt = alternatesFor(locale, `/villes/${slug}`)
+  return {
+    title,
+    description,
+    alternates: alt,
+    openGraph: { title, description, url: alt.canonical },
+  }
 }
 
 export default async function VillePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {

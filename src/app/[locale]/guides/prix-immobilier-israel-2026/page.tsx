@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { languagesFor } from '@/lib/seo'
 import Link from 'next/link'
 import GuideTldr from '@/components/public/GuideTldr'
 
@@ -9,7 +10,7 @@ const CANONICAL = `${BASE_URL}/fr/guides/${SLUG}`
 export const metadata: Metadata = {
   title: 'Prix Immobilier en Israël 2026 : Tel Aviv, Jérusalem, Netanya',
   description: 'Prix immobilier en Israël 2026 : prix au m² actualisés à Tel Aviv, Jérusalem, Netanya, Herzliya. Tendances, projections et conseils d\'experts francophones.',
-  alternates: { canonical: CANONICAL },
+  alternates: { canonical: CANONICAL, languages: languagesFor(`/guides/${SLUG}`) },
   openGraph: {
     type: 'article',
     locale: 'fr_FR',

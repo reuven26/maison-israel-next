@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { languagesFor } from '@/lib/seo'
 import Link from 'next/link'
 import GuideTldr from '@/components/public/GuideTldr'
 
@@ -9,7 +10,7 @@ const CANONICAL = `${BASE_URL}/fr/guides/${SLUG}`
 export const metadata: Metadata = {
   title: 'Fiscalité Immobilier en Israël pour Français 2026 : Guide Complet',
   description: 'Guide fiscal complet pour un Français qui achète, loue ou revend un bien en Israël en 2026. Convention fiscale France-Israël, Mas Rechisha, IFI, plus-values.',
-  alternates: { canonical: CANONICAL },
+  alternates: { canonical: CANONICAL, languages: languagesFor(`/guides/${SLUG}`) },
   openGraph: {
     type: 'article',
     locale: 'fr_FR',
