@@ -19,23 +19,20 @@ export default function Navbar({ locale, messages }: NavbarProps) {
   const nav = messages.nav
   const isRTL = locale === 'he'
 
-  const journalLabel = locale === 'he' ? 'יומן' : locale === 'en' ? 'Journal' : 'Journal'
   const quartiersLabel = locale === 'he' ? 'שכונות' : locale === 'en' ? 'Neighborhoods' : 'Quartiers'
   const offMarketLabel = locale === 'he' ? 'מחוץ לשוק' : 'Off-Market'
-  const clienteleLabel = locale === 'he' ? 'לקוחות' : locale === 'en' ? 'Clientele' : 'Clientèle'
 
+  // Navigation épurée : on ne garde que l'essentiel en haut.
+  // Quartiers, Clientèle, Journal et Le Cercle vivent dans le footer.
   const navLinks = [
     { href: `/${locale}/projets`, label: nav.properties },
-    { href: `/${locale}/quartiers`, label: quartiersLabel },
     { href: `/${locale}/off-market`, label: offMarketLabel },
-    { href: `/${locale}/services`, label: nav.services },
-    { href: `/${locale}/clientele`, label: clienteleLabel },
-    { href: `/${locale}/journal`, label: journalLabel },
     { href: `/${locale}/contact`, label: nav.contact },
   ]
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50)
+    onScroll() // état correct dès le montage (rechargement en milieu de page)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -69,19 +66,19 @@ export default function Navbar({ locale, messages }: NavbarProps) {
               <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.35rem', fontWeight: 400, color: '#FAFAF9', letterSpacing: '0.18em', textTransform: 'uppercase' }}>
                 Maison <span style={{ color: '#C8A96E' }}>Israël</span>
               </span>
-              <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.58rem', fontWeight: 300, color: 'rgba(200,169,110,0.5)', letterSpacing: '0.35em', textTransform: 'uppercase' }}>
-                Immobilier de Prestige
+              <span style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.58rem', fontWeight: 300, color: 'rgba(200,169,110,0.5)', letterSpacing: isRTL ? '0.1em' : '0.28em', textTransform: 'uppercase' }}>
+                {isRTL ? 'ראובן בנשטרית' : locale === 'en' ? 'by Reuven Benchetrit' : 'par Reuven Benchetrit'}
               </span>
             </div>
           </Link>
 
           {/* Desktop nav */}
-          <ul style={{ display: 'flex', gap: '2rem', listStyle: 'none', alignItems: 'center' }} className="hidden md:flex">
+          <ul style={{ gap: '2rem', listStyle: 'none', alignItems: 'center' }} className="hidden md:flex">
             {navLinks.map(link => (
               <li key={link.href} style={{ position: 'relative' }}>
                 <Link href={link.href} style={{
-                  fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem',
-                  letterSpacing: isRTL ? '0' : '0.12em', textTransform: isRTL ? 'none' : 'uppercase',
+                  fontFamily: 'Jost, sans-serif', fontSize: '0.68rem',
+                  letterSpacing: isRTL ? '0' : '0.26em', textTransform: isRTL ? 'none' : 'uppercase',
                   color: pathname.startsWith(link.href) ? '#C8A96E' : 'rgba(255,255,255,0.75)',
                   textDecoration: 'none', transition: 'color 0.3s',
                   paddingBottom: '4px',
@@ -95,7 +92,7 @@ export default function Navbar({ locale, messages }: NavbarProps) {
 
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             {/* Language switcher */}
-            <div style={{ display: 'flex', gap: '0.3rem' }} className="hidden md:flex">
+            <div style={{ gap: '0.3rem' }} className="hidden md:flex">
               {locales.map(l => (
                 <button key={l} onClick={() => switchLocale(l)} style={{
                   background: l === locale ? 'rgba(200,169,110,0.2)' : 'transparent',
@@ -113,7 +110,7 @@ export default function Navbar({ locale, messages }: NavbarProps) {
 
             {/* WhatsApp CTA */}
             <a href="https://wa.me/972555002640" target="_blank" rel="noopener noreferrer" style={{
-              display: 'flex', alignItems: 'center', gap: '0.4rem',
+              alignItems: 'center', gap: '0.4rem',
               border: '1px solid rgba(200,169,110,0.35)',
               color: '#C8A96E', padding: '0.55rem 1rem',
               textDecoration: 'none', fontSize: '0.7rem',
@@ -126,12 +123,13 @@ export default function Navbar({ locale, messages }: NavbarProps) {
 
             {/* Contact CTA */}
             <Link href={`/${locale}/contact`} style={{
-              fontFamily: 'DM Sans, sans-serif', fontSize: '0.68rem',
-              letterSpacing: isRTL ? '0' : '0.15em',
+              fontFamily: 'Jost, sans-serif', fontSize: '0.64rem',
+              letterSpacing: isRTL ? '0' : '0.24em',
               textTransform: isRTL ? 'none' : 'uppercase',
-              color: '#0A0A0B', background: '#C8A96E',
-              padding: '0.6rem 1.4rem', textDecoration: 'none',
-              fontWeight: 600,
+              color: '#C8A96E', background: 'transparent',
+              border: '1px solid rgba(200,169,110,0.55)',
+              padding: '0.62rem 1.5rem', textDecoration: 'none',
+              fontWeight: 400, transition: 'all 0.4s var(--ease-luxe)',
             }} className="hidden md:block">
               {nav.consultation}
             </Link>

@@ -48,8 +48,8 @@ export const PROPERTY_TYPES: PropertyType[] = [
       he: 'הקומות העליונות של הכתובות הטובות ביותר',
     },
     seoTitle: {
-      fr: 'Penthouses de Prestige en Israël — Tel Aviv, Jérusalem | Maison Israël',
-      en: 'Luxury Penthouses in Israel — Tel Aviv, Jerusalem | Maison Israël',
+      fr: 'Penthouses de Prestige en Israël — Tel Aviv, Jérusalem',
+      en: 'Luxury Penthouses in Israel — Tel Aviv, Jerusalem',
       he: 'פנטהאוזים יוקרתיים בישראל | מייזון ישראל',
     },
     metaDescription: {
@@ -144,8 +144,8 @@ export const PROPERTY_TYPES: PropertyType[] = [
       he: 'בתים פרטיים ווילות עכשוויות',
     },
     seoTitle: {
-      fr: 'Villas de Prestige en Israël — Herzliya, Césarée, Jérusalem | Maison Israël',
-      en: 'Luxury Villas in Israel — Herzliya, Caesarea, Jerusalem | Maison Israël',
+      fr: 'Villas de Prestige en Israël — Herzliya, Césarée, Jérusalem',
+      en: 'Luxury Villas in Israel — Herzliya, Caesarea, Jerusalem',
       he: 'וילות יוקרה בישראל | מייזון ישראל',
     },
     metaDescription: {
@@ -232,8 +232,8 @@ export const PROPERTY_TYPES: PropertyType[] = [
       he: 'המורשת האדריכלית של ישראל',
     },
     seoTitle: {
-      fr: 'Maisons Mandataires & Templières en Israël | Maison Israël',
-      en: 'Mandate & Templer Heritage Houses in Israel | Maison Israël',
+      fr: 'Maisons Mandataires & Templières en Israël',
+      en: 'Mandate & Templer Heritage Houses in Israel',
       he: 'בתי מנדט וטמפלרים בישראל | מייזון ישראל',
     },
     metaDescription: {
@@ -328,8 +328,8 @@ export const PROPERTY_TYPES: PropertyType[] = [
       he: 'הים התיכון כנוף ראשי',
     },
     seoTitle: {
-      fr: 'Immobilier Bord de Mer en Israël — Tel Aviv, Herzliya | Maison Israël',
-      en: 'Seafront Real Estate in Israel — Tel Aviv, Herzliya | Maison Israël',
+      fr: 'Immobilier Bord de Mer en Israël — Tel Aviv, Herzliya',
+      en: 'Seafront Real Estate in Israel — Tel Aviv, Herzliya',
       he: 'נדל"ן חוף ים בישראל | מייזון ישראל',
     },
     metaDescription: {

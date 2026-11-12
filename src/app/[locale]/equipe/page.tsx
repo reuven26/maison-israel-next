@@ -2,29 +2,29 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 const META: Record<Locale, { title: string; description: string; tag: string; h1: string; subtitle: string }> = {
   fr: {
-    title: 'Notre Équipe — Conseillers en Immobilier de Prestige | Maison Israël',
-    description: "Les conseillers de Maison Israël — quinze ans d'expérience dans l'accompagnement des acheteurs internationaux en immobilier israélien.",
-    tag: 'Équipe',
-    h1: "L'équipe Maison Israël",
-    subtitle: "Quinze ans d'expérience, trois langues, un seul objectif : aligner chaque acquisition sur l'horizon long de nos clients.",
+    title: 'Votre Conseiller — Reuven Benchetrit',
+    description: "Reuven Benchetrit, fondateur de Maison Israël — représentation discrète d'une clientèle fortunée dans l'immobilier de prestige en Israël depuis 2009.",
+    tag: 'Votre conseiller',
+    h1: 'Reuven Benchetrit',
+    subtitle: "Un seul interlocuteur, du premier échange à la remise des clés. Discrétion, clarté stratégique, et un réseau privé bâti sur des relations de longue date.",
   },
   en: {
-    title: 'Our Team — Luxury Real Estate Advisors | Maison Israël',
-    description: 'The Maison Israël advisors — fifteen years of experience supporting international buyers in Israeli real estate.',
-    tag: 'Team',
-    h1: 'The Maison Israël Team',
-    subtitle: 'Fifteen years of experience, three languages, one objective: aligning each acquisition with our clients\' long horizon.',
+    title: 'Your Advisor — Reuven Benchetrit',
+    description: 'Reuven Benchetrit, founder of Maison Israël — discreet representation of high-net-worth clients in Israeli luxury real estate since 2009.',
+    tag: 'Your advisor',
+    h1: 'Reuven Benchetrit',
+    subtitle: 'A single point of contact, from the first conversation to the handover of keys. Discretion, strategic clarity, and a private network built on long-standing relationships.',
   },
   he: {
-    title: 'הצוות שלנו | מייזון ישראל',
-    description: 'היועצים של מייזון ישראל — חמש עשרה שנים של ניסיון.',
-    tag: 'צוות',
-    h1: 'הצוות של מייזון ישראל',
-    subtitle: 'חמש עשרה שנים של ניסיון, שלוש שפות, מטרה אחת.',
+    title: 'היועץ שלך — ראובן בנשטרית',
+    description: 'ראובן בנשטרית, מייסד מייזון ישראל — ייצוג דיסקרטי של לקוחות אמידים בנדל"ן יוקרה בישראל מאז 2009.',
+    tag: 'היועץ שלך',
+    h1: 'ראובן בנשטרית',
+    subtitle: 'איש קשר אחד, מהשיחה הראשונה ועד מסירת המפתחות. דיסקרטיות, בהירות אסטרטגית ורשת פרטית שנבנתה על קשרים ארוכי שנים.',
   },
 }
 
@@ -46,60 +46,34 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   }
 }
 
-const TEAM = [
-  {
-    slug: 'reouven-benchetrit',
-    name: 'Réouven Benchetrit',
-    role: { fr: 'Fondateur · Conseiller principal', en: 'Founder · Principal Advisor', he: 'מייסד · יועץ ראשי' },
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&auto=format&fit=crop&q=80',
-    languages: ['Français', 'English', 'עברית'],
-    bio: {
-      fr: "Fondateur de Maison Israël en 2009. Spécialisé dans l'accompagnement des familles francophones en aliyah et en investissement, avec une concentration particulière sur Jérusalem (Talbieh, Colonie Allemande, Réhavia) et Herzliya Pituah. A coordonné plus de 200 acquisitions pour des clients internationaux. Basé à Tel Aviv.",
-      en: "Founded Maison Israël in 2009. Specialised in supporting French-speaking families in aliyah and investment, with particular focus on Jerusalem (Talbiyeh, German Colony, Rehavia) and Herzliya Pituah. Has coordinated over 200 acquisitions for international clients. Based in Tel Aviv.",
-      he: 'מייסד מייזון ישראל ב-2009.',
-    },
-    specialties: { fr: 'Aliyah · Familles · Jérusalem · Herzliya Pituah', en: 'Aliyah · Families · Jerusalem · Herzliya Pituah', he: 'עלייה · משפחות' },
+/* Profil fondateur — contenu factuel uniquement (pas de chiffres non vérifiables) */
+const FOUNDER = {
+  name: 'Reuven Benchetrit',
+  role: { fr: 'Fondateur · Conseiller principal', en: 'Founder · Principal Advisor', he: 'מייסד · יועץ ראשי' },
+  languages: ['Français', 'English', 'עברית'],
+  bio: {
+    fr: [
+      "Reuven Benchetrit représente une clientèle fortunée et ultra-fortunée à travers tout Israël. Son travail se distingue par la discrétion, la clarté stratégique et l'accès à un réseau privé bâti au fil de relations de longue date.",
+      "Plutôt que de rechercher le volume, Reuven aborde chaque mission avec précision — conseillant ses clients sur les acquisitions, les ventes discrètes et les opportunités off-market qui exigent une négociation réfléchie et une confiance absolue.",
+      "Qu'il s'agisse d'orchestrer une acquisition d'envergure ou de positionner discrètement un bien au sein d'un réseau choisi, l'exigence reste la même : une stratégie raffinée, des relations qui comptent, et des résultats obtenus au plus haut niveau.",
+    ],
+    en: [
+      'Reuven Benchetrit represents high net worth and ultra high net worth clients across Israel. His work is defined by discretion, strategic clarity, and access to a private network built through long-standing relationships.',
+      'Rather than pursuing volume, Reuven approaches each engagement with precision — advising clients on acquisitions, discreet sales, and off-market opportunities that require thoughtful negotiation and absolute trust.',
+      "Whether navigating a significant purchase or quietly positioning a property within a select network, the standard remains the same: refined strategy, meaningful relationships, and results achieved at the highest level.",
+    ],
+    he: [
+      'ראובן בנשטרית מייצג לקוחות אמידים ובעלי הון רב ברחבי ישראל. עבודתו מתאפיינת בדיסקרטיות, בבהירות אסטרטגית ובגישה לרשת פרטית שנבנתה לאורך שנים.',
+      'במקום לרדוף אחר כמות, ראובן ניגש לכל משימה בדיוק — מייעץ ברכישות, במכירות דיסקרטיות ובהזדמנויות מחוץ לשוק הדורשות אמון מוחלט.',
+      'בין אם מדובר ברכישה משמעותית ובין אם במיקום שקט של נכס ברשת נבחרת — הסטנדרט נשאר זהה: אסטרטגיה מעודנת ותוצאות ברמה הגבוהה ביותר.',
+    ],
   },
-  {
-    slug: 'sarah-cohen',
-    name: 'Sarah Cohen',
-    role: { fr: 'Conseillère senior · Tel Aviv', en: 'Senior Advisor · Tel Aviv', he: 'יועצת בכירה · תל אביב' },
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop&q=80',
-    languages: ['Français', 'English', 'עברית'],
-    bio: {
-      fr: "Spécialiste du marché Tel Aviv depuis 2014. Couvre Neve Tzedek, Rothschild, le Nord Ancien, et le segment des tours premium (Park Tzameret, Sarona, Meier). A développé une expertise particulière sur la restauration Bauhaus et l'arbitrage entre patrimonial et contemporain. Diplômée HEC Paris.",
-      en: 'Tel Aviv market specialist since 2014. Covers Neve Tzedek, Rothschild, the Old North, and the premium tower segment (Park Tzameret, Sarona, Meier). Has developed particular expertise on Bauhaus restoration and the arbitrage between heritage and contemporary. HEC Paris graduate.',
-      he: 'מומחית שוק תל אביב מאז 2014.',
-    },
-    specialties: { fr: 'Tel Aviv · Bauhaus · Tours premium · Investissement locatif', en: 'Tel Aviv · Bauhaus · Premium towers · Rental investment', he: 'תל אביב · באוהאוס' },
+  specialties: {
+    fr: 'Off-market · Acquisitions · Ventes discrètes · Aliyah · Tel Aviv · Jérusalem · Herzliya Pituah · Netanya',
+    en: 'Off-market · Acquisitions · Discreet sales · Aliyah · Tel Aviv · Jerusalem · Herzliya Pituah · Netanya',
+    he: 'מחוץ לשוק · רכישות · מכירות דיסקרטיות · עלייה · תל אביב · ירושלים · הרצליה פיתוח · נתניה',
   },
-  {
-    slug: 'david-levi',
-    name: 'David Levi',
-    role: { fr: 'Conseiller senior · Ultra-prime côtier', en: 'Senior Advisor · Ultra-Prime Coastal', he: 'יועץ בכיר · אולטרה-פרימיום חוף' },
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80',
-    languages: ['Français', 'English', 'עברית', 'Español'],
-    bio: {
-      fr: "Couvre Herzliya Pituah et Césarée depuis 2011. Réseau établi avec les family offices israéliens et les acheteurs ultra-high-net-worth européens et latino-américains. Spécialisé dans les transactions off-market au-dessus de 10 millions de dollars. Background en finance d'entreprise (ex-Lazard).",
-      en: 'Covers Herzliya Pituah and Caesarea since 2011. Established network with Israeli family offices and European and Latin American ultra-high-net-worth buyers. Specialised in off-market transactions above $10M. Corporate finance background (ex-Lazard).',
-      he: 'מכסה את הרצליה פיתוח וקיסריה מאז 2011.',
-    },
-    specialties: { fr: 'Herzliya Pituah · Césarée · Off-market · UHNW', en: 'Herzliya Pituah · Caesarea · Off-market · UHNW', he: 'הרצליה פיתוח · קיסריה' },
-  },
-  {
-    slug: 'rachel-meyer',
-    name: 'Rachel Meyer',
-    role: { fr: 'Conseillère · Jérusalem patrimoine', en: 'Advisor · Jerusalem Heritage', he: 'יועצת · ירושלים מורשת' },
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&auto=format&fit=crop&q=80',
-    languages: ['Français', 'English', 'עברית'],
-    bio: {
-      fr: "Spécialiste des maisons mandataires et templières de Jérusalem. Travaille étroitement avec les autorités patrimoniales et un réseau d'architectes spécialisés en restauration. Couvre Talbieh, Yemin Moshe, Colonie Allemande, Baka. Diplômée en histoire de l'art (Sorbonne).",
-      en: "Specialist of Jerusalem Mandate and Templer houses. Works closely with heritage authorities and a network of restoration-specialised architects. Covers Talbiyeh, Yemin Moshe, German Colony, Baka. Art history degree (Sorbonne).",
-      he: 'מומחית בבתי מנדט וטמפלרים בירושלים.',
-    },
-    specialties: { fr: 'Jérusalem patrimoine · Restauration · Maisons templières', en: 'Jerusalem heritage · Restoration · Templer houses', he: 'ירושלים מורשת · שיחזור' },
-  },
-]
+}
 
 export default async function EquipePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
@@ -107,25 +81,24 @@ export default async function EquipePage({ params }: { params: Promise<{ locale:
   const l = (locale === 'he' ? 'he' : locale === 'en' ? 'en' : 'fr') as 'fr' | 'en' | 'he'
   const isRTL = locale === 'he'
 
-  // Organization + Person JSON-LD for EEAT
-  const orgSchema = {
+  // Person JSON-LD — rattaché à l'entité fondateur du site
+  const personSchema = {
     '@context': 'https://schema.org',
-    '@type': 'RealEstateAgent',
-    name: 'Maison Israël',
-    url: BASE_URL,
-    employee: TEAM.map((member) => ({
-      '@type': 'Person',
-      name: member.name,
-      jobTitle: member.role[l],
-      image: member.image,
-      knowsLanguage: member.languages,
-      description: member.bio[l],
-    })),
+    '@type': 'Person',
+    '@id': `${BASE_URL}/#founder`,
+    name: 'Réouven Benchetrit',
+    alternateName: ['Reuven Benchetrit'],
+    jobTitle: FOUNDER.role[l],
+    description: FOUNDER.bio[l][0],
+    worksFor: { '@type': 'RealEstateAgent', name: 'Maison Israël', url: BASE_URL },
+    knowsLanguage: ['fr', 'en', 'he'],
+    sameAs: ['https://www.instagram.com/luxuryrealestateisrael/'],
+    url: `${BASE_URL}/${locale}/equipe`,
   }
 
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }} />
 
       <div style={{ paddingTop: '80px' }} />
 
@@ -145,52 +118,57 @@ export default async function EquipePage({ params }: { params: Promise<{ locale:
         </div>
       </section>
 
-      {/* Team grid */}
+      {/* Profil fondateur */}
       <section style={{ padding: '5rem 2rem 6rem', background: '#0A0A0B', direction: isRTL ? 'rtl' : 'ltr' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem' }}>
-          {TEAM.map((m) => (
-            <div key={m.slug} style={{ background: '#0F1012', padding: '2.5rem', borderTop: '2px solid #C8A96E' }}>
-              <div style={{ width: '110px', height: '110px', borderRadius: '50%', overflow: 'hidden', marginBottom: '1.5rem', background: '#1A1A1C' }}>
-                <img src={m.image} alt={m.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              </div>
-              <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.55rem', color: '#FAFAF9', fontWeight: 400, marginBottom: '0.3rem' }}>
-                {m.name}
-              </h2>
-              <p style={{ fontSize: '0.72rem', color: '#C8A96E', letterSpacing: '0.15em', textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif", marginBottom: '1.2rem' }}>
-                {m.role[l]}
-              </p>
-              <p style={{ color: '#D4D5D8', fontSize: '0.92rem', lineHeight: 1.75, marginBottom: '1.4rem' }}>
-                {m.bio[l]}
-              </p>
-              <div style={{ paddingTop: '1rem', borderTop: '1px solid rgba(200,169,110,0.12)' }}>
-                <div style={{ fontSize: '0.62rem', color: '#C8A96E', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                  {l === 'he' ? 'התמחויות' : l === 'en' ? 'Specialties' : 'Spécialités'}
-                </div>
-                <div style={{ color: '#8A8B91', fontSize: '0.82rem', marginBottom: '0.8rem' }}>
-                  {m.specialties[l]}
-                </div>
-                <div style={{ fontSize: '0.62rem', color: '#C8A96E', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
-                  {l === 'he' ? 'שפות' : l === 'en' ? 'Languages' : 'Langues'}
-                </div>
-                <div style={{ color: '#8A8B91', fontSize: '0.82rem' }}>
-                  {m.languages.join(' · ')}
-                </div>
-              </div>
+        <div style={{ maxWidth: '820px', margin: '0 auto', background: '#0F1012', padding: 'clamp(2rem, 5vw, 3.5rem)', borderTop: '2px solid #C8A96E' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.6rem', marginBottom: '2.2rem', flexWrap: 'wrap' }}>
+            {/* Monogramme — remplacé par le portrait dès qu'il est fourni */}
+            <div style={{ width: '96px', height: '96px', borderRadius: '50%', background: 'rgba(200,169,110,0.1)', border: '1px solid rgba(200,169,110,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '2rem', color: '#C8A96E', letterSpacing: '0.05em' }}>RB</span>
             </div>
+            <div>
+              <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.8rem', color: '#FAFAF9', fontWeight: 400, marginBottom: '0.3rem' }}>
+                {FOUNDER.name}
+              </h2>
+              <p style={{ fontSize: '0.72rem', color: '#C8A96E', letterSpacing: '0.15em', textTransform: 'uppercase', fontFamily: "'DM Sans', sans-serif" }}>
+                {FOUNDER.role[l]}
+              </p>
+            </div>
+          </div>
+
+          {FOUNDER.bio[l].map((para, i) => (
+            <p key={i} style={{ color: '#D4D5D8', fontSize: '0.98rem', lineHeight: 1.85, marginBottom: '1.2rem' }}>
+              {para}
+            </p>
           ))}
+
+          <div style={{ paddingTop: '1.4rem', marginTop: '0.6rem', borderTop: '1px solid rgba(200,169,110,0.12)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.4rem' }}>
+            <div>
+              <div style={{ fontSize: '0.62rem', color: '#C8A96E', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
+                {l === 'he' ? 'התמחויות' : l === 'en' ? 'Specialties' : 'Spécialités'}
+              </div>
+              <div style={{ color: '#8A8B91', fontSize: '0.85rem', lineHeight: 1.7 }}>{FOUNDER.specialties[l]}</div>
+            </div>
+            <div>
+              <div style={{ fontSize: '0.62rem', color: '#C8A96E', letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: '0.4rem' }}>
+                {l === 'he' ? 'שפות' : l === 'en' ? 'Languages' : 'Langues'}
+              </div>
+              <div style={{ color: '#8A8B91', fontSize: '0.85rem' }}>{FOUNDER.languages.join(' · ')}</div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* CTA */}
       <section style={{ background: '#C8A96E', padding: '4rem 2rem', textAlign: 'center', direction: isRTL ? 'rtl' : 'ltr' }}>
         <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', color: '#0A0A0B', marginBottom: '0.8rem', fontWeight: 400 }}>
-          {l === 'he' ? 'איזה יועץ הכי מתאים לבריף שלך?' : l === 'en' ? 'Which advisor fits your brief?' : 'Quel conseiller correspond à votre brief ?'}
+          {l === 'he' ? 'נתחיל בשיחה' : l === 'en' ? 'Let us begin with a conversation' : 'Commençons par une conversation'}
         </h2>
         <p style={{ color: 'rgba(10,10,11,0.75)', maxWidth: '520px', margin: '0 auto 1.8rem', fontSize: '0.98rem', lineHeight: 1.7 }}>
-          {l === 'he' ? 'נכוון אתכם לאדם הנכון בצוות שלנו.' : l === 'en' ? 'We will direct you to the right person on our team.' : 'Nous vous orientons vers la bonne personne de notre équipe.'}
+          {l === 'he' ? 'שיחה ראשונית דיסקרטית, ללא התחייבות.' : l === 'en' ? 'A discreet initial conversation, with no commitment.' : 'Un premier échange discret, sans engagement.'}
         </p>
         <Link href={`/${locale}/contact`} style={{ background: '#0A0A0B', color: '#C8A96E', padding: '1rem 2.6rem', fontFamily: 'DM Sans, sans-serif', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none', fontWeight: 500, display: 'inline-block' }}>
-          {l === 'he' ? 'צרו קשר' : l === 'en' ? 'Contact us' : 'Nous contacter'}
+          {l === 'he' ? 'צרו קשר' : l === 'en' ? 'Contact' : 'Nous contacter'}
         </Link>
       </section>
     </>

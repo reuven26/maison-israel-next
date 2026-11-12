@@ -2,12 +2,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import GuideTldr from '@/components/public/GuideTldr'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 const SLUG = 'fiscalite-immobilier-israel-francais'
 const CANONICAL = `${BASE_URL}/fr/guides/${SLUG}`
 
 export const metadata: Metadata = {
-  title: 'Fiscalité Immobilier en Israël pour Français 2026 : Guide Complet | Maison Israël',
+  title: 'Fiscalité Immobilier en Israël pour Français 2026 : Guide Complet',
   description: 'Guide fiscal complet pour un Français qui achète, loue ou revend un bien en Israël en 2026. Convention fiscale France-Israël, Mas Rechisha, IFI, plus-values.',
   alternates: { canonical: CANONICAL },
   openGraph: {
@@ -25,8 +25,8 @@ const jsonLd = {
   '@type': 'Article',
   headline: 'Fiscalité Immobilier en Israël pour Français : Guide Complet 2026',
   description: 'Guide fiscal complet pour un Français qui achète, loue ou revend un bien en Israël en 2026.',
-  author: { '@type': 'Organization', name: 'Maison Israël', url: BASE_URL },
-  publisher: { '@type': 'Organization', name: 'Maison Israël', logo: { '@type': 'ImageObject', url: `${BASE_URL}/logo.png` } },
+  author: { '@type': 'Person', '@id': `${BASE_URL}/#founder`, name: 'Réouven Benchetrit', alternateName: 'Reuven Benchetrit', url: `${BASE_URL}/fr/equipe` },
+  publisher: { '@type': 'Organization', name: 'Maison Israël', logo: { '@type': 'ImageObject', url: `${BASE_URL}/logo.svg` } },
   datePublished: '2026-05-17',
   dateModified: '2026-05-17',
   inLanguage: 'fr-FR',

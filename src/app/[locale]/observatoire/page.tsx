@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 import Reveal from '@/components/public/Reveal'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 const PERIOD = 'Q2 2026'
 const UPDATED = '2026-05-21'
 
@@ -12,15 +12,15 @@ const pick = (l: L, fr: string, en: string, he: string) => (l === 'he' ? he : l 
 
 const META: Record<Locale, { title: string; description: string }> = {
   fr: {
-    title: 'Observatoire du Marché Premium Israélien — Q2 2026 | Maison Israël',
+    title: 'Observatoire du Marché Premium Israélien — Q2 2026',
     description: "Données exclusives sur l'immobilier de prestige en Israël : indice de prix €/m², part de l'off-market, profil des acheteurs étrangers. Maison Israël Prime Index, Q2 2026.",
   },
   en: {
-    title: 'Israel Prime Real Estate Market Report — Q2 2026 | Maison Israël',
+    title: 'Israel Prime Real Estate Market Report — Q2 2026',
     description: 'Proprietary data on luxury real estate in Israel: €/m² price index, off-market share, foreign-buyer profile. The Maison Israël Prime Index, Q2 2026.',
   },
   he: {
-    title: 'מצפה השוק הפרמיום בישראל — רבעון 2 2026 | מייזון ישראל',
+    title: 'מצפה השוק הפרמיום בישראל — רבעון 2 2026',
     description: 'נתונים בלעדיים על נדל"ן יוקרה בישראל: מדד מחירים, נתח מחוץ-לשוק, פרופיל קונים זרים.',
   },
 }
@@ -247,7 +247,7 @@ export default async function ObservatoirePage({ params }: { params: Promise<{ l
               {pick(l, 'Citer cette source', 'Cite this source', 'ציטוט המקור')}
             </p>
             <p style={{ fontSize: '0.9rem', color: '#D8D4CC', lineHeight: 1.6, fontFamily: "'DM Sans', sans-serif" }}>
-              Maison Israël Prime Index, {PERIOD}. immobilierenisrael.com/{locale}/observatoire
+              Maison Israël Prime Index, {PERIOD}. luxuryisraelrealestate.com/{locale}/observatoire
             </p>
           </div>
         </div>

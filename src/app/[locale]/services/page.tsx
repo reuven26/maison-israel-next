@@ -3,19 +3,19 @@ import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 import { getMessages } from '@/i18n'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 const SERVICES_META: Record<Locale, { title: string; description: string }> = {
   fr: {
-    title: 'Nos Services — Recherche, Off-Market, Estimation, Conseil | Maison Israël',
+    title: 'Nos Services — Recherche, Off-Market, Estimation, Conseil',
     description: "Maison Israël accompagne les acheteurs internationaux en immobilier israélien : recherche personnalisée, accès off-market, estimation, conseil en investissement.",
   },
   en: {
-    title: 'Our Services — Search, Off-Market, Valuation, Advisory | Maison Israël',
+    title: 'Our Services — Search, Off-Market, Valuation, Advisory',
     description: 'Maison Israël supports international buyers in Israeli real estate: private search, off-market access, valuation, investment advisory.',
   },
   he: {
-    title: 'השירותים שלנו | מייזון ישראל',
+    title: 'השירותים שלנו — ליווי רכישת נדל"ן בישראל',
     description: 'מייזון ישראל מלווה קונים בינלאומיים בנדל"ן ישראלי.',
   },
 }

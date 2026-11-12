@@ -3,13 +3,38 @@ import type { Locale } from '@/i18n/config'
 import { getMessages } from '@/i18n'
 import ContactFormClient from '@/components/public/ContactFormClient'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
   const canonical = `${BASE_URL}/${locale}/contact`
+  const meta: Record<string, { title: string; description: string }> = {
+    fr: {
+      title: 'Contact — Conseiller Immobilier Francophone en Israël',
+      description: 'Contactez nos conseillers francophones pour votre projet immobilier en Israël : achat, investissement, Aliyah. Réponse sous 24h à Tel Aviv, Jérusalem, Netanya.',
+    },
+    en: {
+      title: 'Contact — Your Real Estate Advisor in Israel',
+      description: 'Contact our advisors for your real estate project in Israel: purchase, investment, Aliyah. Response within 24h in Tel Aviv, Jerusalem, Netanya.',
+    },
+    he: {
+      title: 'צור קשר — יועץ הנדל"ן שלך בישראל',
+      description: 'צרו קשר עם היועצים שלנו לפרויקט הנדל"ן בישראל: רכישה, השקעה, עלייה. מענה תוך 24 שעות בתל אביב, ירושלים ונתניה.',
+    },
+  }
+  const m = meta[locale] ?? meta.fr
   return {
-    alternates: { canonical },
+    title: m.title,
+    description: m.description,
+    alternates: {
+      canonical,
+      languages: {
+        fr: `${BASE_URL}/fr/contact`,
+        en: `${BASE_URL}/en/contact`,
+        he: `${BASE_URL}/he/contact`,
+        'x-default': `${BASE_URL}/fr/contact`,
+      },
+    },
   }
 }
 
@@ -79,7 +104,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   const details = [
     { icon: '📍', label: c.address_label, content: c.address },
     { icon: '📞', label: c.phone_label, content: '+972 55 500 2640' },
-    { icon: '✉️', label: c.email_label, content: 'contact@maison-israel.com' },
+    { icon: '✉️', label: c.email_label, content: 'reouvenbenchetrit1@gmail.com' },
     { icon: '🕐', label: c.hours_label, content: c.hours },
   ]
 
@@ -130,6 +155,65 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           <ContactFormClient locale={locale} messages={messages} />
         </div>
       </section>
+
+      <ContactProcess locale={locale} />
     </>
+  )
+}
+
+function ContactProcess({ locale }: { locale: string }) {
+  const isRTL = locale === 'he'
+  const C = {
+    fr: {
+      eyebrow: 'Notre processus',
+      title: 'Ce qui se passe après votre message',
+      steps: [
+        { n: '01', t: 'Premier appel sous 24 h', d: "Un conseiller francophone vous rappelle pour comprendre votre projet : zone, budget, calendrier, profil familial, fiscalité. Cet échange dure 20 à 40 minutes et reste strictement confidentiel." },
+        { n: '02', t: 'Cadrage stratégique', d: "Nous formalisons votre brief : critères prioritaires, scénarios fiscaux (Aliyah, non-résident, structure), arbitrage entre les villes et les quartiers. Vous recevez une note écrite sous une semaine." },
+        { n: '03', t: 'Accès au portefeuille', d: "Nous vous présentons des biens diffusés et off-market correspondant à votre brief. Visites organisées sur place ou à distance par Zoom haute définition, avec un conseiller dédié." },
+        { n: '04', t: 'Négociation et clôture', d: "Nous coordonnons l’offre, la due diligence, l’avocat israélien, la fiscalité, le transfert de fonds et la remise des clés. Vous gardez un seul interlocuteur du premier appel à la signature." },
+      ],
+    },
+    en: {
+      eyebrow: 'Our process',
+      title: 'What happens after your message',
+      steps: [
+        { n: '01', t: 'First call within 24h', d: 'A French- or English-speaking advisor calls you back to understand your project: area, budget, timeline, family profile, taxation. The exchange lasts 20 to 40 minutes and remains strictly confidential.' },
+        { n: '02', t: 'Strategic framing', d: 'We formalize your brief: priority criteria, tax scenarios (Aliyah, non-resident, structure), arbitrage between cities and neighborhoods. You receive a written note within a week.' },
+        { n: '03', t: 'Portfolio access', d: 'We present listed and off-market properties matching your brief. Visits organized on site or remotely via high-definition Zoom, with a dedicated advisor.' },
+        { n: '04', t: 'Negotiation and closing', d: 'We coordinate the offer, due diligence, Israeli lawyer, taxation, fund transfer and key handover. You keep one single contact from the first call to the signature.' },
+      ],
+    },
+    he: {
+      eyebrow: 'התהליך שלנו',
+      title: 'מה קורה לאחר ההודעה שלכם',
+      steps: [
+        { n: '01', t: 'שיחה ראשונה תוך 24 שעות', d: 'יועץ דובר צרפתית או אנגלית מתקשר אליכם כדי להבין את הפרויקט: אזור, תקציב, לוח זמנים, פרופיל משפחתי ומיסוי. השיחה נמשכת 20 עד 40 דקות ונשמרת בסודיות מלאה.' },
+        { n: '02', t: 'מסגור אסטרטגי', d: 'אנו מנסחים את הבריף שלכם: קריטריונים מועדפים, תרחישי מיסוי (עלייה, תושב חוץ, מבנה), בחירה בין ערים ושכונות. אתם מקבלים מסמך כתוב תוך שבוע.' },
+        { n: '03', t: 'גישה לתיק', d: 'אנו מציגים בפניכם נכסים פתוחים ונכסים מחוץ לשוק שתואמים לבריף. ביקורים מאורגנים במקום או מרחוק בזום באיכות גבוהה, עם יועץ ייעודי.' },
+        { n: '04', t: 'משא ומתן וסגירה', d: 'אנו מתאמים את ההצעה, בדיקת הנאותות, עורך דין ישראלי, מיסוי, העברת כספים ומסירת מפתחות. נשמר איש קשר אחד מהשיחה הראשונה ועד החתימה.' },
+      ],
+    },
+  }
+  const c = C[(locale as keyof typeof C)] ?? C.fr
+
+  return (
+    <section style={{ background: '#0A0A0B', padding: '5rem clamp(1.5rem,5vw,3rem) 6rem', borderTop: '1px solid rgba(200,169,110,0.08)', direction: isRTL ? 'rtl' : 'ltr' }}>
+      <div style={{ maxWidth: '1080px', margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+          <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.7rem', letterSpacing: isRTL ? '0' : '0.35em', textTransform: isRTL ? 'none' : 'uppercase', color: '#C8A96E', marginBottom: '1rem' }}>{c.eyebrow}</p>
+          <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.9rem,4vw,2.8rem)', color: '#FAFAF9', fontWeight: 300, lineHeight: 1.2 }}>{c.title}</h2>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.6rem' }}>
+          {c.steps.map(s => (
+            <div key={s.n} style={{ background: '#111214', border: '1px solid rgba(200,169,110,0.12)', padding: '1.8rem 1.5rem' }}>
+              <p style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '2.4rem', fontWeight: 300, color: '#C8A96E', lineHeight: 1, marginBottom: '1rem' }}>{s.n}</p>
+              <h3 style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.78rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#FAFAF9', marginBottom: '0.7rem', fontWeight: 500 }}>{s.t}</h3>
+              <p style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.88rem', fontWeight: 300, color: '#8A8B91', lineHeight: 1.7 }}>{s.d}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   )
 }

@@ -2,12 +2,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import GuideTldr from '@/components/public/GuideTldr'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 const SLUG = 'aliyah-immobilier-guide-complet'
 const CANONICAL = `${BASE_URL}/fr/guides/${SLUG}`
 
 export const metadata: Metadata = {
-  title: 'Aliyah et Immobilier : Guide Complet 2026 pour Acheter en Israël | Maison Israël',
+  title: 'Aliyah et Immobilier : Guide Complet 2026 pour Acheter en Israël',
   description: 'Tout ce qu\'il faut savoir pour acheter un bien immobilier en Israël avant ou après son Aliyah. Avantages fiscaux Oleh Hadash, calendrier, erreurs à éviter.',
   alternates: { canonical: CANONICAL },
   openGraph: {
@@ -25,8 +25,8 @@ const jsonLd = {
   '@type': 'Article',
   headline: 'Aliyah et Immobilier : Guide Complet 2026 pour Acheter en Israël',
   description: 'Tout ce qu\'il faut savoir pour acheter un bien immobilier en Israël avant ou après son Aliyah.',
-  author: { '@type': 'Organization', name: 'Maison Israël', url: BASE_URL },
-  publisher: { '@type': 'Organization', name: 'Maison Israël', logo: { '@type': 'ImageObject', url: `${BASE_URL}/logo.png` } },
+  author: { '@type': 'Person', '@id': `${BASE_URL}/#founder`, name: 'Réouven Benchetrit', alternateName: 'Reuven Benchetrit', url: `${BASE_URL}/fr/equipe` },
+  publisher: { '@type': 'Organization', name: 'Maison Israël', logo: { '@type': 'ImageObject', url: `${BASE_URL}/logo.svg` } },
   datePublished: '2026-05-17',
   dateModified: '2026-05-17',
   inLanguage: 'fr-FR',

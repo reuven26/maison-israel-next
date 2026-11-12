@@ -6,7 +6,7 @@
 
 export interface Quartier {
   slug: string                                  // /quartiers/[city]/[slug]
-  city: 'jerusalem' | 'tel-aviv' | 'herzliya-pituah' | 'caesarea'
+  city: 'jerusalem' | 'tel-aviv' | 'herzliya-pituah' | 'caesarea' | 'netanya'
   dbVille: string                               // matches biens.ville in Supabase
   dbQuartier?: string                           // matches biens.quartier (optional filter)
 
@@ -51,9 +51,9 @@ export const QUARTIERS: Quartier[] = [
       he: 'הכתובת הדיסקרטית ביותר של ירושלים',
     },
     seoTitle: {
-      fr: 'Talbieh, Jérusalem — Immobilier de Prestige | Maison Israël',
-      en: 'Talbiyeh, Jerusalem — Luxury Real Estate | Maison Israël',
-      he: 'טלביה, ירושלים — נדל"ן יוקרה | מייזון ישראל',
+      fr: 'Talbieh, Jérusalem — Immobilier de Prestige',
+      en: 'Talbiyeh, Jerusalem — Luxury Real Estate',
+      he: 'טלביה, ירושלים — נדל"ן יוקרה',
     },
     metaDescription: {
       fr: "Talbieh, le quartier diplomatique et intellectuel de Jérusalem. Villas mandataires en pierre, rues protégées, transactions discrètes. Inventaire premium.",
@@ -158,9 +158,9 @@ export const QUARTIERS: Quartier[] = [
       he: 'הלב האינטלקטואלי של ירושלים',
     },
     seoTitle: {
-      fr: 'Réhavia, Jérusalem — Appartements de Prestige | Maison Israël',
-      en: 'Rehavia, Jerusalem — Premium Apartments | Maison Israël',
-      he: 'רחביה, ירושלים — דירות יוקרה | מייזון ישראל',
+      fr: 'Réhavia, Jérusalem — Appartements de Prestige',
+      en: 'Rehavia, Jerusalem — Premium Apartments',
+      he: 'רחביה, ירושלים — דירות יוקרה',
     },
     metaDescription: {
       fr: 'Réhavia, le quartier verdoyant des juges, écrivains et diplomates de Jérusalem. Bauhaus restauré, rues bordées d\'arbres, centralité parfaite.',
@@ -237,9 +237,9 @@ export const QUARTIERS: Quartier[] = [
       he: 'השכונה הראשונה של תל אביב',
     },
     seoTitle: {
-      fr: 'Neve Tzedek, Tel Aviv — Maisons et Appartements | Maison Israël',
-      en: 'Neve Tzedek, Tel Aviv — Houses & Apartments | Maison Israël',
-      he: 'נווה צדק, תל אביב — בתים ודירות | מייזון ישראל',
+      fr: 'Neve Tzedek, Tel Aviv — Maisons et Appartements',
+      en: 'Neve Tzedek, Tel Aviv — Houses & Apartments',
+      he: 'נווה צדק, תל אביב — בתים ודירות',
     },
     metaDescription: {
       fr: 'Neve Tzedek — le quartier le plus distinctif de Tel Aviv. Maisons en pierre du XIXᵉ siècle, ruelles colorées, galeries d\'art. Inventaire curaté.',
@@ -316,9 +316,9 @@ export const QUARTIERS: Quartier[] = [
       he: 'הכתובת הקנונית של תל אביב',
     },
     seoTitle: {
-      fr: 'Boulevard Rothschild, Tel Aviv — Bauhaus de Prestige | Maison Israël',
-      en: 'Rothschild Boulevard, Tel Aviv — Premium Bauhaus | Maison Israël',
-      he: 'שדרות רוטשילד, תל אביב — באוהאוס יוקרה | מייזון ישראל',
+      fr: 'Boulevard Rothschild, Tel Aviv — Bauhaus de Prestige',
+      en: 'Rothschild Boulevard, Tel Aviv — Premium Bauhaus',
+      he: 'שדרות רוטשילד, תל אביב — באוהאוס יוקרה',
     },
     metaDescription: {
       fr: 'Boulevard Rothschild — le cœur Bauhaus de Tel Aviv. Immeubles classés UNESCO, restaurations haut de gamme, marché locatif profond.',
@@ -395,9 +395,9 @@ export const QUARTIERS: Quartier[] = [
       he: 'פסגת השוק הישראלי',
     },
     seoTitle: {
-      fr: 'Galei Tchelet, Herzliya Pituah — Villas de Front de Mer | Maison Israël',
-      en: 'Galei Tchelet, Herzliya Pituah — Seafront Villas | Maison Israël',
-      he: 'גלי תכלת, הרצליה פיתוח — וילות חוף ים | מייזון ישראל',
+      fr: 'Galei Tchelet, Herzliya Pituah — Villas de Front de Mer',
+      en: 'Galei Tchelet, Herzliya Pituah — Seafront Villas',
+      he: 'גלי תכלת, הרצליה פיתוח — וילות חוף ים',
     },
     metaDescription: {
       fr: 'Galei Tchelet — la rue la plus prestigieuse d\'Israël. Villas trophées avec accès direct à la mer, transactions exclusivement off-market.',
@@ -482,9 +482,9 @@ export const QUARTIERS: Quartier[] = [
       he: 'הלב הצרפתי-אנגלי של ירושלים',
     },
     seoTitle: {
-      fr: 'Colonie Allemande, Jérusalem — Maisons en pierre | Maison Israël',
-      en: 'German Colony, Jerusalem — Stone Houses & Apartments | Maison Israël',
-      he: 'המושבה הגרמנית, ירושלים — בתי אבן | מייזון ישראל',
+      fr: 'Colonie Allemande, Jérusalem — Maisons en pierre',
+      en: 'German Colony, Jerusalem — Stone Houses & Apartments',
+      he: 'המושבה הגרמנית, ירושלים — בתי אבן',
     },
     metaDescription: {
       fr: "La Colonie Allemande (Emek Refaim) — quartier templier du XIXᵉ siècle devenu le cœur francophone de Jérusalem. Maisons en pierre, cafés, communauté française établie.",
@@ -561,9 +561,9 @@ export const QUARTIERS: Quartier[] = [
       he: 'מחוז היוקרה היחיד בבנייה חדשה של ירושלים',
     },
     seoTitle: {
-      fr: 'Mamilla, Jérusalem — Résidences Waldorf-Astoria | Maison Israël',
-      en: 'Mamilla, Jerusalem — Waldorf-Astoria Residences | Maison Israël',
-      he: 'ממילא, ירושלים — מגדלי ולדורף אסטוריה | מייזון ישראל',
+      fr: 'Mamilla, Jérusalem — Résidences Waldorf-Astoria',
+      en: 'Mamilla, Jerusalem — Waldorf-Astoria Residences',
+      he: 'ממילא, ירושלים — מגדלי ולדורף אסטוריה',
     },
     metaDescription: {
       fr: 'Mamilla — adjacent à la Vieille Ville, le seul district de luxe contemporain de Jérusalem. Résidences Waldorf-Astoria, conciergerie, accès direct à la porte de Jaffa.',
@@ -640,8 +640,8 @@ export const QUARTIERS: Quartier[] = [
       he: 'שכונת האספנים',
     },
     seoTitle: {
-      fr: 'Yemin Moshe, Jérusalem — Maisons d\'artistes vue Vieille Ville | Maison Israël',
-      en: 'Yemin Moshe, Jerusalem — Artist Houses, Old City Views | Maison Israël',
+      fr: 'Yemin Moshe, Jérusalem — Maisons d\'artistes vue Vieille Ville',
+      en: 'Yemin Moshe, Jerusalem — Artist Houses, Old City Views',
       he: 'ימין משה, ירושלים — בתי אמנים עם נוף לעיר העתיקה',
     },
     metaDescription: {
@@ -711,9 +711,9 @@ export const QUARTIERS: Quartier[] = [
       he: 'הערך הפרמיום הטוב ביותר של ירושלים',
     },
     seoTitle: {
-      fr: 'Baka, Jérusalem — Maisons avec jardin et appartements | Maison Israël',
-      en: 'Baka, Jerusalem — Houses with Gardens & Apartments | Maison Israël',
-      he: 'בקעה, ירושלים — בתים עם גינות ודירות | מייזון ישראל',
+      fr: 'Baka, Jérusalem — Maisons avec jardin et appartements',
+      en: 'Baka, Jerusalem — Houses with Gardens & Apartments',
+      he: 'בקעה, ירושלים — בתים עם גינות ודירות',
     },
     metaDescription: {
       fr: "Baka — quartier verdoyant au sud avec maisons templières restaurées, jardins et une forte communauté olim anglophone. Meilleure valeur premium de Jérusalem.",
@@ -774,8 +774,8 @@ export const QUARTIERS: Quartier[] = [
       he: 'הכתובת העולה של ירושלים',
     },
     seoTitle: {
-      fr: 'Vieux Katamon, Jérusalem — Appartements et Maisons | Maison Israël',
-      en: 'Old Katamon, Jerusalem — Apartments and Houses | Maison Israël',
+      fr: 'Vieux Katamon, Jérusalem — Appartements et Maisons',
+      en: 'Old Katamon, Jerusalem — Apartments and Houses',
       he: 'קטמון הישנה, ירושלים — דירות ובתים',
     },
     metaDescription: {
@@ -837,8 +837,8 @@ export const QUARTIERS: Quartier[] = [
       he: 'תל אביב המגורית של משפחות',
     },
     seoTitle: {
-      fr: 'Nord Ancien, Tel Aviv — Appartements familiaux de prestige | Maison Israël',
-      en: 'Old North, Tel Aviv — Family Premium Apartments | Maison Israël',
+      fr: 'Nord Ancien, Tel Aviv — Appartements familiaux de prestige',
+      en: 'Old North, Tel Aviv — Family Premium Apartments',
       he: 'הצפון הישן, תל אביב — דירות יוקרה למשפחות',
     },
     metaDescription: {
@@ -900,8 +900,8 @@ export const QUARTIERS: Quartier[] = [
       he: 'היוקרה העכשווית של תל אביב',
     },
     seoTitle: {
-      fr: 'Sarona Park Tzameret, Tel Aviv — Tours W, Akirov, Meier | Maison Israël',
-      en: 'Sarona Park Tzameret, Tel Aviv — W, Akirov, Meier Towers | Maison Israël',
+      fr: 'Sarona Park Tzameret, Tel Aviv — Tours W, Akirov, Meier',
+      en: 'Sarona Park Tzameret, Tel Aviv — W, Akirov, Meier Towers',
       he: 'שרונה פארק צמרת, תל אביב — מגדלי W, אקירוב, מאייר',
     },
     metaDescription: {
@@ -963,8 +963,8 @@ export const QUARTIERS: Quartier[] = [
       he: 'מורשת ערבית משוחזרת',
     },
     seoTitle: {
-      fr: 'Vieille Jaffa, Tel Aviv — Maisons en pierre vue mer | Maison Israël',
-      en: 'Old Jaffa, Tel Aviv — Stone Houses with Sea Views | Maison Israël',
+      fr: 'Vieille Jaffa, Tel Aviv — Maisons en pierre vue mer',
+      en: 'Old Jaffa, Tel Aviv — Stone Houses with Sea Views',
       he: 'יפו העתיקה, תל אביב — בתי אבן עם נוף לים',
     },
     metaDescription: {
@@ -1026,8 +1026,8 @@ export const QUARTIERS: Quartier[] = [
       he: 'הפרבר המשפחתי של תל אביב',
     },
     seoTitle: {
-      fr: 'Ramat Aviv Gimel, Tel Aviv — Appartements familiaux | Maison Israël',
-      en: 'Ramat Aviv Gimel, Tel Aviv — Family Apartments | Maison Israël',
+      fr: 'Ramat Aviv Gimel, Tel Aviv — Appartements familiaux',
+      en: 'Ramat Aviv Gimel, Tel Aviv — Family Apartments',
       he: 'רמת אביב ג׳, תל אביב — דירות משפחתיות',
     },
     metaDescription: {
@@ -1088,8 +1088,8 @@ export const QUARTIERS: Quartier[] = [
       en: 'Sea-view ultra-prime',
       he: 'אולטרה-פרמיום עם נוף לים' },
     seoTitle: {
-      fr: 'Nof Yam, Herzliya Pituah — Villas vue mer | Maison Israël',
-      en: 'Nof Yam, Herzliya Pituah — Sea View Villas | Maison Israël',
+      fr: 'Nof Yam, Herzliya Pituah — Villas vue mer',
+      en: 'Nof Yam, Herzliya Pituah — Sea View Villas',
       he: 'נוף ים, הרצליה פיתוח — וילות עם נוף לים',
     },
     metaDescription: {
@@ -1151,8 +1151,8 @@ export const QUARTIERS: Quartier[] = [
       he: 'הגרעין המגורי של הרצליה פיתוח',
     },
     seoTitle: {
-      fr: 'HaShunit, Herzliya Pituah — Villas haut de gamme | Maison Israël',
-      en: 'HaShunit, Herzliya Pituah — High-End Villas | Maison Israël',
+      fr: 'HaShunit, Herzliya Pituah — Villas haut de gamme',
+      en: 'HaShunit, Herzliya Pituah — High-End Villas',
       he: 'השונית, הרצליה פיתוח — וילות יוקרה',
     },
     metaDescription: {
@@ -1214,8 +1214,8 @@ export const QUARTIERS: Quartier[] = [
       he: 'גרעין היוקרה של קיסריה',
     },
     seoTitle: {
-      fr: 'Césarée Aleph — Villas avec front de golf et de mer | Maison Israël',
-      en: 'Caesarea Aleph — Golf and Sea Front Villas | Maison Israël',
+      fr: 'Césarée Aleph — Villas avec front de golf et de mer',
+      en: 'Caesarea Aleph — Golf and Sea Front Villas',
       he: 'קיסריה א׳ — וילות עם חזית גולף וים',
     },
     metaDescription: {
@@ -1293,8 +1293,8 @@ export const QUARTIERS: Quartier[] = [
       he: 'אדריכלות עכשווית על המסלול',
     },
     seoTitle: {
-      fr: 'Quartier du Golf, Césarée — Villas modernes sur le parcours | Maison Israël',
-      en: 'Golf Quarter, Caesarea — Modern Villas on the Course | Maison Israël',
+      fr: 'Quartier du Golf, Césarée — Villas modernes sur le parcours',
+      en: 'Golf Quarter, Caesarea — Modern Villas on the Course',
       he: 'רובע הגולף, קיסריה — וילות מודרניות',
     },
     metaDescription: {
@@ -1343,6 +1343,713 @@ export const QUARTIERS: Quartier[] = [
     relatedArticles: ['herzliya-pituah-caesarea-ultra-prime'],
   },
 
+
+  /* ────────────────────────── KIKAR HAMEDINA (Tel Aviv) */
+  {
+    slug: 'kikar-hamedina',
+    city: 'tel-aviv',
+    dbVille: 'Tel Aviv',
+    dbQuartier: 'Kikar HaMedina',
+    names: { fr: 'Kikar HaMedina', en: 'Kikar HaMedina', he: 'כיכר המדינה' },
+    tagline: {
+      fr: 'Le cercle le plus prestigieux de Tel Aviv',
+      en: "Tel Aviv's most prestigious circle",
+      he: 'המעגל היוקרתי ביותר של תל אביב',
+    },
+    seoTitle: {
+      fr: 'Kikar HaMedina, Tel Aviv — Appartements de Prestige',
+      en: 'Kikar HaMedina, Tel Aviv — Prestige Apartments',
+      he: 'כיכר המדינה, תל אביב — דירות יוקרה',
+    },
+    metaDescription: {
+      fr: "Kikar HaMedina — le triangle d'or de la mode et de l'immobilier de prestige à Tel Aviv. Boutiques de luxe, nouvelles tours résidentielles. Inventaire curaté.",
+      en: "Kikar HaMedina — Tel Aviv's golden triangle of fashion and prestige real estate. Luxury boutiques, new residential towers. Curated inventory.",
+      he: 'כיכר המדינה — משולש הזהב של האופנה והנדל"ן היוקרתי בתל אביב.',
+    },
+    h1: {
+      fr: "Kikar HaMedina — Le triangle d'or de Tel Aviv",
+      en: "Kikar HaMedina — Tel Aviv's Golden Triangle",
+      he: 'כיכר המדינה — משולש הזהב של תל אביב',
+    },
+    hero: 'https://images.unsplash.com/photo-1565530995-9bf3a5c40bcd?w=1600&auto=format&fit=crop&q=80',
+    intro: {
+      fr: "Conçue dans les années 1950 comme une vaste place circulaire, Kikar HaMedina est devenue l'adresse la plus prestigieuse du nord de Tel Aviv. Ses arcs abritent les maisons Dior, Gucci, Saint Laurent et Chanel — et, au-dessus, certains des appartements les plus recherchés de la ville.",
+      en: 'Conceived in the 1950s as a grand circular plaza, Kikar HaMedina has become the most prestigious address in north Tel Aviv. Its arcs house Dior, Gucci, Saint Laurent and Chanel — and above them, some of the most sought-after apartments in the city.',
+      he: 'כיכר המדינה, שתוכננה בשנות ה-50 ככיכר עגולה מונומנטלית, הפכה לכתובת היוקרתית ביותר בצפון תל אביב.',
+    },
+    sections: [
+      {
+        title: { fr: "Le triangle d'or de la mode", en: 'The Golden Triangle of Fashion', he: 'משולש הזהב של האופנה' },
+        body: {
+          fr: "C'est la seule véritable adresse du luxe en Israël : les plus grandes maisons internationales y sont rassemblées autour d'un même cercle. Habiter Kikar HaMedina, c'est vivre au-dessus de cette concentration unique de prestige, à quelques minutes du parc HaYarkon et des boulevards du nord.",
+          en: 'This is the only true luxury address in Israel: the leading international houses are gathered around a single circle. To live on Kikar HaMedina is to live above that unique concentration of prestige, minutes from HaYarkon Park and the northern boulevards.',
+          he: 'זוהי כתובת היוקרה האמיתית היחידה בישראל — בתי האופנה הבינלאומיים המובילים מרוכזים סביב מעגל אחד.',
+        },
+      },
+      {
+        title: { fr: 'La grande transformation', en: 'The Great Transformation', he: 'הטרנספורמציה הגדולה' },
+        body: {
+          fr: "Le réaménagement attendu de la parcelle centrale — jardins paysagers et tours résidentielles de très haut standing — repositionne le quartier pour la prochaine génération de propriétaires. L'offre y restera structurellement rare.",
+          en: 'The long-awaited redevelopment of the central plot — landscaped gardens and ultra-high-end residential towers — repositions the quarter for the next generation of owners. Supply here will remain structurally scarce.',
+          he: 'הפיתוח המחודש של המגרש המרכזי — גנים ומגדלי מגורים יוקרתיים — ממצב מחדש את השכונה לדור הבא של הבעלים.',
+        },
+      },
+    ],
+    facts: {
+      priceRange: '90,000–150,000 ₪/m²',
+      typicalSize: { fr: '120–400 m²', en: '120–400 m²', he: '120–400 מ״ר' },
+      architecture: { fr: 'Immeubles des années 1960, nouvelles tours', en: '1960s buildings, new towers', he: 'בנייני שנות ה-60, מגדלים חדשים' },
+      buyerProfile: { fr: 'Fortunes établies, acheteurs internationaux', en: 'Established wealth, international buyers', he: 'הון מבוסס, קונים בינלאומיים' },
+    },
+    adjacent: ['old-north', 'rothschild', 'bavli'],
+    faq: [
+      {
+        q: { fr: 'Pourquoi Kikar HaMedina est-il si prisé ?', en: 'Why is Kikar HaMedina so sought-after?', he: 'מדוע כיכר המדינה כל כך מבוקשת?' },
+        a: {
+          fr: "Une adresse unique en Israël combinant prestige de la mode, centralité dans le nord de Tel Aviv et offre très limitée. La rareté y soutient durablement les valeurs.",
+          en: 'A one-of-a-kind address in Israel combining fashion prestige, centrality in north Tel Aviv and very limited supply. Scarcity supports values over the long term.',
+          he: 'כתובת ייחודית בישראל המשלבת יוקרה, מרכזיות בצפון תל אביב והיצע מוגבל מאוד.',
+        },
+      },
+      {
+        q: { fr: 'Le réaménagement va-t-il valoriser le quartier ?', en: 'Will the redevelopment add value?', he: 'האם הפיתוח המחודש ישביח את השכונה?' },
+        a: {
+          fr: "Les nouvelles tours et les jardins devraient renforcer le positionnement premium et attirer une demande internationale supplémentaire.",
+          en: 'The new towers and gardens are expected to reinforce the premium positioning and attract additional international demand.',
+          he: 'המגדלים החדשים והגנים צפויים לחזק את המיצוב הפרימיום ולמשוך ביקוש בינלאומי נוסף.',
+        },
+      },
+    ],
+    relatedArticles: ['meilleurs-quartiers-luxe-tel-aviv'],
+  },
+
+  /* ────────────────────────── BAVLI (Tel Aviv) */
+  {
+    slug: 'bavli',
+    city: 'tel-aviv',
+    dbVille: 'Tel Aviv',
+    dbQuartier: 'Bavli',
+    names: { fr: 'Bavli', en: 'Bavli', he: 'בבלי' },
+    tagline: {
+      fr: 'Le prestige discret au bord du Yarkon',
+      en: 'Quiet prestige by the Yarkon',
+      he: 'יוקרה שקטה לצד הירקון',
+    },
+    seoTitle: {
+      fr: 'Bavli, Tel Aviv — Tours de Standing au Bord du Yarkon',
+      en: 'Bavli, Tel Aviv — Riverside Luxury Towers',
+      he: 'בבלי, תל אביב — מגדלי יוקרה לצד הירקון',
+    },
+    metaDescription: {
+      fr: 'Bavli — enclave résidentielle de tours de standing entre le parc HaYarkon et Ibn Gvirol. Calme, verdure et prestige discret. Inventaire curaté.',
+      en: 'Bavli — a residential enclave of luxury towers between HaYarkon Park and Ibn Gvirol. Quiet, green and discreetly prestigious. Curated inventory.',
+      he: 'בבלי — מובלעת מגורים של מגדלי יוקרה בין פארק הירקון לאבן גבירול.',
+    },
+    h1: {
+      fr: 'Bavli — Le prestige discret au bord du parc',
+      en: 'Bavli — Quiet Prestige by the Park',
+      he: 'בבלי — יוקרה שקטה לצד הפארק',
+    },
+    hero: 'https://images.unsplash.com/photo-1559099262-aef34a78f4cf?w=1600&auto=format&fit=crop&q=80',
+    intro: {
+      fr: "Niché entre le parc HaYarkon et le boulevard Ibn Gvirol, Bavli est une enclave verte et calme prisée des familles aisées. Ses tours résidentielles offrent espace, lumière et vues sur le fleuve — à dix minutes du cœur de Tel Aviv, mais à l'écart de son agitation.",
+      en: 'Nestled between HaYarkon Park and Ibn Gvirol Boulevard, Bavli is a green, quiet enclave favoured by affluent families. Its residential towers offer space, light and river views — ten minutes from the heart of Tel Aviv, yet set apart from its bustle.',
+      he: 'בבלי, השוכנת בין פארק הירקון לשדרות אבן גבירול, היא מובלעת ירוקה ושקטה המועדפת על משפחות מבוססות.',
+    },
+    sections: [
+      {
+        title: { fr: 'Vivre au bord du parc', en: 'Living by the Park', he: 'לגור לצד הפארק' },
+        body: {
+          fr: "Le grand parc HaYarkon est le jardin du quartier : courir, faire du vélo, naviguer sur le fleuve. Cette proximité immédiate avec la nature, rare au centre de Tel Aviv, est ce qui définit la valeur de Bavli.",
+          en: "The large HaYarkon Park is the neighbourhood's garden: running, cycling, boating on the river. This immediate proximity to nature, rare in central Tel Aviv, is what defines Bavli's value.",
+          he: 'פארק הירקון הגדול הוא הגן של השכונה — ריצה, אופניים ושיט על הנהר. קרבה נדירה לטבע במרכז תל אביב.',
+        },
+      },
+      {
+        title: { fr: 'Un micro-marché de tours', en: 'A Micro-Market of Towers', he: 'מיקרו-שוק של מגדלים' },
+        body: {
+          fr: "Bavli compte un nombre restreint de tours de standing, ce qui en fait un marché tenu où les grandes surfaces familiales se transmettent souvent de gré à gré. Un actif de détention pour familles installées.",
+          en: 'Bavli has a limited number of luxury towers, making it a tightly held market where large family units often change hands privately. A holding asset for established families.',
+          he: 'בבבלי מספר מצומצם של מגדלי יוקרה, מה שהופך אותה לשוק מוחזק שבו דירות משפחתיות גדולות עוברות לרוב בעסקאות פרטיות.',
+        },
+      },
+    ],
+    facts: {
+      priceRange: '60,000–95,000 ₪/m²',
+      typicalSize: { fr: '120–300 m²', en: '120–300 m²', he: '120–300 מ״ר' },
+      architecture: { fr: 'Tours résidentielles modernes', en: 'Modern residential towers', he: 'מגדלי מגורים מודרניים' },
+      buyerProfile: { fr: 'Familles aisées, professionnels', en: 'Affluent families, professionals', he: 'משפחות מבוססות, אנשי מקצוע' },
+    },
+    adjacent: ['old-north', 'kikar-hamedina'],
+    faq: [
+      {
+        q: { fr: 'À qui s\'adresse Bavli ?', en: 'Who is Bavli for?', he: 'למי מתאימה בבלי?' },
+        a: {
+          fr: "Aux familles qui veulent de grandes surfaces, du calme et la nature à leur porte, tout en restant au centre de Tel Aviv.",
+          en: 'Families who want large units, quiet and nature at their doorstep, while staying in central Tel Aviv.',
+          he: 'משפחות שרוצות דירות גדולות, שקט וטבע צמוד, תוך שהייה במרכז תל אביב.',
+        },
+      },
+      {
+        q: { fr: 'Les biens sont-ils faciles à trouver ?', en: 'Are properties easy to find?', he: 'האם קל למצוא נכסים?' },
+        a: {
+          fr: "Non — l'offre est limitée et une partie des transactions se fait hors marché. Un accompagnement par introduction est souvent nécessaire.",
+          en: 'No — supply is limited and part of the transactions happen off-market. Access by introduction is often necessary.',
+          he: 'לא — ההיצע מוגבל וחלק מהעסקאות מתבצעות מחוץ לשוק.',
+        },
+      },
+    ],
+    relatedArticles: ['meilleurs-quartiers-luxe-tel-aviv'],
+  },
+
+  /* ────────────────────────── PORT DE TEL AVIV & HATZUK (Tel Aviv) */
+  {
+    slug: 'tel-aviv-port',
+    city: 'tel-aviv',
+    dbVille: 'Tel Aviv',
+    names: { fr: 'Port de Tel Aviv & Hatzuk', en: 'Tel Aviv Port & Hatzuk', he: 'נמל תל אביב והצוק' },
+    tagline: {
+      fr: 'Le front de mer nord de Tel Aviv',
+      en: "Tel Aviv's northern seafront",
+      he: 'חזית הים הצפונית של תל אביב',
+    },
+    seoTitle: {
+      fr: 'Port de Tel Aviv & Hatzuk — Immobilier Bord de Mer',
+      en: 'Tel Aviv Port & Hatzuk — Seafront Real Estate',
+      he: 'נמל תל אביב והצוק — נדל"ן חוף ים',
+    },
+    metaDescription: {
+      fr: 'Le port de Tel Aviv et la plage de Hatzuk — vivre face à la mer au nord de la ville. Résidences Mandarin Oriental, promenade, lifestyle balnéaire. Inventaire curaté.',
+      en: 'Tel Aviv Port and Hatzuk Beach — living facing the sea in the north of the city. Mandarin Oriental residences, boardwalk, beachfront lifestyle. Curated inventory.',
+      he: 'נמל תל אביב וחוף הצוק — מגורים מול הים בצפון העיר. רזידנס מנדרין אוריינטל, טיילת ואורח חיים חופי.',
+    },
+    h1: {
+      fr: 'Port de Tel Aviv & Hatzuk — Vivre face à la mer',
+      en: 'Tel Aviv Port & Hatzuk — Living Facing the Sea',
+      he: 'נמל תל אביב והצוק — מגורים מול הים',
+    },
+    hero: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1600&auto=format&fit=crop&q=80',
+    intro: {
+      fr: "Du port réhabilité (le Namal) à la plage de Hatzuk, le front de mer nord de Tel Aviv offre ce qui est le plus rare en ville : vivre directement face à la Méditerranée. Aux extrémités nord, les résidences Mandarin Oriental incarnent ce bord de mer hôtelier.",
+      en: 'From the regenerated port (the Namal) to Hatzuk Beach, the northern seafront of Tel Aviv offers what is rarest in the city: living directly facing the Mediterranean. At the northern edge, the Mandarin Oriental residences embody this hotel-grade beachfront.',
+      he: 'מהנמל המחודש ועד חוף הצוק, חזית הים הצפונית של תל אביב מציעה את הנדיר ביותר בעיר — מגורים ישירות מול הים התיכון.',
+    },
+    sections: [
+      {
+        title: { fr: 'Le lifestyle balnéaire', en: 'The Beachfront Lifestyle', he: 'אורח החיים החופי' },
+        body: {
+          fr: "Promenade en bois, cafés face à l'eau, marinas et plages : le nord du front de mer combine l'énergie de la ville et la respiration de la côte. C'est une adresse de résidence principale autant que de pied-à-terre saisonnier.",
+          en: 'Wooden boardwalk, waterfront cafés, marinas and beaches: the northern seafront combines the energy of the city with the breathing room of the coast. It is as much a primary residence address as a seasonal pied-à-terre.',
+          he: 'טיילת עץ, בתי קפה מול המים, מרינות וחופים — חזית הים הצפונית משלבת את אנרגיית העיר עם מרחב החוף.',
+        },
+      },
+      {
+        title: { fr: 'Résidences de bord de mer', en: 'Beachfront Residences', he: 'רזידנסים על חוף הים' },
+        body: {
+          fr: "Les programmes en première ligne — services hôteliers, sécurité, vues frontales sur la mer — s'adressent à une clientèle internationale qui recherche le confort d'un hôtel cinq étoiles à domicile. L'offre face à l'eau est, par nature, strictement limitée.",
+          en: 'Front-line developments — hotel services, security, frontal sea views — cater to an international clientele seeking five-star hotel comfort at home. Inventory facing the water is, by nature, strictly limited.',
+          he: 'הפרויקטים בקו הראשון — שירותי מלונאות, אבטחה ונוף ים חזיתי — פונים ללקוחות בינלאומיים המחפשים נוחות של מלון חמישה כוכבים בבית.',
+        },
+      },
+    ],
+    facts: {
+      priceRange: '70,000–130,000 ₪/m²',
+      typicalSize: { fr: '90–350 m²', en: '90–350 m²', he: '90–350 מ״ר' },
+      architecture: { fr: 'Résidences bord de mer, services hôteliers', en: 'Beachfront residences, hotel services', he: 'רזידנסים חופיים, שירותי מלונאות' },
+      buyerProfile: { fr: 'Acheteurs internationaux, pied-à-terre', en: 'International buyers, pied-à-terre', he: 'קונים בינלאומיים, פיד-א-טר' },
+    },
+    adjacent: ['old-north', 'ramat-aviv'],
+    faq: [
+      {
+        q: { fr: 'Peut-on vraiment vivre face à la mer à Tel Aviv ?', en: 'Can you really live facing the sea in Tel Aviv?', he: 'אפשר באמת לגור מול הים בתל אביב?' },
+        a: {
+          fr: "Oui, mais l'offre en première ligne est très rare et concentrée au nord (port, Hatzuk) et sur quelques tours du front de mer. La prime de bord de mer est significative.",
+          en: 'Yes, but front-line supply is very rare and concentrated in the north (port, Hatzuk) and a few seafront towers. The beachfront premium is significant.',
+          he: 'כן, אך ההיצע בקו הראשון נדיר מאוד ומרוכז בצפון ובמספר מגדלים על חוף הים.',
+        },
+      },
+      {
+        q: { fr: 'Est-ce un bon pied-à-terre saisonnier ?', en: 'Is it a good seasonal pied-à-terre?', he: 'האם זה פיד-א-טר עונתי טוב?' },
+        a: {
+          fr: "Excellent : services hôteliers, sécurité et formule « lock-and-leave » conviennent parfaitement aux propriétaires internationaux présents une partie de l'année.",
+          en: 'Excellent: hotel services, security and a lock-and-leave format suit international owners present part of the year perfectly.',
+          he: 'מצוין — שירותי מלונאות, אבטחה ופורמט "נעל וצא" מתאימים לבעלים בינלאומיים.',
+        },
+      },
+    ],
+    relatedArticles: ['meilleurs-quartiers-luxe-tel-aviv', 'tel-aviv-high-rise-condos-definitive-guide'],
+  },
+
+  /* ────────────────────────── RESHEF (Herzliya Pituah) */
+  {
+    slug: 'reshef',
+    city: 'herzliya-pituah',
+    dbVille: 'Herzliya Pituah',
+    names: { fr: 'Reshef', en: 'Reshef', he: 'רשף' },
+    tagline: {
+      fr: "Les rues de villas les plus prisées d'Herzliya Pituah",
+      en: "Herzliya Pituah's most coveted villa streets",
+      he: 'רחובות הווילות המבוקשים ביותר בהרצליה פיתוח',
+    },
+    seoTitle: {
+      fr: 'Reshef, Herzliya Pituah — Villas de Prestige',
+      en: 'Reshef, Herzliya Pituah — Prestige Villas',
+      he: 'רשף, הרצליה פיתוח — וילות יוקרה',
+    },
+    metaDescription: {
+      fr: "Reshef — les rues de villas les plus recherchées d'Herzliya Pituah, à quelques pas de la plage et de la marina. Grands terrains, discrétion absolue. Inventaire curaté.",
+      en: "Reshef — Herzliya Pituah's most sought-after villa streets, steps from the beach and the marina. Large plots, absolute discretion. Curated inventory.",
+      he: 'רשף — רחובות הווילות המבוקשים ביותר בהרצליה פיתוח, במרחק צעדים מהחוף והמרינה.',
+    },
+    h1: {
+      fr: 'Reshef — Les villas premium au bord de la mer',
+      en: 'Reshef — Premium Villas by the Sea',
+      he: 'רשף — וילות פרימיום לצד הים',
+    },
+    hero: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&auto=format&fit=crop&q=80',
+    intro: {
+      fr: "Reshef réunit certaines des rues de villas les plus prisées d'Israël, à quelques minutes à pied de la plage et de la marina. Grands terrains, hauts murs de jardin, et la discrétion absolue qui définit Herzliya Pituah.",
+      en: "Reshef gathers some of the most coveted villa streets in Israel, a few minutes' walk from the beach and the marina. Large plots, high garden walls, and the absolute discretion that defines Herzliya Pituah.",
+      he: 'רשף מאגדת כמה מרחובות הווילות המבוקשים ביותר בישראל, במרחק הליכה קצר מהחוף והמרינה.',
+    },
+    sections: [
+      {
+        title: { fr: 'Villas de premier rang', en: 'First-Rank Villas', he: 'וילות בשורה הראשונה' },
+        body: {
+          fr: "Les propriétés ici sont des villas individuelles sur de grands terrains, souvent avec piscine, pool-house et sécurité. La proximité immédiate de la mer place ces rues parmi les adresses les plus chères du pays.",
+          en: 'Properties here are detached villas on large plots, often with pool, pool-house and security. The immediate proximity to the sea places these streets among the most expensive addresses in the country.',
+          he: 'הנכסים כאן הם וילות פרטיות על מגרשים גדולים, לרוב עם בריכה, פול-האוס ואבטחה.',
+        },
+      },
+      {
+        title: { fr: 'Plage et marina à pied', en: 'Beach and Marina on Foot', he: 'חוף ומרינה במרחק הליכה' },
+        body: {
+          fr: "Ce qui distingue Reshef d'autres secteurs de villas, c'est de pouvoir rejoindre la plage et la marina à pied. Cette combinaison — villa privée et front de mer accessible — est extrêmement rare en Israël.",
+          en: 'What sets Reshef apart from other villa areas is being able to reach the beach and marina on foot. This combination — private villa and accessible seafront — is extremely rare in Israel.',
+          he: 'מה שמייחד את רשף הוא היכולת להגיע לחוף ולמרינה ברגל — שילוב נדיר ביותר בישראל.',
+        },
+      },
+    ],
+    facts: {
+      priceRange: 'Villas : 25–120 M ₪',
+      typicalSize: { fr: 'Terrains 400–1 200 m²', en: 'Plots 400–1,200 m²', he: 'מגרשים 400–1,200 מ״ר' },
+      architecture: { fr: 'Villas contemporaines, grands terrains', en: 'Contemporary villas, large plots', he: 'וילות עכשוויות, מגרשים גדולים' },
+      buyerProfile: { fr: 'Familles internationales, discrétion', en: 'International families, discretion', he: 'משפחות בינלאומיות, דיסקרטיות' },
+    },
+    adjacent: ['galei-tchelet', 'nof-yam', 'marina'],
+    faq: [
+      {
+        q: { fr: 'Reshef est-il le secteur le plus cher d\'Herzliya Pituah ?', en: 'Is Reshef the most expensive area in Herzliya Pituah?', he: 'האם רשף הוא האזור היקר ביותר בהרצליה פיתוח?' },
+        a: {
+          fr: "Reshef figure parmi les rues les plus chères, aux côtés de Galei Tchelet et Nof Yam, en raison de la proximité de la mer et de la rareté des grands terrains.",
+          en: 'Reshef is among the most expensive streets, alongside Galei Tchelet and Nof Yam, due to sea proximity and the scarcity of large plots.',
+          he: 'רשף נמנה עם הרחובות היקרים ביותר, לצד גלי תכלת ונוף ים.',
+        },
+      },
+      {
+        q: { fr: 'Comment accède-t-on aux meilleures villas ?', en: 'How do you access the best villas?', he: 'איך מגיעים לווילות הטובות ביותר?' },
+        a: {
+          fr: "Une grande partie des transactions premium se fait hors marché, par introduction directe. C'est précisément le cœur de notre activité à Herzliya Pituah.",
+          en: 'A large share of premium transactions happen off-market, by direct introduction. This is precisely the core of our work in Herzliya Pituah.',
+          he: 'חלק נכבד מהעסקאות הפרמיום מתבצע מחוץ לשוק, בהיכרות ישירה.',
+        },
+      },
+    ],
+    relatedArticles: ['herzliya-pituah-caesarea-ultra-prime', 'tel-aviv-vs-herzliya-pituah-investir-5-millions'],
+  },
+
+  /* ────────────────────────── MARINA (Herzliya Pituah) */
+  {
+    slug: 'marina',
+    city: 'herzliya-pituah',
+    dbVille: 'Herzliya Pituah',
+    names: { fr: "Marina d'Herzliya", en: 'Herzliya Marina', he: 'מרינה הרצליה' },
+    tagline: {
+      fr: 'Lifestyle yachting et appartements de standing',
+      en: 'Yachting lifestyle and luxury apartments',
+      he: 'אורח חיים ימי ודירות יוקרה',
+    },
+    seoTitle: {
+      fr: "Marina d'Herzliya — Appartements Face aux Yachts",
+      en: 'Herzliya Marina — Apartments Facing the Yachts',
+      he: 'מרינה הרצליה — דירות מול המרינה',
+    },
+    metaDescription: {
+      fr: "La marina d'Herzliya — la seule véritable adresse « yachting » d'Israël. Appartements de standing face aux bateaux, hôtels, restaurants. Idéal pied-à-terre. Inventaire curaté.",
+      en: "Herzliya Marina — Israel's only true yachting address. Luxury apartments facing the boats, hotels, restaurants. Ideal pied-à-terre. Curated inventory.",
+      he: 'מרינה הרצליה — כתובת ה"יאכטינג" האמיתית היחידה בישראל. דירות יוקרה מול הסירות, מלונות ומסעדות.',
+    },
+    h1: {
+      fr: "Marina d'Herzliya — Vivre face aux yachts",
+      en: 'Herzliya Marina — Living Facing the Yachts',
+      he: 'מרינה הרצליה — לגור מול היאכטות',
+    },
+    hero: 'https://images.unsplash.com/photo-1582610116397-edb318620f90?w=1600&auto=format&fit=crop&q=80',
+    intro: {
+      fr: "La marina d'Herzliya est la seule véritable adresse de vie « front de marina » en Israël : des appartements de standing donnant directement sur les yachts, des hôtels cinq étoiles, des restaurants et des plages. C'est le pied-à-terre balnéaire par excellence.",
+      en: "Herzliya Marina is the only true marina-front living address in Israel: luxury apartments looking directly onto the yachts, five-star hotels, restaurants and beaches. It is the quintessential seaside pied-à-terre.",
+      he: 'מרינה הרצליה היא כתובת המגורים היחידה בישראל מול מרינה — דירות יוקרה הפונות ישירות אל היאכטות, מלונות ומסעדות.',
+    },
+    sections: [
+      {
+        title: { fr: 'Vivre face aux yachts', en: 'Living Facing the Yachts', he: 'לגור מול היאכטות' },
+        body: {
+          fr: "L'atmosphère est celle d'une marina méditerranéenne : promenade, voiliers, terrasses face à l'eau. Les appartements de premier rang offrent des vues frontales et des prestations hôtelières rarement réunies ailleurs dans le pays.",
+          en: 'The atmosphere is that of a Mediterranean marina: promenade, sailboats, waterfront terraces. Front-rank apartments offer frontal views and hotel-grade services rarely found together elsewhere in the country.',
+          he: 'האווירה היא של מרינה ים-תיכונית — טיילת, מפרשיות ומרפסות מול המים.',
+        },
+      },
+      {
+        title: { fr: 'Le pied-à-terre « lock-and-leave »', en: 'The Lock-and-Leave Pied-à-Terre', he: 'הפיד-א-טר "נעל וצא"' },
+        body: {
+          fr: "Pour une clientèle internationale présente quelques mois par an, la marina offre la formule idéale : sécurité, services, et un appartement que l'on ferme et que l'on quitte sans souci. La gestion locative y est également simple.",
+          en: 'For an international clientele present a few months a year, the marina offers the ideal format: security, services, and an apartment you can lock and leave with peace of mind. Rental management is also straightforward.',
+          he: 'ללקוחות בינלאומיים השוהים מספר חודשים בשנה, המרינה מציעה את הפורמט האידיאלי — אבטחה, שירותים ודירה שנועלים ועוזבים.',
+        },
+      },
+    ],
+    facts: {
+      priceRange: '50,000–90,000 ₪/m²',
+      typicalSize: { fr: '80–250 m²', en: '80–250 m²', he: '80–250 מ״ר' },
+      architecture: { fr: 'Appartements de standing, front de marina', en: 'Luxury apartments, marina-front', he: 'דירות יוקרה, חזית מרינה' },
+      buyerProfile: { fr: 'Pied-à-terre, lifestyle international', en: 'Pied-à-terre, international lifestyle', he: 'פיד-א-טר, אורח חיים בינלאומי' },
+    },
+    adjacent: ['nof-yam', 'reshef'],
+    faq: [
+      {
+        q: { fr: 'La marina convient-elle à une résidence principale ?', en: 'Is the marina suitable as a primary residence?', he: 'האם המרינה מתאימה למגורי קבע?' },
+        a: {
+          fr: "Oui pour ceux qui aiment l'animation et la vie face à l'eau ; beaucoup l'utilisent toutefois comme résidence secondaire de prestige.",
+          en: 'Yes for those who enjoy a lively, waterfront life; many, however, use it as a prestige second home.',
+          he: 'כן למי שאוהב חיים תוססים מול המים; רבים משתמשים בה כבית שני יוקרתי.',
+        },
+      },
+      {
+        q: { fr: 'Quel rendement locatif espérer ?', en: 'What rental yield can be expected?', he: 'איזו תשואה שכירות אפשר לצפות?' },
+        a: {
+          fr: "La demande locative haut de gamme est forte, surtout en saison. Le rendement reste néanmoins secondaire face à la valeur d'usage et de détention.",
+          en: 'High-end rental demand is strong, especially in season. Yield, however, remains secondary to use and holding value.',
+          he: 'הביקוש לשכירות יוקרה חזק, בעיקר בעונה, אך התשואה משנית לערך השימוש וההחזקה.',
+        },
+      },
+    ],
+    relatedArticles: ['herzliya-pituah-caesarea-ultra-prime'],
+  },
+
+  /* ────────────────────────── WINGATE – DANIEL (Herzliya Pituah) */
+  {
+    slug: 'wingate',
+    city: 'herzliya-pituah',
+    dbVille: 'Herzliya Pituah',
+    names: { fr: 'Wingate – Daniel', en: 'Wingate – Daniel', he: 'וינגייט – דניאל' },
+    tagline: {
+      fr: 'Villas familiales au calme',
+      en: 'Quiet family villas',
+      he: 'וילות משפחתיות בשקט',
+    },
+    seoTitle: {
+      fr: 'Wingate – Daniel, Herzliya — Villas Familiales',
+      en: 'Wingate – Daniel, Herzliya — Family Villas',
+      he: 'וינגייט – דניאל, הרצליה — וילות משפחתיות',
+    },
+    metaDescription: {
+      fr: "Wingate – Daniel — secteur résidentiel calme de villas familiales à Herzliya, près de l'hôtel Daniel et de l'Institut Wingate. Verdure, espace, sérénité. Inventaire curaté.",
+      en: 'Wingate – Daniel — a quiet residential area of family villas in Herzliya, near the Daniel Hotel and the Wingate Institute. Greenery, space, serenity. Curated inventory.',
+      he: 'וינגייט – דניאל — אזור מגורים שקט של וילות משפחתיות בהרצליה, ליד מלון דניאל ומכון וינגייט.',
+    },
+    h1: {
+      fr: 'Wingate – Daniel — Villas familiales au calme',
+      en: 'Wingate – Daniel — Quiet Family Villas',
+      he: 'וינגייט – דניאל — וילות משפחתיות בשקט',
+    },
+    hero: 'https://images.unsplash.com/photo-1564769662533-4f00a87b4056?w=1600&auto=format&fit=crop&q=80',
+    intro: {
+      fr: "Autour de l'hôtel Daniel et de l'Institut Wingate, ce secteur résidentiel rassemble des villas familiales dans un environnement vert et paisible. On y trouve l'espace et la sérénité d'Herzliya Pituah, à un prix souvent plus mesuré que les rues de première ligne.",
+      en: 'Around the Daniel Hotel and the Wingate Institute, this residential area gathers family villas in a green, peaceful setting. It offers the space and serenity of Herzliya Pituah, often at a more measured price than the front-line streets.',
+      he: 'סביב מלון דניאל ומכון וינגייט, אזור מגורים זה מאגד וילות משפחתיות בסביבה ירוקה ושקטה.',
+    },
+    sections: [
+      {
+        title: { fr: 'Le calme résidentiel', en: 'Residential Calm', he: 'שקט מגורים' },
+        body: {
+          fr: "Loin de l'animation de la plage et de la marina, Wingate – Daniel séduit les familles qui cherchent avant tout l'espace, la tranquillité et la proximité des écoles et installations sportives.",
+          en: 'Away from the bustle of the beach and marina, Wingate – Daniel appeals to families seeking above all space, tranquillity and proximity to schools and sports facilities.',
+          he: 'הרחק משאון החוף והמרינה, וינגייט – דניאל מושך משפחות המחפשות מרחב, שקט וקרבה למוסדות חינוך וספורט.',
+        },
+      },
+      {
+        title: { fr: 'Villas familiales', en: 'Family Villas', he: 'וילות משפחתיות' },
+        body: {
+          fr: "Les propriétés sont majoritairement des villas sur de bons terrains, idéales pour une résidence principale. Le secteur offre un excellent équilibre entre prestige de l'adresse Herzliya Pituah et rationalité de prix.",
+          en: 'Properties are mostly villas on good plots, ideal for a primary residence. The area offers an excellent balance between the prestige of the Herzliya Pituah address and price rationality.',
+          he: 'הנכסים הם בעיקר וילות על מגרשים טובים, אידיאליות למגורי קבע — איזון מצוין בין יוקרת הכתובת למחיר.',
+        },
+      },
+    ],
+    facts: {
+      priceRange: 'Villas : 15–60 M ₪',
+      typicalSize: { fr: 'Terrains 350–900 m²', en: 'Plots 350–900 m²', he: 'מגרשים 350–900 מ״ר' },
+      architecture: { fr: 'Villas familiales', en: 'Family villas', he: 'וילות משפחתיות' },
+      buyerProfile: { fr: 'Familles, résidents permanents', en: 'Families, permanent residents', he: 'משפחות, תושבי קבע' },
+    },
+    adjacent: ['reshef', 'nof-yam'],
+    faq: [
+      {
+        q: { fr: 'Pourquoi choisir Wingate plutôt que le bord de mer ?', en: 'Why choose Wingate over the seafront?', he: 'מדוע לבחור בוינגייט על פני קו החוף?' },
+        a: {
+          fr: "Pour l'espace, le calme et un meilleur rapport prix-surface, tout en conservant l'adresse et les standards d'Herzliya Pituah.",
+          en: 'For space, quiet and a better price-to-size ratio, while keeping the Herzliya Pituah address and standards.',
+          he: 'בשביל מרחב, שקט ויחס מחיר-שטח טוב יותר, תוך שמירה על כתובת הרצליה פיתוח.',
+        },
+      },
+      {
+        q: { fr: 'Est-ce adapté à une famille avec enfants ?', en: 'Is it suitable for a family with children?', he: 'האם זה מתאים למשפחה עם ילדים?' },
+        a: {
+          fr: "Tout à fait — c'est l'un des secteurs les plus familiaux d'Herzliya Pituah, proche des écoles et des infrastructures sportives.",
+          en: 'Absolutely — it is one of the most family-oriented areas of Herzliya Pituah, close to schools and sports facilities.',
+          he: 'בהחלט — זהו אחד האזורים המשפחתיים ביותר בהרצליה פיתוח, קרוב לבתי ספר ומתקני ספורט.',
+        },
+      },
+    ],
+    relatedArticles: ['herzliya-pituah-caesarea-ultra-prime'],
+  },
+
+  /* ────────────────────────── BOULEVARD NITZA (Netanya) */
+  {
+    slug: 'nitza',
+    city: 'netanya',
+    dbVille: 'Netanya',
+    dbQuartier: 'Nitza',
+    names: { fr: 'Boulevard Nitza', en: 'Nitza Boulevard', he: 'שדרות ניצה' },
+    tagline: {
+      fr: 'Le front de mer francophone de Netanya',
+      en: "Netanya's French-speaking seafront",
+      he: 'חזית הים הצרפתית של נתניה',
+    },
+    seoTitle: {
+      fr: 'Boulevard Nitza, Netanya — Appartements Vue Mer',
+      en: 'Nitza Boulevard, Netanya — Sea-View Apartments',
+      he: 'שדרות ניצה, נתניה — דירות נוף לים',
+    },
+    metaDescription: {
+      fr: "Boulevard Nitza — la promenade en bord de falaise et le cœur francophone de Netanya. Appartements vue mer, jardins, cafés. Inventaire curaté.",
+      en: "Nitza Boulevard — the clifftop promenade and the French-speaking heart of Netanya. Sea-view apartments, gardens, cafés. Curated inventory.",
+      he: 'שדרות ניצה — הטיילת מעל הצוק והלב הצרפתי של נתניה. דירות נוף לים, גנים ובתי קפה.',
+    },
+    h1: {
+      fr: 'Boulevard Nitza — Vivre au-dessus de la mer',
+      en: 'Nitza Boulevard — Living Above the Sea',
+      he: 'שדרות ניצה — לגור מעל הים',
+    },
+    hero: 'https://images.unsplash.com/photo-1525252312-77b67c9b8ddd?w=1600&auto=format&fit=crop&q=80',
+    intro: {
+      fr: "Le boulevard Nitza longe la falaise au-dessus de la Méditerranée : jardins suspendus, promenade, cafés et terrasses face au coucher de soleil. C'est l'adresse historique de la communauté francophone de Netanya et la plus recherchée pour une vue mer.",
+      en: 'Nitza Boulevard runs along the cliff above the Mediterranean: clifftop gardens, a promenade, cafés and terraces facing the sunset. It is the historic address of Netanya\'s French community and the most sought-after for a sea view.',
+      he: 'שדרות ניצה משתרעות לאורך הצוק מעל הים התיכון — גנים, טיילת ובתי קפה מול השקיעה. הכתובת ההיסטורית של הקהילה הצרפתית בנתניה.',
+    },
+    sections: [
+      {
+        title: { fr: 'Vivre au-dessus de la mer', en: 'Living Above the Sea', he: 'לגור מעל הים' },
+        body: {
+          fr: "Les immeubles de premier rang offrent des vues frontales sur la Méditerranée et un accès direct aux jardins de la falaise et à la plage en contrebas. La prime de vue mer y est nette mais le ticket d'entrée reste très inférieur à Tel Aviv.",
+          en: 'Front-rank buildings offer frontal Mediterranean views and direct access to the clifftop gardens and the beach below. The sea-view premium is clear, yet the entry ticket remains far below Tel Aviv.',
+          he: 'הבניינים בשורה הראשונה מציעים נוף ים חזיתי וגישה ישירה לגנים ולחוף. פרמיית הנוף ברורה, אך מחיר הכניסה נמוך בהרבה מתל אביב.',
+        },
+      },
+      {
+        title: { fr: 'Le cœur de la communauté francophone', en: 'The Heart of the French Community', he: 'לב הקהילה הצרפתית' },
+        body: {
+          fr: "Commerces, synagogues, restaurants et services en français : Nitza est l'adresse d'élection des familles et retraités francophones, et un marché locatif saisonnier solide pour les propriétaires non-résidents.",
+          en: 'Shops, synagogues, restaurants and services in French: Nitza is the address of choice for French-speaking families and retirees, and a solid seasonal rental market for non-resident owners.',
+          he: 'חנויות, בתי כנסת ומסעדות בצרפתית — ניצה היא הכתובת המועדפת על משפחות וגמלאים דוברי צרפתית.',
+        },
+      },
+    ],
+    facts: {
+      priceRange: '30,000–55,000 ₪/m²',
+      typicalSize: { fr: '70–200 m²', en: '70–200 m²', he: '70–200 מ״ר' },
+      architecture: { fr: 'Immeubles front de mer, vue falaise', en: 'Seafront buildings, clifftop views', he: 'בנייני חזית ים, נוף צוק' },
+      buyerProfile: { fr: 'Acheteurs francophones, résidence secondaire', en: 'French-speaking buyers, second homes', he: 'קונים דוברי צרפתית, בית שני' },
+    },
+    adjacent: ['ir-yamim', 'ramat-poleg'],
+    faq: [
+      {
+        q: { fr: 'Pourquoi Netanya attire-t-elle tant les francophones ?', en: 'Why does Netanya attract so many French speakers?', he: 'מדוע נתניה מושכת כל כך הרבה דוברי צרפתית?' },
+        a: {
+          fr: "Pour la mer, le climat, une communauté francophone établie de longue date et des prix très inférieurs à Tel Aviv pour une vue mer équivalente.",
+          en: 'For the sea, the climate, a long-established French-speaking community and prices far below Tel Aviv for an equivalent sea view.',
+          he: 'בזכות הים, האקלים, קהילה צרפתית ותיקה ומחירים נמוכים בהרבה מתל אביב לנוף ים דומה.',
+        },
+      },
+      {
+        q: { fr: 'Est-ce un bon investissement locatif ?', en: 'Is it a good rental investment?', he: 'האם זו השקעה טובה להשכרה?' },
+        a: {
+          fr: "Oui, la demande locative saisonnière est forte et les rendements y sont généralement supérieurs à ceux de Tel Aviv pour un ticket d'entrée plus accessible.",
+          en: 'Yes, seasonal rental demand is strong and yields are generally higher than in Tel Aviv for a more accessible entry ticket.',
+          he: 'כן, הביקוש העונתי חזק והתשואות גבוהות בדרך כלל מתל אביב במחיר כניסה נגיש יותר.',
+        },
+      },
+    ],
+    relatedArticles: ['pourquoi-diaspora-francophone-choisit-israel-2026', 'acheter-immobilier-israel-investisseur-etranger'],
+  },
+
+  /* ────────────────────────── IR YAMIM (Netanya) */
+  {
+    slug: 'ir-yamim',
+    city: 'netanya',
+    dbVille: 'Netanya',
+    dbQuartier: 'Ir Yamim',
+    names: { fr: 'Ir Yamim', en: 'Ir Yamim', he: 'עיר ימים' },
+    tagline: {
+      fr: 'Le Netanya moderne en bord de mer',
+      en: 'Modern seafront Netanya',
+      he: 'נתניה המודרנית מול הים',
+    },
+    seoTitle: {
+      fr: 'Ir Yamim, Netanya — Tours Modernes Bord de Mer',
+      en: 'Ir Yamim, Netanya — Modern Seafront Towers',
+      he: 'עיר ימים, נתניה — מגדלים מודרניים מול הים',
+    },
+    metaDescription: {
+      fr: "Ir Yamim — le quartier le plus moderne de Netanya, en bord de mer. Tours récentes, centre commercial, réserve naturelle. Très prisé des familles francophones. Inventaire curaté.",
+      en: "Ir Yamim — Netanya's most modern seafront district. New towers, mall, nature reserve. Highly popular with French-speaking families. Curated inventory.",
+      he: 'עיר ימים — השכונה המודרנית ביותר של נתניה, מול הים. מגדלים חדשים, קניון ושמורת טבע.',
+    },
+    h1: {
+      fr: 'Ir Yamim — Construction neuve et vue mer',
+      en: 'Ir Yamim — New Construction and Sea Views',
+      he: 'עיר ימים — בנייה חדשה ונוף לים',
+    },
+    hero: 'https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1600&auto=format&fit=crop&q=80',
+    intro: {
+      fr: "Ir Yamim est le quartier le plus récent de Netanya : tours modernes, centre commercial, et la réserve naturelle du « Winter Pond » à deux pas de la mer. C'est le choix des familles francophones qui veulent du neuf, de la vue mer et des prestations contemporaines.",
+      en: "Ir Yamim is Netanya's newest district: modern towers, a shopping mall, and the Winter Pond nature reserve a step from the sea. It is the choice of French-speaking families who want new build, sea views and contemporary amenities.",
+      he: 'עיר ימים היא השכונה החדשה ביותר של נתניה — מגדלים מודרניים, קניון ושמורת בריכת החורף סמוך לים.',
+    },
+    sections: [
+      {
+        title: { fr: 'Construction neuve et vue mer', en: 'New Construction and Sea Views', he: 'בנייה חדשה ונוף לים' },
+        body: {
+          fr: "Contrairement au centre historique, Ir Yamim est entièrement bâti en immeubles récents aux normes actuelles : parkings, ascenseurs, abris, et souvent vue mer. Un argument décisif pour les acheteurs qui refusent l'ancien.",
+          en: 'Unlike the historic centre, Ir Yamim is entirely built with recent buildings to current standards: parking, elevators, safe rooms, and often sea views. A decisive argument for buyers who refuse older stock.',
+          he: 'בניגוד למרכז ההיסטורי, עיר ימים בנויה כולה מבניינים חדשים בסטנדרטים עכשוויים — חניות, מעליות, ממ"ד ולעיתים נוף לים.',
+        },
+      },
+      {
+        title: { fr: 'Un quartier pensé pour les familles', en: 'A Neighbourhood Designed for Families', he: 'שכונה שתוכננה למשפחות' },
+        body: {
+          fr: "Écoles, commerces, espaces verts et la plage à proximité : Ir Yamim combine le confort d'une ville nouvelle et la proximité immédiate de la mer. Le quartier reste très liquide, soutenu par une demande francophone continue.",
+          en: 'Schools, shops, green spaces and the beach nearby: Ir Yamim combines the comfort of a new town with immediate proximity to the sea. The area stays highly liquid, supported by continuous French-speaking demand.',
+          he: 'בתי ספר, חנויות, שטחים ירוקים והחוף בקרבת מקום — עיר ימים משלבת נוחות של עיר חדשה עם קרבה לים.',
+        },
+      },
+    ],
+    facts: {
+      priceRange: '32,000–55,000 ₪/m²',
+      typicalSize: { fr: '80–220 m²', en: '80–220 m²', he: '80–220 מ״ר' },
+      architecture: { fr: 'Tours récentes, construction neuve', en: 'Recent towers, new construction', he: 'מגדלים חדשים, בנייה חדשה' },
+      buyerProfile: { fr: 'Familles francophones, investisseurs', en: 'French-speaking families, investors', he: 'משפחות דוברות צרפתית, משקיעים' },
+    },
+    adjacent: ['nitza', 'ramat-poleg'],
+    faq: [
+      {
+        q: { fr: 'Ir Yamim ou le centre de Netanya ?', en: 'Ir Yamim or central Netanya?', he: 'עיר ימים או מרכז נתניה?' },
+        a: {
+          fr: "Ir Yamim pour le neuf, les prestations modernes et un cadre familial ; le centre (Nitza) pour le charme du front de mer historique et la vie de quartier.",
+          en: 'Ir Yamim for new build, modern amenities and a family setting; the centre (Nitza) for the charm of the historic seafront and neighbourhood life.',
+          he: 'עיר ימים לבנייה חדשה וסביבה משפחתית; המרכז (ניצה) לקסם חזית הים ההיסטורית.',
+        },
+      },
+      {
+        q: { fr: 'Trouve-t-on des biens neufs avec vue mer ?', en: 'Can you find new properties with sea views?', he: 'אפשר למצוא נכסים חדשים עם נוף לים?' },
+        a: {
+          fr: "Oui, c'est l'une des spécificités d'Ir Yamim. Les meilleurs étages avec vue frontale partent vite — un accompagnement en amont est recommandé.",
+          en: 'Yes, that is one of Ir Yamim\'s specificities. The best floors with frontal views sell quickly — early guidance is recommended.',
+          he: 'כן, זו אחת המאפיינות של עיר ימים. הקומות הטובות עם נוף חזיתי נמכרות מהר.',
+        },
+      },
+    ],
+    relatedArticles: ['pourquoi-diaspora-francophone-choisit-israel-2026', 'acheter-immobilier-israel-investisseur-etranger'],
+  },
+
+  /* ────────────────────────── RAMAT POLEG (Netanya) */
+  {
+    slug: 'ramat-poleg',
+    city: 'netanya',
+    dbVille: 'Netanya',
+    dbQuartier: 'Ramat Poleg',
+    names: { fr: 'Ramat Poleg', en: 'Ramat Poleg', he: 'רמת פולג' },
+    tagline: {
+      fr: 'Résidentiel cossu près de la plage de Poleg',
+      en: 'Upscale living near Poleg Beach',
+      he: 'מגורים מבוססים ליד חוף פולג',
+    },
+    seoTitle: {
+      fr: 'Ramat Poleg, Netanya — Villas et Appartements',
+      en: 'Ramat Poleg, Netanya — Villas & Apartments',
+      he: 'רמת פולג, נתניה — וילות ודירות',
+    },
+    metaDescription: {
+      fr: "Ramat Poleg — quartier résidentiel cossu au sud de Netanya, près de la plage de Poleg. Villas et immeubles récents, calme, accès rapide à Tel Aviv. Inventaire curaté.",
+      en: "Ramat Poleg — an upscale residential district in southern Netanya, near Poleg Beach. Villas and recent buildings, quiet, fast access to Tel Aviv. Curated inventory.",
+      he: 'רמת פולג — שכונת מגורים מבוססת בדרום נתניה, ליד חוף פולג. וילות ובניינים חדשים, שקט וגישה מהירה לתל אביב.',
+    },
+    h1: {
+      fr: 'Ramat Poleg — Le sud résidentiel de Netanya',
+      en: 'Ramat Poleg — Residential Southern Netanya',
+      he: 'רמת פולג — דרום נתניה המגורי',
+    },
+    hero: 'https://images.unsplash.com/photo-1583098945043-eed40dabb74e?w=1600&auto=format&fit=crop&q=80',
+    intro: {
+      fr: "Au sud de Netanya, Ramat Poleg est un quartier résidentiel cossu et calme, près de la plage de Poleg et de l'échangeur qui place Tel Aviv à une vingtaine de minutes. On y trouve un mélange de villas et d'immeubles récents prisés des familles.",
+      en: 'In southern Netanya, Ramat Poleg is an upscale, quiet residential district near Poleg Beach and the interchange that puts Tel Aviv around twenty minutes away. It offers a mix of villas and recent buildings favoured by families.',
+      he: 'בדרום נתניה, רמת פולג היא שכונת מגורים מבוססת ושקטה, ליד חוף פולג ומחלף המקרב את תל אביב לכ-20 דקות.',
+    },
+    sections: [
+      {
+        title: { fr: 'Calme et proximité de la plage', en: 'Quiet and Close to the Beach', he: 'שקט וקרבה לחוף' },
+        body: {
+          fr: "Ramat Poleg séduit ceux qui veulent le calme résidentiel sans renoncer à la mer : la plage de Poleg et ses promenades sont à quelques minutes, tout comme les centres commerciaux du sud de la ville.",
+          en: 'Ramat Poleg appeals to those who want residential calm without giving up the sea: Poleg Beach and its promenades are minutes away, as are the shopping centres of the southern city.',
+          he: 'רמת פולג מושכת את מי שרוצה שקט מגורים בלי לוותר על הים — חוף פולג במרחק דקות.',
+        },
+      },
+      {
+        title: { fr: 'Villas et appartements familiaux', en: 'Villas and Family Apartments', he: 'וילות ודירות משפחתיות' },
+        body: {
+          fr: "Le quartier offre un éventail rare à Netanya : de la villa individuelle aux grands appartements récents. Son accès rapide à l'autoroute en fait aussi une base idéale pour ceux qui travaillent dans la région de Tel Aviv.",
+          en: 'The area offers a range rare in Netanya: from detached villas to large recent apartments. Its fast highway access also makes it an ideal base for those working in the Tel Aviv region.',
+          he: 'השכונה מציעה מגוון נדיר בנתניה — מווילה פרטית ועד דירות גדולות חדשות. הגישה המהירה לכביש המהיר הופכת אותה לבסיס אידיאלי.',
+        },
+      },
+    ],
+    facts: {
+      priceRange: '28,000–48,000 ₪/m²',
+      typicalSize: { fr: 'App. 90–220 m² · Villas 250–500 m²', en: 'Apts 90–220 m² · Villas 250–500 m²', he: 'דירות 90–220 · וילות 250–500 מ״ר' },
+      architecture: { fr: 'Villas et immeubles récents', en: 'Villas and recent buildings', he: 'וילות ובניינים חדשים' },
+      buyerProfile: { fr: 'Familles, résidents permanents', en: 'Families, permanent residents', he: 'משפחות, תושבי קבע' },
+    },
+    adjacent: ['ir-yamim', 'nitza'],
+    faq: [
+      {
+        q: { fr: 'Ramat Poleg convient-il pour une résidence principale ?', en: 'Is Ramat Poleg suitable as a primary residence?', he: 'האם רמת פולג מתאימה למגורי קבע?' },
+        a: {
+          fr: "Oui, c'est avant tout un quartier de résidence principale, calme et familial, avec écoles et commerces à proximité.",
+          en: 'Yes, it is above all a primary-residence neighbourhood, quiet and family-oriented, with schools and shops nearby.',
+          he: 'כן, זו בעיקר שכונת מגורי קבע, שקטה ומשפחתית, עם בתי ספר וחנויות בקרבת מקום.',
+        },
+      },
+      {
+        q: { fr: 'Peut-on y trouver des villas ?', en: 'Can you find villas there?', he: 'אפשר למצוא שם וילות?' },
+        a: {
+          fr: "Oui — c'est l'un des rares secteurs de Netanya offrant de véritables villas individuelles, en plus des grands appartements récents.",
+          en: 'Yes — it is one of the few areas of Netanya offering genuine detached villas, in addition to large recent apartments.',
+          he: 'כן — זהו אחד האזורים הבודדים בנתניה המציעים וילות פרטיות אמיתיות.',
+        },
+      },
+    ],
+    relatedArticles: ['pourquoi-diaspora-francophone-choisit-israel-2026', 'acheter-immobilier-israel-investisseur-etranger'],
+  },
 ]
 
 export function getQuartierBySlug(slug: string, city?: string): Quartier | undefined {

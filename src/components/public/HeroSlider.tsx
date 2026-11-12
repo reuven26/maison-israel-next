@@ -1,52 +1,79 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import Parallax from '@/components/public/Parallax'
 
-const SLIDES = [
-  {
-    src: '/hero/slide1.jpg',
+const L10N: Record<string, { city: string; labels: string[] }> = {
+  fr: {
     city: 'Jérusalem',
-    label: 'Résidence de Prestige',
+    labels: ['Résidence de Prestige', 'Architecture & Raffinement', 'Exclusivité & Élégance'],
   },
-  {
-    src: '/hero/slide2.jpg',
-    city: 'Jérusalem',
-    label: 'Architecture & Raffinement',
+  en: {
+    city: 'Jerusalem',
+    labels: ['Distinguished Residence', 'Architecture & Refinement', 'Exclusivity & Elegance'],
   },
-  {
-    src: '/hero/slide3.jpg',
-    city: 'Jérusalem',
-    label: 'Exclusivité & Élégance',
+  he: {
+    city: 'ירושלים',
+    labels: ['דירת יוקרה', 'אדריכלות ועידון', 'בלעדיות ואלגנטיות'],
   },
-]
+}
 
-export default function HeroSlider() {
+const SLIDE_SRCS = ['/hero/slide1.jpg', '/hero/slide2.jpg', '/hero/slide3.jpg']
+
+export default function HeroSlider({
+  locale = 'fr',
+  initialImages,
+}: {
+  locale?: string
+  /** Hero images fetched server-side (site_settings → key "hero"). Falls back to bundled slides. */
+  initialImages?: string[]
+}) {
+  const loc = (locale in L10N ? locale : 'fr') as keyof typeof L10N
+  const srcs = initialImages && initialImages.length ? initialImages : SLIDE_SRCS
+  const SLIDES = srcs.map((src, i) => ({
+    src,
+    city: L10N[loc].city,
+    label: L10N[loc].labels[i % L10N[loc].labels.length],
+  }))
+
   const [current, setCurrent] = useState(0)
 
   useEffect(() => {
+    if (SLIDES.length < 2) return
     const timer = setInterval(() => {
       setCurrent(c => (c + 1) % SLIDES.length)
-    }, 2000)
+    }, 6000)
     return () => clearInterval(timer)
-  }, [])
+  }, [SLIDES.length])
 
   return (
     <>
-      {/* Slides */}
-      {SLIDES.map((slide, i) => (
-        <div
-          key={slide.src}
-          style={{
-            position: 'absolute', inset: 0,
-            backgroundImage: `url(${slide.src})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: i === current ? 1 : 0,
-            transition: 'opacity 1.8s ease',
-            animation: i === current ? 'sliderZoom 8s ease-in-out forwards' : 'none',
-          }}
-        />
-      ))}
+      {/* Slides — real <img> via next/image so the LCP image is discoverable in the
+          initial HTML and auto-served as AVIF/WebP. First slide is priority.
+          Couche parallaxe : les images se déplacent en profondeur au scroll. */}
+      <Parallax speed={0.18}>
+        {SLIDES.map((slide, i) => (
+          <div
+            key={slide.src}
+            style={{
+              position: 'absolute', inset: 0,
+              opacity: i === current ? 1 : 0,
+              transition: 'opacity 1.8s ease',
+              animation: i === current ? 'sliderZoom 8s ease-in-out forwards' : 'none',
+            }}
+          >
+            <Image
+              src={slide.src}
+              alt=""
+              fill
+              priority={i === 0}
+              sizes="100vw"
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
+            />
+          </div>
+        ))}
+      </Parallax>
 
       {/* Bottom: city label + progress dots */}
       <div style={{
@@ -69,6 +96,7 @@ export default function HeroSlider() {
             <button
               key={i}
               onClick={() => setCurrent(i)}
+              aria-label={`Slide ${i + 1}`}
               style={{
                 width: i === current ? 28 : 6,
                 height: 2,

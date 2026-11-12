@@ -2,7 +2,9 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Bien } from '@/types'
+import { getBienNom } from '@/types'
 
 interface Props {
   bien: Bien
@@ -16,6 +18,7 @@ const EASE = 'var(--ease-luxe)'
 export default function PropertyCard({ bien, locale, messages }: Props) {
   const p = messages.properties
   const isRTL = locale === 'he'
+  const nomLocalise = getBienNom(bien, locale)
 
   // Build full image array: main + gallery
   const allImages = [
@@ -25,6 +28,10 @@ export default function PropertyCard({ bien, locale, messages }: Props) {
 
   const [idx, setIdx] = useState(0)
   const [hovered, setHovered] = useState(false)
+  // Les photos secondaires ne sont montées (donc téléchargées) qu'au premier
+  // survol — la page ne charge qu'une image optimisée par carte.
+  const [engaged, setEngaged] = useState(false)
+  const visibleImages = engaged ? allImages : allImages.slice(0, 1)
 
   function prev(e: React.MouseEvent) {
     e.preventDefault()
@@ -54,25 +61,31 @@ export default function PropertyCard({ bien, locale, messages }: Props) {
     <Link
       href={`/${locale}/projets/${bien.slug}`}
       style={{ textDecoration: 'none', display: 'block' }}
-      onMouseEnter={() => setHovered(true)}
+      onMouseEnter={() => { setHovered(true); setEngaged(true) }}
       onMouseLeave={() => setHovered(false)}
+      onTouchStart={() => setEngaged(true)}
     >
       {/* Image — portrait 4:5, editorial */}
       <div style={{ position: 'relative', overflow: 'hidden', aspectRatio: '4 / 5', background: '#16171A' }}>
-        {allImages.map((src, i) => (
-          <img
+        {visibleImages.map((src, i) => (
+          <div
             key={src}
-            src={src}
-            alt={bien.nom}
-            loading="lazy"
             style={{
               position: 'absolute', inset: 0,
-              width: '100%', height: '100%', objectFit: 'cover',
               opacity: i === idx ? 1 : 0,
               transition: `opacity 0.7s ${EASE}, transform 1.2s ${EASE}`,
               transform: hovered && i === idx ? 'scale(1.045)' : 'scale(1)',
             }}
-          />
+          >
+            <Image
+              src={src}
+              alt={nomLocalise}
+              fill
+              sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+              quality={70}
+              style={{ objectFit: 'cover' }}
+            />
+          </div>
         ))}
 
         {/* Veil — lightens slightly on hover */}
@@ -173,18 +186,18 @@ export default function PropertyCard({ bien, locale, messages }: Props) {
       >
         {/* Eyebrow — gold, location · type */}
         <div style={{
-          fontFamily: "'DM Sans', sans-serif", fontSize: '10px', fontWeight: 500,
-          letterSpacing: '0.24em', color: '#C8A96E', textTransform: 'uppercase', marginBottom: '12px',
+          fontFamily: "'Jost', sans-serif", fontSize: '9px', fontWeight: 400,
+          letterSpacing: '0.34em', color: '#C8A96E', textTransform: 'uppercase', marginBottom: '13px',
         }}>
           {eyebrow}
         </div>
 
         {/* Name — serif display */}
         <div style={{
-          fontFamily: "'Cormorant Garamond', serif", fontSize: '1.6rem', fontWeight: 400,
-          color: '#FAF8F4', lineHeight: 1.15, marginBottom: '12px',
+          fontFamily: "'Cormorant Garamond', serif", fontSize: '1.75rem', fontWeight: 300,
+          color: '#FAF8F4', lineHeight: 1.12, marginBottom: '12px',
         }}>
-          {bien.nom}
+          {nomLocalise}
         </div>
 
         {/* Gold filet — grows on hover */}
@@ -208,8 +221,8 @@ export default function PropertyCard({ bien, locale, messages }: Props) {
 
         {/* Price — serif, light weight (never bold sans) */}
         <div style={{
-          fontFamily: "'Cormorant Garamond', serif", fontSize: '1.5rem', fontWeight: 300,
-          color: '#FAF8F4', letterSpacing: '0.01em',
+          fontFamily: "'Cormorant Garamond', serif", fontSize: '1.45rem', fontWeight: 300,
+          fontStyle: 'italic', color: '#E8D5A3', letterSpacing: '0.01em',
         }}>
           {priceText}
         </div>

@@ -3,25 +3,25 @@ import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 import OffMarketGate from '@/components/public/OffMarketGate'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 const META: Record<Locale, { title: string; description: string; tag: string; h1: string; subtitle: string }> = {
   fr: {
-    title: 'Off-Market — Propriétés de Prestige Hors-Marché en Israël | Maison Israël',
+    title: 'Off-Market — Propriétés de Prestige Hors-Marché en Israël',
     description: "Accédez à notre portfolio off-market — Herzliya Pituah, Talbieh, Tel Aviv, Césarée. Acheteurs qualifiés uniquement, par introduction directe.",
     tag: 'Off-Market',
     h1: 'Le marché qui ne se trouve pas sur les portails',
     subtitle: "35 à 50 % des transactions premium en Israël se déroulent en off-market. Notre portfolio est curaté en continu et disponible aux acheteurs qualifiés par introduction directe.",
   },
   en: {
-    title: 'Off-Market — Private Luxury Properties in Israel | Maison Israël',
+    title: 'Off-Market — Private Luxury Properties in Israel',
     description: 'Access our off-market portfolio — Herzliya Pituah, Talbiyeh, Tel Aviv, Caesarea. Qualified buyers only, by direct introduction.',
     tag: 'Off-Market',
     h1: 'The Market That Is Not on the Portals',
     subtitle: '35 to 50% of premium transactions in Israel happen off-market. Our portfolio is curated continuously and available to qualified buyers by direct introduction.',
   },
   he: {
-    title: 'מחוץ לשוק — נכסי יוקרה פרטיים בישראל | מייזון ישראל',
+    title: 'מחוץ לשוק — נכסי יוקרה פרטיים בישראל',
     description: 'גישה לתיק מחוץ לשוק שלנו.',
     tag: 'מחוץ לשוק',
     h1: 'השוק שלא נמצא בפורטלים',
@@ -77,6 +77,57 @@ export default async function OffMarketPage({ params }: { params: Promise<{ loca
           <div style={{ width: '60px', height: '1px', background: '#C8A96E', margin: '0 auto 1.4rem' }} />
           <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.05rem', lineHeight: 1.75, maxWidth: '660px', margin: '0 auto' }}>
             {meta.subtitle}
+          </p>
+          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.92rem', lineHeight: 1.75, maxWidth: '620px', margin: '1.2rem auto 0' }}>
+            {l === 'he'
+              ? 'הצוות שלנו ינפיק קוד גישה לאחר שיחה ראשונית קצרה — סודית, ללא התחייבות, בדרך כלל 15–20 דקות.'
+              : l === 'en'
+              ? 'Our team issues an access code after a brief initial conversation — confidential, no commitment, typically 15–20 minutes.'
+              : "Notre équipe émet un code d'accès après une brève conversation initiale — confidentielle, sans engagement, 15–20 minutes."}
+          </p>
+          {/* Accès au portfolio — mis en avant dès le hero */}
+          <div style={{ marginTop: '2.4rem', display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link href={`/${locale}/contact`} style={{ background: '#C8A96E', color: '#0A0A0B', padding: '1rem 2.4rem', fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none', fontWeight: 600, display: 'inline-block' }}>
+              {l === 'he' ? 'בקש גישה לתיק' : l === 'en' ? 'Request portfolio access' : "Demander l'accès au portfolio"}
+            </Link>
+            <a href="#acces-code" style={{ border: '1px solid rgba(200,169,110,0.4)', color: '#C8A96E', padding: '1rem 2.4rem', fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block' }}>
+              {l === 'he' ? 'יש לך קוד? ←' : l === 'en' ? 'Already have a code? →' : 'Déjà un code ? →'}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Password gate — direct access for returning users */}
+      <section id="acces-code" style={{ padding: '4rem 2rem 5rem', background: '#0A0A0B', direction: isRTL ? 'rtl' : 'ltr', scrollMarginTop: '90px' }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+            <p style={{ fontSize: '0.78rem', color: '#C8A96E', letterSpacing: '0.25em', textTransform: 'uppercase', fontWeight: 600 }}>
+              {l === 'he' ? 'יש לך קוד? הזן למטה' : l === 'en' ? 'Already have a code? Enter below' : 'Déjà un code ? Saisir ci-dessous'}
+            </p>
+          </div>
+          <OffMarketGate locale={locale} isRTL={isRTL} />
+        </div>
+      </section>
+
+      {/* Qualification */}
+      <section style={{ padding: '5rem 2rem', background: '#0A0A0B', direction: isRTL ? 'rtl' : 'ltr' }}>
+        <div style={{ maxWidth: '780px', margin: '0 auto' }}>
+          <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.9rem', color: '#FAFAF9', fontWeight: 300, marginBottom: '1.2rem' }}>
+            {l === 'he' ? 'איך אנחנו מסננים קונים' : l === 'en' ? 'How We Qualify Buyers' : 'Comment nous qualifions les acheteurs'}
+          </h2>
+          <p style={{ color: '#D4D5D8', fontSize: '1rem', lineHeight: 1.85, marginBottom: '1.5rem' }}>
+            {l === 'he'
+              ? 'הגישה לתיק מחוץ-לשוק שלנו אינה פתוחה. אנו מעריכים כל קונה פוטנציאלי על שלושה קריטריונים: טווח מחיר ריאלי, רצינות לוח הזמנים, וזהות. זה מגן על המוכרים ושומר על איכות מערכות היחסים העתידיות שלנו.'
+              : l === 'en'
+              ? "Access to our off-market portfolio is not open. We evaluate each potential buyer on three criteria: realistic price range, calendar seriousness, and identity (proof of funds, references, context). This protects sellers and preserves the quality of our future relationships. It is not a commercial policy — it is what allows us to keep receiving the right properties."
+              : "L'accès à notre portfolio off-market n'est pas ouvert. Nous évaluons chaque acheteur potentiel sur trois critères : la fourchette de prix réaliste, la sérénité du calendrier, et l'identité (preuve de fonds, références, contexte). Cela protège les vendeurs et préserve la qualité de nos relations futures. Ce n'est pas une politique commerciale — c'est ce qui nous permet de continuer à recevoir les bonnes propriétés."}
+          </p>
+          <p style={{ color: '#D4D5D8', fontSize: '1rem', lineHeight: 1.85 }}>
+            {l === 'he'
+              ? 'הזרם מחוץ-לשוק שלנו מתחיל בדרך כלל ב-8 מיליון ₪. הקצוות הגבוהים — וילות פאר בהרצליה פיתוח, בתי מנדט בטלביה — מגיעים מעל 60 מיליון ₪.'
+              : l === 'en'
+              ? 'Our off-market flow generally begins at 8 million NIS. The upper end — Herzliya Pituah trophy villas, Talbiyeh Mandate houses — reaches above 60 million NIS.'
+              : "Notre flux off-market commence généralement à 8 millions de NIS. Le haut de gamme — villas trophées d'Herzliya Pituah, maisons mandataires de Talbieh — dépasse 60 millions de NIS."}
           </p>
         </div>
       </section>
@@ -136,101 +187,7 @@ export default async function OffMarketPage({ params }: { params: Promise<{ loca
         </div>
       </section>
 
-      {/* Geography */}
-      <section style={{ padding: '5rem 2rem', background: '#0F1012', borderTop: '1px solid rgba(200,169,110,0.1)', direction: isRTL ? 'rtl' : 'ltr' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <p style={{ fontSize: '0.7rem', color: '#C8A96E', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '0.8rem' }}>
-              {l === 'he' ? 'גיאוגרפיה' : l === 'en' ? 'Geography' : 'Géographie'}
-            </p>
-            <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 300, color: '#FAFAF9' }}>
-              {l === 'he' ? 'איפה השוק מחוץ-לשוק חי' : l === 'en' ? 'Where the Off-Market Lives' : 'Où le off-market existe'}
-            </h2>
-            <div style={{ width: '60px', height: '1px', background: '#C8A96E', margin: '1rem auto 0' }} />
-          </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-            {[
-              { quartier: 'galei-tchelet', city: 'herzliya-pituah', titleFr: 'Galei Tchelet', titleEn: 'Galei Tchelet', titleHe: 'גלי תכלת', descFr: 'Villas trophées bord de mer', descEn: 'Trophy seafront villas', descHe: 'וילות פאר חוף ים' },
-              { quartier: 'talbieh', city: 'jerusalem', titleFr: 'Talbieh', titleEn: 'Talbiyeh', titleHe: 'טלביה', descFr: 'Maisons mandataires premium', descEn: 'Premium Mandate houses', descHe: 'בתי מנדט פרמיום' },
-              { quartier: 'nof-yam', city: 'herzliya-pituah', titleFr: 'Nof Yam', titleEn: 'Nof Yam', titleHe: 'נוף ים', descFr: 'Villas vue mer', descEn: 'Sea-view villas', descHe: 'וילות עם נוף לים' },
-              { quartier: 'caesarea-aleph', city: 'caesarea', titleFr: 'Césarée Aleph', titleEn: 'Caesarea Aleph', titleHe: 'קיסריה א׳', descFr: 'Bord de golf et front de mer', descEn: 'Golf and seafront', descHe: 'גולף וחוף ים' },
-            ].map((g) => (
-              <Link key={g.quartier} href={`/${locale}/quartiers/${g.city}/${g.quartier}`} style={{ textDecoration: 'none', display: 'block', background: '#141416', padding: '1.8rem', borderBottom: '2px solid #C8A96E' }}>
-                <h3 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.3rem', color: '#FAFAF9', fontWeight: 400, marginBottom: '0.4rem' }}>
-                  {l === 'he' ? g.titleHe : l === 'en' ? g.titleEn : g.titleFr}
-                </h3>
-                <p style={{ color: '#8A8B91', fontSize: '0.88rem' }}>
-                  {l === 'he' ? g.descHe : l === 'en' ? g.descEn : g.descFr}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Qualification */}
-      <section style={{ padding: '5rem 2rem', background: '#0A0A0B', direction: isRTL ? 'rtl' : 'ltr' }}>
-        <div style={{ maxWidth: '780px', margin: '0 auto' }}>
-          <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.9rem', color: '#FAFAF9', fontWeight: 300, marginBottom: '1.2rem' }}>
-            {l === 'he' ? 'איך אנחנו מסננים קונים' : l === 'en' ? 'How We Qualify Buyers' : 'Comment nous qualifions les acheteurs'}
-          </h2>
-          <p style={{ color: '#D4D5D8', fontSize: '1rem', lineHeight: 1.85, marginBottom: '1.5rem' }}>
-            {l === 'he'
-              ? 'הגישה לתיק מחוץ-לשוק שלנו אינה פתוחה. אנו מעריכים כל קונה פוטנציאלי על שלושה קריטריונים: טווח מחיר ריאלי, רצינות לוח הזמנים, וזהות. זה מגן על המוכרים ושומר על איכות מערכות היחסים העתידיות שלנו.'
-              : l === 'en'
-              ? "Access to our off-market portfolio is not open. We evaluate each potential buyer on three criteria: realistic price range, calendar seriousness, and identity (proof of funds, references, context). This protects sellers and preserves the quality of our future relationships. It is not a commercial policy — it is what allows us to keep receiving the right properties."
-              : "L'accès à notre portfolio off-market n'est pas ouvert. Nous évaluons chaque acheteur potentiel sur trois critères : la fourchette de prix réaliste, la sérénité du calendrier, et l'identité (preuve de fonds, références, contexte). Cela protège les vendeurs et préserve la qualité de nos relations futures. Ce n'est pas une politique commerciale — c'est ce qui nous permet de continuer à recevoir les bonnes propriétés."}
-          </p>
-          <p style={{ color: '#D4D5D8', fontSize: '1rem', lineHeight: 1.85 }}>
-            {l === 'he'
-              ? 'הזרם מחוץ-לשוק שלנו מתחיל בדרך כלל ב-8 מיליון ₪. הקצוות הגבוהים — וילות פאר בהרצליה פיתוח, בתי מנדט בטלביה — מגיעים מעל 60 מיליון ₪.'
-              : l === 'en'
-              ? 'Our off-market flow generally begins at 8 million NIS. The upper end — Herzliya Pituah trophy villas, Talbiyeh Mandate houses — reaches above 60 million NIS.'
-              : "Notre flux off-market commence généralement à 8 millions de NIS. Le haut de gamme — villas trophées d'Herzliya Pituah, maisons mandataires de Talbieh — dépasse 60 millions de NIS."}
-          </p>
-        </div>
-      </section>
-
-      {/* Access — gate */}
-      <section style={{ padding: '5rem 2rem', background: '#0F1012', borderTop: '1px solid rgba(200,169,110,0.15)', direction: isRTL ? 'rtl' : 'ltr' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
-          <p style={{ fontSize: '0.7rem', color: '#C8A96E', letterSpacing: '0.3em', textTransform: 'uppercase', marginBottom: '0.8rem' }}>
-            {l === 'he' ? 'גישה' : l === 'en' ? 'Access' : 'Accès'}
-          </p>
-          <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem, 4vw, 2.6rem)', fontWeight: 300, color: '#FAFAF9', marginBottom: '1.2rem' }}>
-            {l === 'he' ? 'איך לגשת' : l === 'en' ? 'How to Access' : 'Comment accéder'}
-          </h2>
-          <div style={{ width: '60px', height: '1px', background: '#C8A96E', margin: '0 auto 1.6rem' }} />
-          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.98rem', lineHeight: 1.8, maxWidth: '640px', margin: '0 auto 2rem' }}>
-            {l === 'he'
-              ? 'הצוות שלנו ינפיק קוד גישה לאחר שיחה ראשונית קצרה. השיחה סודית, ללא התחייבות, ולוקחת בדרך כלל 15–20 דקות.'
-              : l === 'en'
-              ? 'Our team issues an access code after a brief initial conversation. The conversation is confidential, no commitment, and typically takes 15–20 minutes.'
-              : "Notre équipe émet un code d'accès après une brève conversation initiale. La conversation est confidentielle, sans engagement, et dure typiquement 15–20 minutes."}
-          </p>
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href={`/${locale}/contact`} style={{ background: '#C8A96E', color: '#0A0A0B', padding: '1rem 2.4rem', fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none', fontWeight: 600, display: 'inline-block' }}>
-              {l === 'he' ? 'בקש קוד גישה' : l === 'en' ? 'Request access code' : "Demander un code d'accès"}
-            </Link>
-            <Link href={`/${locale}/services/off-market`} style={{ border: '1px solid rgba(200,169,110,0.4)', color: '#C8A96E', padding: '1rem 2.4rem', fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem', letterSpacing: '0.2em', textTransform: 'uppercase', textDecoration: 'none', display: 'inline-block' }}>
-              {l === 'he' ? 'עוד על השירות' : l === 'en' ? 'More about the service' : 'En savoir plus'}
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Password gate — direct access for returning users */}
-      <section style={{ padding: '4rem 2rem 6rem', background: '#0A0A0B', direction: isRTL ? 'rtl' : 'ltr' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <div style={{ borderTop: '1px solid rgba(200,169,110,0.12)', paddingTop: '3rem', textAlign: 'center', marginBottom: '2rem' }}>
-            <p style={{ fontSize: '0.7rem', color: '#8A8B91', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-              {l === 'he' ? 'יש לך קוד? הזן למטה' : l === 'en' ? 'Already have a code? Enter below' : 'Déjà un code ? Saisir ci-dessous'}
-            </p>
-          </div>
-          <OffMarketGate locale={locale} isRTL={isRTL} />
-        </div>
-      </section>
     </>
   )
 }

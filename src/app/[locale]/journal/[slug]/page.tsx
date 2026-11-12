@@ -5,7 +5,7 @@ import type { Locale } from '@/i18n/config'
 import { getArticleBySlug, getRelatedArticles, JOURNAL_ARTICLES } from '@/data/journal-articles'
 import { renderMarkdown } from '@/lib/markdown'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 export async function generateStaticParams() {
   return JOURNAL_ARTICLES.map((a) => ({ slug: a.slug }))
@@ -63,14 +63,18 @@ export default async function JournalArticlePage({ params }: { params: Promise<{
     dateModified: a.publishedAt,
     inLanguage: locale,
     author: {
-      '@type': 'Organization',
-      name: 'Maison Israël',
-      url: BASE_URL,
+      '@type': 'Person',
+      '@id': `${BASE_URL}/#founder`,
+      name: 'Réouven Benchetrit',
+      alternateName: 'Reuven Benchetrit',
+      url: `${BASE_URL}/${locale}/equipe`,
+      jobTitle: 'Founder & Principal Advisor, Maison Israël',
     },
     publisher: {
       '@type': 'Organization',
+      '@id': `${BASE_URL}/#organization`,
       name: 'Maison Israël',
-      logo: { '@type': 'ImageObject', url: `${BASE_URL}/logo.png` },
+      logo: { '@type': 'ImageObject', url: `${BASE_URL}/logo.svg` },
     },
     mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE_URL}/${locale}/journal/${slug}` },
   }

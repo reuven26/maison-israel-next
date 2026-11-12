@@ -2,25 +2,25 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 const META: Record<Locale, { title: string; description: string; tag: string; h1: string; subtitle: string }> = {
   fr: {
-    title: 'Notre Méthode — Comment nous travaillons | Maison Israël',
+    title: 'Notre Méthode — Comment nous travaillons',
     description: "La méthode Maison Israël — six étapes du brief privé à la clôture, en confidentialité, avec coordination de votre équipe juridique et fiscale.",
     tag: 'Notre méthode',
     h1: 'Une méthode discrète, structurée, et alignée sur votre horizon',
     subtitle: "Six étapes. Une seule logique : faire moins, mais mieux. Aucune visite inutile, aucune annonce qui ne corresponde pas à votre brief.",
   },
   en: {
-    title: 'Our Method — How We Work | Maison Israël',
+    title: 'Our Method — How We Work',
     description: 'The Maison Israël method — six steps from private brief to closing, with confidentiality and coordination of your legal and tax team.',
     tag: 'Our Method',
     h1: 'A Discreet, Structured Method Aligned With Your Horizon',
     subtitle: 'Six steps. One logic: do less, but better. No unnecessary viewing, no listing that does not match your brief.',
   },
   he: {
-    title: 'השיטה שלנו | מייזון ישראל',
+    title: 'השיטה שלנו — ליווי רכישה דיסקרטי בישראל',
     description: 'השיטה של מייזון ישראל.',
     tag: 'השיטה שלנו',
     h1: 'שיטה דיסקרטית, מובנית, ומיושרת עם האופק שלך',

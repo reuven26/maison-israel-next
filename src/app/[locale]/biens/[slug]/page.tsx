@@ -11,7 +11,7 @@ import { getArticleBySlug } from '@/data/journal-articles'
 import { getQuartierBySlug } from '@/data/quartiers'
 import { renderMarkdown } from '@/lib/markdown'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 export async function generateStaticParams() {
   return PROPERTY_TYPES.map((p) => ({ slug: p.slug }))
@@ -65,6 +65,7 @@ export default async function PropertyTypePage({ params }: { params: Promise<{ l
     .in('type', t.dbTypes)
     .eq('statut', 'actif')
     .eq('off_market', false)
+    .not('masque', 'is', true)
     .order('created_at', { ascending: false })
     .limit(9)
 

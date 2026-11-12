@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { SERVICES, getServiceBySlug } from '@/data/services-clientele'
 import SeoLandingPage from '@/components/public/SeoLandingPage'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 export async function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }))

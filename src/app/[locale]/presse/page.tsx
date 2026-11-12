@@ -2,25 +2,25 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 const META: Record<Locale, { title: string; description: string; tag: string; h1: string; subtitle: string }> = {
   fr: {
-    title: 'Presse & Médias — Maison Israël',
+    title: 'Presse & Médias — Maison Israël dans les médias internationaux',
     description: 'Mentions médias, interviews et publications de Maison Israël. Le Figaro, Les Echos, Bloomberg, Le Temps.',
     tag: 'Presse',
     h1: 'Maison Israël dans les médias',
     subtitle: 'Quelques mentions et interviews de notre équipe dans la presse française, anglophone et israélienne.',
   },
   en: {
-    title: 'Press & Media — Maison Israël',
+    title: 'Press & Media — Maison Israël in the international press',
     description: 'Media mentions, interviews and publications by Maison Israël. Le Figaro, Les Echos, Bloomberg, Le Temps.',
     tag: 'Press',
     h1: 'Maison Israël in the Media',
     subtitle: 'A selection of mentions and interviews of our team in the French, English-language, and Israeli press.',
   },
   he: {
-    title: 'עיתונות ומדיה | מייזון ישראל',
+    title: 'עיתונות ומדיה — אזכורים וראיונות בתקשורת',
     description: 'אזכורים בעיתונות, ראיונות ופרסומים של מייזון ישראל.',
     tag: 'עיתונות',
     h1: 'מייזון ישראל במדיה',
@@ -164,8 +164,8 @@ export default async function PressePage({ params }: { params: Promise<{ locale:
         <p style={{ color: 'rgba(255,255,255,0.6)', maxWidth: '520px', margin: '0 auto 1.6rem', fontSize: '0.95rem', lineHeight: 1.7 }}>
           {l === 'he' ? 'אנחנו זמינים לראיונות וניתוחים על שוק הנדל"ן הישראלי הפרמיום.' : l === 'en' ? 'Available for interviews and analyses on the Israeli premium real estate market.' : "Disponibles pour interviews et analyses sur le marché immobilier israélien premium."}
         </p>
-        <a href="mailto:presse@maison-israel.com" style={{ color: '#C8A96E', fontSize: '0.95rem', textDecoration: 'none', borderBottom: '1px solid rgba(200,169,110,0.3)', paddingBottom: '0.2rem' }}>
-          presse@maison-israel.com
+        <a href="mailto:reouvenbenchetrit1@gmail.com" style={{ color: '#C8A96E', fontSize: '0.95rem', textDecoration: 'none', borderBottom: '1px solid rgba(200,169,110,0.3)', paddingBottom: '0.2rem' }}>
+          reouvenbenchetrit1@gmail.com
         </a>
       </section>
     </>

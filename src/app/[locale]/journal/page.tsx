@@ -4,25 +4,25 @@ import type { Locale } from '@/i18n/config'
 import { getMessages } from '@/i18n'
 import { JOURNAL_ARTICLES } from '@/data/journal-articles'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 const PAGE_META: Record<Locale, { title: string; description: string; tag: string; h1: string; subtitle: string }> = {
   fr: {
-    title: 'Journal — Immobilier de Luxe en Israël | Maison Israël',
+    title: 'Journal — Immobilier de Luxe en Israël',
     description: "Analyses, guides et perspectives sur l'immobilier de luxe en Israël — Jérusalem, Tel Aviv, Herzliya Pituah, Césarée.",
     tag: 'Journal',
     h1: 'Perspectives sur l\'immobilier de luxe israélien',
     subtitle: "Analyses, guides et observations de marché — écrits avec la même précision que nous appliquons à chaque transaction.",
   },
   en: {
-    title: 'Journal — Israeli Luxury Real Estate Insights | Maison Israël',
+    title: 'Journal — Israeli Luxury Real Estate Insights',
     description: 'Analyses, guides, and perspectives on luxury real estate in Israel — Jerusalem, Tel Aviv, Herzliya Pituah, Caesarea.',
     tag: 'Journal',
     h1: 'Perspectives on Israeli Luxury Real Estate',
     subtitle: 'Analyses, guides, and market observations — written with the same precision we apply to every transaction.',
   },
   he: {
-    title: 'יומן — תובנות נדל"ן יוקרה בישראל | מייזון ישראל',
+    title: 'יומן — תובנות נדל"ן יוקרה בישראל',
     description: 'ניתוחים, מדריכים ופרספקטיבות על נדל"ן יוקרה בישראל.',
     tag: 'יומן',
     h1: 'פרספקטיבות על נדל"ן יוקרה בישראל',
@@ -159,6 +159,8 @@ export default async function JournalPage({ params }: { params: Promise<{ locale
         </div>
       </section>
 
+      <JournalSeo locale={locale} />
+
       <style>{`
         .featured-journal-card:hover img { transform: scale(1.04); }
         .journal-card:hover img { transform: scale(1.04); }
@@ -167,5 +169,46 @@ export default async function JournalPage({ params }: { params: Promise<{ locale
         }
       `}</style>
     </>
+  )
+}
+
+function JournalSeo({ locale }: { locale: string }) {
+  const isRTL = locale === 'he'
+  const content = {
+    fr: {
+      title: "Le Journal de l'immobilier israélien",
+      paras: [
+        "Le Journal de Maison Israël décrypte les tendances du marché immobilier de prestige en Israël : évolution des prix à Tel Aviv, Jérusalem et sur la côte, analyses de quartiers, fiscalité pour les acheteurs étrangers et conseils pratiques pour réussir son acquisition ou son Aliyah.",
+        "Nos articles s'appuient sur notre expérience terrain depuis 2009 et sur une veille constante du marché. Vous y trouverez des comparatifs entre villes (Tel Aviv vs Jérusalem), des focus sur les segments ultra-prime comme Herzliya Pituah et Césarée, ainsi que des éclairages sur les opportunités off-market réservées à une clientèle avertie.",
+        "Que vous soyez investisseur, futur résident ou simplement curieux du marché israélien, ces analyses vous aident à prendre des décisions éclairées. Pour aller plus loin, nos conseillers francophones restent à votre disposition pour un accompagnement personnalisé.",
+      ],
+    },
+    en: {
+      title: 'The Israeli real estate Journal',
+      paras: [
+        "Maison Israël's Journal decodes the trends of the luxury real estate market in Israel: price movements in Tel Aviv, Jerusalem and along the coast, neighborhood analyses, taxation for foreign buyers, and practical advice to succeed in your acquisition or Aliyah.",
+        "Our articles draw on our field experience since 2009 and constant market monitoring. You will find city comparisons (Tel Aviv vs Jerusalem), focuses on ultra-prime segments such as Herzliya Pituah and Caesarea, and insights into off-market opportunities reserved for a discerning clientele.",
+        "Whether you are an investor, a future resident, or simply curious about the Israeli market, these analyses help you make informed decisions. To go further, our advisors remain available for personalized guidance.",
+      ],
+    },
+    he: {
+      title: 'יומן הנדל"ן הישראלי',
+      paras: [
+        'היומן של מייזון ישראל מפענח את מגמות שוק נדל"ן היוקרה בישראל: שינויי מחירים בתל אביב, ירושלים ולאורך החוף, ניתוחי שכונות, מיסוי לקונים זרים וטיפים מעשיים להצלחה ברכישה או בעלייה.',
+        'המאמרים שלנו מתבססים על ניסיון השטח שלנו מאז 2009 ועל מעקב מתמיד אחר השוק. תמצאו השוואות בין ערים (תל אביב מול ירושלים), התמקדות במגזרים האולטרה-פרימיום כמו הרצליה פיתוח וקיסריה, ותובנות על הזדמנויות מחוץ לשוק השמורות לקהל מבין.',
+        'בין אם אתם משקיעים, תושבים עתידיים, או פשוט סקרנים לגבי השוק הישראלי, הניתוחים הללו מסייעים לכם לקבל החלטות מושכלות. להעמקה נוספת, היועצים שלנו עומדים לרשותכם לליווי אישי.',
+      ],
+    },
+  }
+  const c = content[(locale as keyof typeof content)] ?? content.fr
+  return (
+    <section style={{ background: '#0A0A0B', padding: '4rem clamp(1.25rem,5vw,3rem) 5rem', borderTop: '1px solid rgba(200,169,110,0.08)', direction: isRTL ? 'rtl' : 'ltr' }}>
+      <div style={{ maxWidth: '880px', margin: '0 auto' }}>
+        <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem,4vw,2.6rem)', fontWeight: 300, color: '#FAFAF9', marginBottom: '1.6rem' }}>{c.title}</h2>
+        {c.paras.map((para, i) => (
+          <p key={i} style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.95rem', fontWeight: 300, color: 'rgba(212,213,216,0.8)', lineHeight: 1.85, marginBottom: '1.2rem' }}>{para}</p>
+        ))}
+      </div>
+    </section>
   )
 }

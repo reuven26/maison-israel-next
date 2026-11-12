@@ -5,7 +5,7 @@ import { QUARTIERS } from '@/data/quartiers'
 import { SERVICES, CLIENTELE } from '@/data/services-clientele'
 import { PROPERTY_TYPES } from '@/data/property-types'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 const villes = ['tel-aviv', 'jerusalem', 'netanya', 'herzliya-pituah', 'caesarea', 'savyon']
 

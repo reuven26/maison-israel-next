@@ -2,25 +2,25 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 const META: Record<Locale, { title: string; description: string; tag: string; h1: string; subtitle: string }> = {
   fr: {
-    title: 'Témoignages Clients — Acquisitions Immobilières en Israël | Maison Israël',
+    title: 'Témoignages Clients — Acquisitions Immobilières en Israël',
     description: 'Témoignages anonymisés de nos clients internationaux — acquisitions à Jérusalem, Tel Aviv, Herzliya Pituah. Quinze ans d\'accompagnement.',
     tag: 'Témoignages',
     h1: 'Ce que nos clients disent',
     subtitle: 'Témoignages anonymisés sur l\'accompagnement de nos clients. Les noms ont été modifiés à leur demande.',
   },
   en: {
-    title: 'Client Testimonials — Israeli Real Estate Acquisitions | Maison Israël',
+    title: 'Client Testimonials — Israeli Real Estate Acquisitions',
     description: 'Anonymised testimonials from our international clients — acquisitions in Jerusalem, Tel Aviv, Herzliya Pituah. Fifteen years of support.',
     tag: 'Testimonials',
     h1: 'What Our Clients Say',
     subtitle: 'Anonymised testimonials from our clients. Names have been changed at their request.',
   },
   he: {
-    title: 'המלצות לקוחות | מייזון ישראל',
+    title: 'המלצות לקוחות — חוויות אמיתיות של רוכשים',
     description: 'המלצות אנונימיות מלקוחותינו הבינלאומיים.',
     tag: 'המלצות',
     h1: 'מה אומרים הלקוחות שלנו',

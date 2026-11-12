@@ -2,25 +2,25 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 const META: Record<Locale, { title: string; description: string; tag: string; h1: string; subtitle: string }> = {
   fr: {
-    title: 'Questions Fréquentes — Immobilier en Israël | Maison Israël',
+    title: 'Questions Fréquentes — Immobilier en Israël',
     description: 'Réponses aux questions essentielles sur l\'acquisition immobilière en Israël : fiscalité, off-market, aliyah, financement, processus, quartiers.',
     tag: 'FAQ',
     h1: 'Questions Fréquentes',
     subtitle: 'Les réponses essentielles que nos clients posent en premier. Pour les questions plus spécifiques, contactez notre équipe directement.',
   },
   en: {
-    title: 'Frequently Asked Questions — Israeli Real Estate | Maison Israël',
+    title: 'Frequently Asked Questions — Israeli Real Estate',
     description: 'Answers to essential questions about Israeli real estate acquisition: taxation, off-market, aliyah, financing, process, neighborhoods.',
     tag: 'FAQ',
     h1: 'Frequently Asked Questions',
     subtitle: 'The essential answers our clients ask first. For more specific questions, contact our team directly.',
   },
   he: {
-    title: 'שאלות נפוצות | מייזון ישראל',
+    title: 'שאלות נפוצות — קנייה ונדל"ן יוקרה בישראל',
     description: 'תשובות לשאלות חיוניות על רכישת נדל"ן בישראל.',
     tag: 'שאלות נפוצות',
     h1: 'שאלות נפוצות',

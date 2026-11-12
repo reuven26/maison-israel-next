@@ -6,19 +6,19 @@ import type { Locale } from '@/i18n/config'
 import { getMessages } from '@/i18n'
 import PropertyCard from '@/components/public/PropertyCard'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 const PROJETS_META: Record<Locale, { title: string; description: string }> = {
   fr: {
-    title: "Propriétés Disponibles — Immobilier de Prestige en Israël | Maison Israël",
+    title: "Propriétés Disponibles — Immobilier de Prestige en Israël",
     description: "Découvrez notre sélection de propriétés de prestige en Israël — penthouses, villas, appartements à Tel Aviv, Jérusalem, Herzliya Pituah, Césarée.",
   },
   en: {
-    title: 'Available Properties — Luxury Real Estate in Israel | Maison Israël',
+    title: 'Available Properties — Luxury Real Estate in Israel',
     description: 'Discover our selection of luxury properties in Israel — penthouses, villas, apartments in Tel Aviv, Jerusalem, Herzliya Pituah, Caesarea.',
   },
   he: {
-    title: 'נכסים זמינים — נדל"ן יוקרה בישראל | מייזון ישראל',
+    title: 'נכסים זמינים — נדל"ן יוקרה בישראל',
     description: 'גלו את מבחר נכסי היוקרה שלנו בישראל.',
   },
 }
@@ -72,6 +72,7 @@ export default async function ProjetsPage({ params, searchParams }: Props) {
   const supabase = await createClient()
   let query = supabase.from('biens').select('*')
     .eq('off_market', false)
+    .not('masque', 'is', true)
     .order('created_at', { ascending: false })
 
   if (ville)  query = query.ilike('ville', `%${ville}%`)
@@ -214,7 +215,55 @@ export default async function ProjetsPage({ params, searchParams }: Props) {
           </Link>
         </div>
       </section>
+
+      <SeoContent locale={locale} />
     </>
+  )
+}
+
+function SeoContent({ locale }: { locale: string }) {
+  const isRTL = locale === 'he'
+  const content = {
+    fr: {
+      title: "L'immobilier de prestige en Israël",
+      paras: [
+        "Acheter un bien immobilier de prestige en Israël représente à la fois un projet de vie et un investissement patrimonial solide. Depuis 2009, Maison Israël accompagne une clientèle francophone exigeante dans l'acquisition de penthouses, villas et appartements d'exception à Tel Aviv, Jérusalem, Herzliya Pituah, Netanya et Césarée.",
+        "Chaque ville possède son identité : Tel Aviv séduit par son dynamisme, ses immeubles Bauhaus classés à l'UNESCO et ses quartiers prisés comme Neve Tzedek, Rothschild et le Vieux Nord. Jérusalem attire par son prestige intemporel, notamment à Talbieh, Rehavia et la Colonie allemande. Herzliya Pituah et Césarée offrent des villas en bord de mer parmi les plus exclusives du pays, tandis que Netanya combine front de mer et rendements locatifs attractifs.",
+        "Nos conseillers vous accompagnent à chaque étape : recherche personnalisée, accès à des biens off-market non diffusés publiquement, négociation, accompagnement juridique et fiscal, et conseil spécifique pour les Olim Hadashim dans le cadre d'une Aliyah. L'investissement immobilier en Israël offre des perspectives de valorisation solides, avec des rendements locatifs généralement compris entre 4 et 7 % selon les quartiers.",
+      ],
+    },
+    en: {
+      title: 'Luxury real estate in Israel',
+      paras: [
+        "Buying luxury real estate in Israel is both a life project and a solid wealth investment. Since 2009, Maison Israël has guided an international clientele in acquiring exceptional penthouses, villas and apartments in Tel Aviv, Jerusalem, Herzliya Pituah, Netanya and Caesarea.",
+        "Each city has its own identity: Tel Aviv stands out for its energy, its UNESCO-listed Bauhaus buildings and sought-after neighborhoods such as Neve Tzedek, Rothschild and the Old North. Jerusalem appeals through its timeless prestige, notably in Talbiyeh, Rehavia and the German Colony. Herzliya Pituah and Caesarea offer some of the country's most exclusive seafront villas, while Netanya combines coastline living with attractive rental yields.",
+        "Our advisors support you at every stage: personalized search, access to off-market properties not listed publicly, negotiation, legal and tax guidance, and dedicated advice for Olim Hadashim making Aliyah. Real estate investment in Israel offers solid appreciation prospects, with rental yields generally between 4% and 7% depending on the neighborhood.",
+      ],
+    },
+    he: {
+      title: 'נדל"ן יוקרה בישראל',
+      paras: [
+        'רכישת נדל"ן יוקרה בישראל היא גם פרויקט חיים וגם השקעה פיננסית איתנה. מאז 2009, מייזון ישראל מלווה לקוחות בינלאומיים ברכישת פנטהאוזים, וילות ודירות יוקרה בתל אביב, ירושלים, הרצליה פיתוח, נתניה וקיסריה.',
+        'לכל עיר זהות משלה: תל אביב בולטת באנרגיה שלה, בבנייני הבאוהאוס המוכרים על ידי אונסק"ו ובשכונות מבוקשות כמו נווה צדק, רוטשילד והצפון הישן. ירושלים מושכת בזכות יוקרתה הנצחית, בעיקר בטלביה, רחביה והמושבה הגרמנית. הרצליה פיתוח וקיסריה מציעות חלק מווילות החוף הבלעדיות בארץ, ונתניה משלבת חיי חוף עם תשואות שכירות אטרקטיביות.',
+        'היועצים שלנו מלווים אתכם בכל שלב: חיפוש מותאם אישית, גישה לנכסים מחוץ לשוק, משא ומתן, ליווי משפטי ומיסויי, וייעוץ ייעודי לעולים חדשים. השקעה בנדל"ן בישראל מציעה סיכויי השבחה איתנים, עם תשואות שכירות שנעות בדרך כלל בין 4% ל-7%.',
+      ],
+    },
+  }
+  const c = content[(locale as keyof typeof content)] ?? content.fr
+
+  return (
+    <section style={{ background: '#0A0A0B', padding: '4rem clamp(1.25rem,5vw,3rem) 5rem', borderTop: '1px solid rgba(200,169,110,0.08)', direction: isRTL ? 'rtl' : 'ltr' }}>
+      <div style={{ maxWidth: '880px', margin: '0 auto' }}>
+        <h2 style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.8rem,4vw,2.6rem)', fontWeight: 300, color: '#FAFAF9', marginBottom: '1.6rem' }}>
+          {c.title}
+        </h2>
+        {c.paras.map((para, i) => (
+          <p key={i} style={{ fontFamily: 'DM Sans, sans-serif', fontSize: '0.95rem', fontWeight: 300, color: 'rgba(212,213,216,0.8)', lineHeight: 1.85, marginBottom: '1.2rem' }}>
+            {para}
+          </p>
+        ))}
+      </div>
+    </section>
   )
 }
 

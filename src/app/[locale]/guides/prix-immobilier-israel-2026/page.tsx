@@ -2,12 +2,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import GuideTldr from '@/components/public/GuideTldr'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 const SLUG = 'prix-immobilier-israel-2026'
 const CANONICAL = `${BASE_URL}/fr/guides/${SLUG}`
 
 export const metadata: Metadata = {
-  title: 'Prix Immobilier en Israël 2026 : Tel Aviv, Jérusalem, Netanya | Maison Israël',
+  title: 'Prix Immobilier en Israël 2026 : Tel Aviv, Jérusalem, Netanya',
   description: 'Prix immobilier en Israël 2026 : prix au m² actualisés à Tel Aviv, Jérusalem, Netanya, Herzliya. Tendances, projections et conseils d\'experts francophones.',
   alternates: { canonical: CANONICAL },
   openGraph: {
@@ -26,8 +26,8 @@ const jsonLd = {
   headline: 'Prix Immobilier en Israël 2026 : Tel Aviv, Jérusalem, Netanya, Herzliya',
   description: 'Analyse complète des prix immobiliers en Israël en 2026 par ville et par quartier.',
   image: 'https://images.unsplash.com/photo-1529390079861-591de354faf5?w=1800&auto=format&fit=crop&q=85',
-  author: { '@type': 'Organization', name: 'Maison Israël', url: BASE_URL },
-  publisher: { '@type': 'Organization', name: 'Maison Israël', logo: { '@type': 'ImageObject', url: `${BASE_URL}/logo.png` } },
+  author: { '@type': 'Person', '@id': `${BASE_URL}/#founder`, name: 'Réouven Benchetrit', alternateName: 'Reuven Benchetrit', url: `${BASE_URL}/fr/equipe` },
+  publisher: { '@type': 'Organization', name: 'Maison Israël', logo: { '@type': 'ImageObject', url: `${BASE_URL}/logo.svg` } },
   datePublished: '2026-05-17',
   dateModified: '2026-05-17',
   inLanguage: 'fr-FR',

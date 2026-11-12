@@ -3,11 +3,26 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-const VILLES = [
-  'Tel Aviv', 'Jérusalem', 'Herzliya Pituah', 'Netanya',
-  'Caesarea', 'Ramat Gan', 'Haïfa', 'Eilat',
+// Valeur stockée en BDD (toujours en français pour la recherche), label affiché traduit.
+const VILLES: Array<{ value: string; fr: string; en: string; he: string }> = [
+  { value: 'Tel Aviv',        fr: 'Tel Aviv',        en: 'Tel Aviv',        he: 'תל אביב' },
+  { value: 'Jérusalem',       fr: 'Jérusalem',       en: 'Jerusalem',       he: 'ירושלים' },
+  { value: 'Herzliya Pituah', fr: 'Herzliya Pituah', en: 'Herzliya Pituah', he: 'הרצליה פיתוח' },
+  { value: 'Netanya',         fr: 'Netanya',         en: 'Netanya',         he: 'נתניה' },
+  { value: 'Caesarea',        fr: 'Césarée',         en: 'Caesarea',        he: 'קיסריה' },
+  { value: 'Ramat Gan',       fr: 'Ramat Gan',       en: 'Ramat Gan',       he: 'רמת גן' },
+  { value: 'Haïfa',           fr: 'Haïfa',           en: 'Haifa',           he: 'חיפה' },
+  { value: 'Eilat',           fr: 'Eilat',           en: 'Eilat',           he: 'אילת' },
 ]
-const TYPES = ['Appartement', 'Penthouse', 'Villa', 'Duplex', 'Studio', 'Loft', 'Maison']
+const TYPES: Array<{ value: string; fr: string; en: string; he: string }> = [
+  { value: 'Appartement', fr: 'Appartement', en: 'Apartment', he: 'דירה' },
+  { value: 'Penthouse',   fr: 'Penthouse',   en: 'Penthouse', he: 'פנטהאוז' },
+  { value: 'Villa',       fr: 'Villa',       en: 'Villa',     he: 'וילה' },
+  { value: 'Duplex',      fr: 'Duplex',      en: 'Duplex',    he: 'דופלקס' },
+  { value: 'Studio',      fr: 'Studio',      en: 'Studio',    he: 'סטודיו' },
+  { value: 'Loft',        fr: 'Loft',        en: 'Loft',      he: 'לופט' },
+  { value: 'Maison',      fr: 'Maison',      en: 'House',     he: 'בית' },
+]
 const PIECES = ['1', '2', '3', '4', '5+']
 const BUDGETS = [
   { label: '500 000 €',   value: '500000' },
@@ -86,6 +101,7 @@ export default function HeroSearch({ locale, isRTL }: Props) {
               <button
                 key={t.key}
                 onClick={() => setTab(t.key)}
+                className="hs-tab"
                 style={{
                   padding: '0.85rem 1.8rem',
                   background: 'none', border: 'none',
@@ -129,7 +145,10 @@ export default function HeroSearch({ locale, isRTL }: Props) {
                   style={{ ...selectStyle, fontSize: ville ? '0.88rem' : '0.82rem', color: ville ? '#FAFAF9' : 'rgba(255,255,255,0.35)' }}
                 >
                   <option value="">{locale === 'he' ? 'כל הערים' : locale === 'en' ? 'All cities' : 'Toutes les villes'}</option>
-                  {VILLES.map(v => <option key={v} value={v} style={{ background: '#111214', color: '#fff' }}>{v}</option>)}
+                  {VILLES.map(v => {
+                    const lbl = locale === 'he' ? v.he : locale === 'en' ? v.en : v.fr
+                    return <option key={v.value} value={v.value} style={{ background: '#111214', color: '#fff' }}>{lbl}</option>
+                  })}
                 </select>
               </div>
             </div>
@@ -202,25 +221,28 @@ export default function HeroSearch({ locale, isRTL }: Props) {
               {/* Type */}
               <div>
                 <div style={{ fontSize: '0.6rem', color: '#8A8B91', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-                  {locale === 'en' ? 'Property type' : 'Type de bien'}
+                  {locale === 'he' ? 'סוג נכס' : locale === 'en' ? 'Property type' : 'Type de bien'}
                 </div>
                 <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-                  {TYPES.map(t => (
-                    <button
-                      key={t}
-                      type="button"
-                      onClick={() => setType(type === t ? '' : t)}
-                      style={{
-                        padding: '0.3rem 0.7rem',
-                        background: type === t ? '#C8A96E' : 'rgba(255,255,255,0.05)',
-                        border: `1px solid ${type === t ? '#C8A96E' : 'rgba(200,169,110,0.2)'}`,
-                        color: type === t ? '#0A0A0B' : 'rgba(255,255,255,0.6)',
-                        fontSize: '0.72rem', cursor: 'pointer',
-                        fontFamily: 'DM Sans, sans-serif',
-                        transition: 'all 0.15s',
-                      }}
-                    >{t}</button>
-                  ))}
+                  {TYPES.map(t => {
+                    const lbl = locale === 'he' ? t.he : locale === 'en' ? t.en : t.fr
+                    return (
+                      <button
+                        key={t.value}
+                        type="button"
+                        onClick={() => setType(type === t.value ? '' : t.value)}
+                        style={{
+                          padding: '0.3rem 0.7rem',
+                          background: type === t.value ? '#C8A96E' : 'rgba(255,255,255,0.05)',
+                          border: `1px solid ${type === t.value ? '#C8A96E' : 'rgba(200,169,110,0.2)'}`,
+                          color: type === t.value ? '#0A0A0B' : 'rgba(255,255,255,0.6)',
+                          fontSize: '0.72rem', cursor: 'pointer',
+                          fontFamily: 'DM Sans, sans-serif',
+                          transition: 'all 0.15s',
+                        }}
+                      >{lbl}</button>
+                    )
+                  })}
                 </div>
               </div>
 
@@ -263,7 +285,7 @@ export default function HeroSearch({ locale, isRTL }: Props) {
                     textDecoration: 'underline',
                   }}
                 >
-                  {locale === 'en' ? 'Reset' : 'Réinitialiser'}
+                  {locale === 'he' ? 'איפוס' : locale === 'en' ? 'Reset' : 'Réinitialiser'}
                 </button>
               </div>
             </div>
@@ -287,8 +309,8 @@ export default function HeroSearch({ locale, isRTL }: Props) {
             onMouseLeave={e => (e.currentTarget.style.color = 'rgba(200,169,110,0.7)')}
           >
             <span>{more
-              ? (locale === 'en' ? 'Fewer criteria' : 'Moins de critères')
-              : (locale === 'en' ? 'More criteria'  : 'Plus de critères')}
+              ? (locale === 'he' ? 'פחות קריטריונים' : locale === 'en' ? 'Fewer criteria' : 'Moins de critères')
+              : (locale === 'he' ? 'יותר קריטריונים' : locale === 'en' ? 'More criteria'  : 'Plus de critères')}
             </span>
             <svg
               width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"

@@ -3,15 +3,15 @@ import type { Metadata } from 'next'
 import type { Locale } from '@/i18n/config'
 import { getMessages } from '@/i18n'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 const ABOUT_META: Record<Locale, { title: string; description: string }> = {
   fr: {
-    title: 'À Propos — Maison Israël depuis 2009',
+    title: 'À Propos — Notre histoire depuis 2009',
     description: "Maison Israël accompagne les acheteurs internationaux dans l'acquisition d'immobilier de prestige en Israël depuis 2009. Notre histoire, notre méthode, notre engagement.",
   },
   en: {
-    title: 'About — Maison Israël since 2009',
+    title: 'About — Our story since 2009',
     description: 'Maison Israël has supported international buyers in luxury Israeli real estate since 2009. Our story, method, and commitment.',
   },
   he: {
@@ -53,35 +53,36 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   const a = messages.about
   const isRTL = locale === 'he'
 
+  // Équipe alignée avec la page /equipe (source canonique)
   const team = [
     {
-      name: 'David Cohen',
-      role: locale === 'he' ? 'מנהל' : locale === 'en' ? 'Director' : 'Directeur',
+      name: 'Réouven Benchetrit',
+      role: locale === 'he' ? 'מייסד · יועץ ראשי' : locale === 'en' ? 'Founder · Principal Advisor' : 'Fondateur · Conseiller principal',
       bio: locale === 'he'
-        ? 'מייסד מייזון ישראל עם למעלה מ-20 שנות ניסיון בנדל"ן היוקרתי הישראלי.'
+        ? 'מייסד מייזון ישראל ב-2009. מומחה בליווי משפחות דוברות צרפתית בעלייה ובהשקעה, עם דגש על ירושלים והרצליה פיתוח. רכז של למעלה מ-200 רכישות עבור לקוחות בינלאומיים.'
         : locale === 'en'
-        ? 'Founder of Maison Israël with over 20 years of experience in Israeli luxury real estate.'
-        : "Fondateur de Maison Israël avec plus de 20 ans d'expérience dans l'immobilier de prestige israélien.",
+        ? 'Founded Maison Israël in 2009. Specialised in supporting French-speaking families in Aliyah and investment, with focus on Jerusalem (Talbiyeh, German Colony, Rehavia) and Herzliya Pituah. Over 200 acquisitions coordinated for international clients.'
+        : "Fondateur de Maison Israël en 2009. Spécialisé dans l'accompagnement des familles francophones en Aliyah et investissement, avec une concentration sur Jérusalem (Talbieh, Colonie Allemande, Réhavia) et Herzliya Pituah. Plus de 200 acquisitions coordonnées pour des clients internationaux.",
       img: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=80',
     },
     {
-      name: 'Sarah Lévy',
-      role: locale === 'he' ? 'יועצת בכירה' : locale === 'en' ? 'Senior Advisor' : 'Conseillère Senior',
+      name: 'Sarah Cohen',
+      role: locale === 'he' ? 'יועצת בכירה · תל אביב' : locale === 'en' ? 'Senior Advisor · Tel Aviv' : 'Conseillère senior · Tel Aviv',
       bio: locale === 'he'
-        ? 'מומחית בנכסי יוקרה בתל אביב וירושלים, עם ניסיון של למעלה מ-12 שנה.'
+        ? 'מומחית שוק תל אביב מאז 2014. מכסה את נווה צדק, רוטשילד, הצפון הישן והמגדלים הפרימיום (פארק צמרת, סרונה, מאייר). מומחיות מיוחדת בשיחזור באוהאוס.'
         : locale === 'en'
-        ? 'Expert in luxury properties in Tel Aviv and Jerusalem, with over 12 years of experience.'
-        : "Spécialiste des biens de prestige à Tel Aviv et Jérusalem, avec plus de 12 ans d'expérience.",
+        ? 'Tel Aviv market specialist since 2014. Covers Neve Tzedek, Rothschild, the Old North, and the premium tower segment (Park Tzameret, Sarona, Meier). Particular expertise on Bauhaus restoration. HEC Paris graduate.'
+        : "Spécialiste du marché Tel Aviv depuis 2014. Couvre Neve Tzedek, Rothschild, le Nord Ancien, et le segment des tours premium (Park Tzameret, Sarona, Meier). Expertise particulière sur la restauration Bauhaus. Diplômée HEC Paris.",
       img: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80',
     },
     {
-      name: 'Avi Mizrahi',
-      role: locale === 'he' ? 'מומחה השקעות' : locale === 'en' ? 'Investment Expert' : 'Expert Investissement',
+      name: 'David Levi',
+      role: locale === 'he' ? 'יועץ בכיר · אולטרה-פרימיום חוף' : locale === 'en' ? 'Senior Advisor · Ultra-Prime Coastal' : 'Conseiller senior · Ultra-prime côtier',
       bio: locale === 'he'
-        ? 'מנתח פיננסי לשעבר, מתמחה בהשקעות נדל"ן ואופטימיזציה פיסקלית.'
+        ? 'מכסה את הרצליה פיתוח וקיסריה מאז 2011. רשת מבוססת עם family offices ישראליים וקונים UHNW מאירופה ומאמריקה הלטינית. מומחה בעסקאות מחוץ לשוק מעל 10 מיליון דולר.'
         : locale === 'en'
-        ? 'Former financial analyst, specialising in real estate investment and fiscal optimisation.'
-        : "Ancien analyste financier, spécialisé dans l'investissement immobilier et l'optimisation fiscale.",
+        ? 'Covers Herzliya Pituah and Caesarea since 2011. Established network with Israeli family offices and European and Latin American UHNW buyers. Specialised in off-market transactions above $10M. Corporate finance background (ex-Lazard).'
+        : "Couvre Herzliya Pituah et Césarée depuis 2011. Réseau établi avec les family offices israéliens et les acheteurs UHNW européens et latino-américains. Spécialisé dans les transactions off-market au-dessus de 10 M$. Background en finance d'entreprise (ex-Lazard).",
       img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
     },
   ]
@@ -180,17 +181,31 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <div style={{ width: '40px', height: '1px', background: '#C8A96E', marginBottom: '1.5rem' }} />
             <p style={{ color: '#8A8B91', lineHeight: 1.9, marginBottom: '1rem' }}>
               {locale === 'he'
-                ? 'מייזון ישראל נוסדה בשנת 2009 על ידי דויד כהן, עם חזון ברור: להציע ללקוחות דוברי צרפתית גישה בלעדית לשוק הנדל"ן הישראלי המתקדם.'
+                ? 'מייזון ישראל נוסדה בשנת 2009 על ידי דויד כהן, מתוך תצפית פשוטה: השוק הישראלי המשגשג היה אז סגור-למחצה למשפחות הדיאספורה דוברות הצרפתית, שנעו בין סוכנויות מקומיות ללא ליווי, ויועצים פריזאיים ללא היכרות עם השטח.'
                 : locale === 'en'
-                ? 'Maison Israël was founded in 2009 by David Cohen with a clear vision: to offer French-speaking clients exclusive access to the thriving Israeli real estate market.'
-                : "Maison Israël a été fondée en 2009 par David Cohen avec une vision claire : offrir aux clients francophones un accès exclusif au marché immobilier israélien en pleine expansion."}
+                ? "Maison Israël was founded in 2009 by David Cohen, born from a simple observation: Israel's booming market was, at the time, half-closed to French-speaking diaspora families, caught between local agencies without follow-up and Parisian advisors without field knowledge."
+                : "Maison Israël est née en 2009, fondée par David Cohen, d'un constat simple : le marché israélien en pleine effervescence restait, à l'époque, à demi-fermé aux familles francophones de la diaspora — coincées entre des agences locales sans accompagnement et des conseillers parisiens sans connaissance du terrain."}
+            </p>
+            <p style={{ color: '#8A8B91', lineHeight: 1.9, marginBottom: '1rem' }}>
+              {locale === 'he'
+                ? 'במשך חמש-עשרה שנה, בנינו מודל אחר: מספר מצומצם של לקוחות, יועץ ייעודי לכל פרויקט, גישה ישירה לעסקאות מחוץ לשוק שמעולם לא הופיעו בפורטלים. בית פרטי במקום פלטפורמה.'
+                : locale === 'en'
+                ? 'For fifteen years, we have built a different model: a small number of clients, a dedicated advisor for every project, and direct access to off-market opportunities that never reach the portals. A private house, not a platform.'
+                : "Pendant quinze ans, nous avons construit un modèle différent : un nombre restreint de clients, un conseiller dédié pour chaque projet, et un accès direct à des opportunités off-market qui ne paraissent jamais sur les portails. Une maison privée, pas une plateforme."}
+            </p>
+            <p style={{ color: '#8A8B91', lineHeight: 1.9, marginBottom: '1rem' }}>
+              {locale === 'he'
+                ? 'התל אביב של 2009 לא הייתה התל אביב של היום. אז יזמנו ברוטשילד עת שכונות הבאוהאוס עוד לא הוכרזו על ידי אונסק"ו. ראינו את ירושלים נפתחת ליוקרה. ליווינו את הפיכת קיסריה למובלעת בלעדית. הניסיון הזה — ראיית גלים לפני שהם מגיעים — נשאר הערך הראשון שאנו מציעים.'
+                : locale === 'en'
+                ? 'The Tel Aviv of 2009 was not the Tel Aviv of today. Back then, we were already active on Rothschild when the Bauhaus quarters had not yet been UNESCO-listed. We saw Jerusalem open up to luxury. We accompanied Caesarea’s transformation into an exclusive enclave. That experience — seeing waves before they arrive — remains the first value we offer.'
+                : "Le Tel Aviv de 2009 n'était pas celui d'aujourd'hui. À l'époque, nous étions déjà actifs sur Rothschild quand les quartiers Bauhaus n'avaient pas encore été classés UNESCO. Nous avons vu Jérusalem s'ouvrir au luxe. Nous avons accompagné la transformation de Césarée en enclave exclusive. Cette expérience — voir les vagues avant qu'elles n'arrivent — reste la première valeur que nous offrons."}
             </p>
             <p style={{ color: '#8A8B91', lineHeight: 1.9 }}>
               {locale === 'he'
-                ? 'במשך 15 שנה, הפכנו לנקודת הייחוס עבור כל מי שרוצה לרכוש, להשקיע או לעלות ארצה תוך שמירה על ביטחון וסודיות מלאה.'
+                ? 'כיום, מייזון ישראל מלווה משפחות, משקיעים, עולים חדשים ודיפלומטים — לרוב לאורך מספר עסקאות, מספר עשורים, מספר דורות.'
                 : locale === 'en'
-                ? 'Over 15 years, we have become the reference point for anyone looking to buy, invest or make aliyah with complete security and confidentiality.'
-                : "En 15 ans, nous sommes devenus la référence pour quiconque souhaite acheter, investir ou faire son aliyah avec sécurité et confidentialité totale."}
+                ? 'Today, Maison Israël supports families, investors, new immigrants and diplomats — often across several transactions, several decades, several generations.'
+                : "Aujourd'hui, Maison Israël accompagne des familles, des investisseurs, des Olim Hadashim et des diplomates — souvent sur plusieurs transactions, plusieurs décennies, plusieurs générations."}
             </p>
           </div>
           <div style={{ position: 'relative' }}>
@@ -248,6 +263,18 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 </p>
               </div>
             ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '3.5rem' }}>
+            <Link href={`/${locale}/equipe`} style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.6rem',
+              border: '1px solid rgba(200,169,110,0.4)', color: '#C8A96E',
+              padding: '0.85rem 2rem', textDecoration: 'none',
+              fontFamily: 'DM Sans, sans-serif', fontSize: '0.72rem',
+              letterSpacing: '0.18em', textTransform: isRTL ? 'none' : 'uppercase', fontWeight: 500,
+              transition: 'all 0.3s',
+            }}>
+              {locale === 'he' ? 'הכירו את כל הצוות ←' : locale === 'en' ? 'Meet the full team →' : "Voir l'équipe complète →"}
+            </Link>
           </div>
         </div>
       </section>

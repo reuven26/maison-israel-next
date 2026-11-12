@@ -89,15 +89,25 @@ export default function BienContactCard({ bienNom, bienPrix, bienRef, locale, is
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
           {/* Agent photo */}
           <div style={{ position: 'relative', flexShrink: 0 }}>
-            <div style={{
-              width: 72, height: 72, overflow: 'hidden',
-              border: '2px solid rgba(200,169,110,0.3)',
-            }}>
-              <img
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&auto=format&fit=crop&q=80"
-                alt="Agent"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }}
-              />
+            <div
+              role="img"
+              aria-label="Reuven Benchetrit"
+              style={{
+                position: 'relative',
+                width: 72, height: 72, overflow: 'hidden',
+                border: '2px solid rgba(200,169,110,0.3)',
+                background: 'rgba(200,169,110,0.08)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}
+            >
+              {/* Monogramme de secours — visible si la photo n'est pas (encore) déposée */}
+              <span style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.55rem', color: '#C8A96E', letterSpacing: '0.04em' }}>RB</span>
+              {/* Photo en fond : une 404 n'affiche jamais d'icône cassée → laisse voir RB */}
+              <div style={{
+                position: 'absolute', inset: 0,
+                backgroundImage: "url('/team/reuven.jpg')",
+                backgroundSize: 'cover', backgroundPosition: 'center',
+              }} />
             </div>
             {/* WhatsApp bubble */}
             <a
@@ -123,10 +133,10 @@ export default function BienContactCard({ bienNom, bienPrix, bienRef, locale, is
           {/* Agent info */}
           <div style={{ flex: 1 }}>
             <p style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: '1.15rem', fontWeight: 500, color: '#FAFAF9', marginBottom: '0.2rem' }}>
-              {locale === 'he' ? 'צוות מייזון ישראל' : 'Équipe Maison Israël'}
+              {locale === 'he' ? 'ראובן בנשטרית' : 'Reuven Benchetrit'}
             </p>
             <p style={{ fontSize: '0.72rem', color: '#C8A96E', letterSpacing: '0.05em', marginBottom: '0.2rem' }}>
-              MAISON ISRAËL
+              {locale === 'he' ? 'מייסד · מייזון ישראל' : locale === 'en' ? 'Founder · Maison Israël' : 'Fondateur · Maison Israël'}
             </p>
             <p style={{ fontSize: '0.72rem', color: '#8A8B91', lineHeight: 1.5 }}>
               Tel Aviv · Jérusalem · Herzliya

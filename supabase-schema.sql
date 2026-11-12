@@ -12,7 +12,9 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 CREATE TABLE IF NOT EXISTS biens (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   slug TEXT UNIQUE NOT NULL,
-  nom TEXT NOT NULL,
+  nom TEXT NOT NULL,           -- valeur par défaut (FR)
+  nom_en TEXT,                  -- traduction anglaise (optionnelle, fallback sur nom)
+  nom_he TEXT,                  -- traduction hébraïque (optionnelle, fallback sur nom)
   ville TEXT NOT NULL,
   quartier TEXT,
   type TEXT NOT NULL DEFAULT 'Appartement',
@@ -24,10 +26,13 @@ CREATE TABLE IF NOT EXISTS biens (
   roi TEXT,
   image_principale TEXT NOT NULL,
   images TEXT[] DEFAULT '{}',
-  description TEXT NOT NULL DEFAULT '',
+  description TEXT NOT NULL DEFAULT '',  -- valeur par défaut (FR)
+  description_en TEXT,                    -- traduction anglaise (optionnelle)
+  description_he TEXT,                    -- traduction hébraïque (optionnelle)
   caracteristiques TEXT[] DEFAULT '{}',
   statut TEXT NOT NULL DEFAULT 'actif' CHECK (statut IN ('actif','vendu','sous_compromis','loue')),
   reference TEXT,
+  off_market BOOLEAN NOT NULL DEFAULT false,
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
@@ -127,6 +132,75 @@ ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "profiles_own_read" ON profiles FOR SELECT USING (auth.uid() = id);
 CREATE POLICY "profiles_admin_all" ON profiles FOR ALL
   USING (auth.uid() IN (SELECT id FROM profiles WHERE role = 'admin'));
+
+-- ---------------------------------------------------------------
+-- TABLE: site_settings (réglages globaux du site — clé/valeur JSON)
+-- Sert notamment à stocker les images du hero de la page d'accueil.
+-- ---------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS site_settings (
+  key TEXT PRIMARY KEY,
+  value JSONB NOT NULL DEFAULT '{}'::jsonb,
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE site_settings ENABLE ROW LEVEL SECURITY;
+-- Lecture publique (le site statique lit les images du hero)
+CREATE POLICY "site_settings_public_read" ON site_settings FOR SELECT USING (true);
+-- Écriture admin/éditeur uniquement
+CREATE POLICY "site_settings_admin_write" ON site_settings FOR ALL
+  USING (auth.uid() IN (SELECT id FROM profiles WHERE role IN ('admin','editor')));
+
+-- Exposition Data API (requis pour les nouvelles tables à partir d'oct. 2026).
+-- La RLS ci-dessus reste ce qui contrôle réellement l'accès aux lignes.
+GRANT SELECT ON site_settings TO anon, authenticated;
+GRANT INSERT, UPDATE, DELETE ON site_settings TO authenticated;
+
+-- Valeur initiale du hero (images par défaut de la page d'accueil)
+INSERT INTO site_settings (key, value) VALUES
+  ('hero', '{"images": ["/hero/slide1.jpg","/hero/slide2.jpg","/hero/slide3.jpg"]}'::jsonb)
+ON CONFLICT (key) DO NOTHING;
+
+-- ---------------------------------------------------------------
+-- TABLE: subscribers (newsletter "Le Cercle")
+-- ---------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS subscribers (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  nom TEXT,
+  email TEXT NOT NULL UNIQUE,
+  telephone TEXT,
+  interets TEXT[] DEFAULT '{}',
+  source TEXT DEFAULT 'club',
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE subscribers ENABLE ROW LEVEL SECURITY;
+-- Inscription publique (formulaire)
+CREATE POLICY "subscribers_public_insert" ON subscribers FOR INSERT WITH CHECK (true);
+-- Lecture admin uniquement
+CREATE POLICY "subscribers_admin_read" ON subscribers FOR SELECT
+  USING (auth.uid() IN (SELECT id FROM profiles WHERE role IN ('admin','editor')));
+
+-- Exposition Data API (requis pour les nouvelles tables à partir d'oct. 2026).
+GRANT INSERT ON subscribers TO anon, authenticated;
+GRANT SELECT, UPDATE, DELETE ON subscribers TO authenticated;
+
+-- ---------------------------------------------------------------
+-- GRANTS Data API pour les tables existantes (conformité oct. 2026)
+-- À partir du 30 oct. 2026, Supabase n'expose plus automatiquement les
+-- nouvelles tables du schéma "public" à l'API. Ces GRANT garantissent que
+-- toute réinstallation reste conforme. La RLS définie plus haut reste la
+-- couche qui contrôle réellement l'accès aux données.
+-- ---------------------------------------------------------------
+GRANT SELECT ON biens TO anon, authenticated;
+GRANT INSERT, UPDATE, DELETE ON biens TO authenticated;
+
+GRANT SELECT ON articles TO anon, authenticated;
+GRANT INSERT, UPDATE, DELETE ON articles TO authenticated;
+
+GRANT INSERT ON leads TO anon, authenticated;
+GRANT SELECT, UPDATE, DELETE ON leads TO authenticated;
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON profiles TO authenticated;
 
 -- ---------------------------------------------------------------
 -- STORAGE BUCKET: images

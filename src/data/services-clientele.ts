@@ -53,8 +53,8 @@ export const SERVICES: LandingPage[] = [
       he: 'בריף, יועץ, וגישה לנכסים שאינם בשוק',
     },
     seoTitle: {
-      fr: 'Recherche Immobilière Personnalisée en Israël | Maison Israël',
-      en: 'Private Real Estate Search in Israel | Maison Israël',
+      fr: 'Recherche Immobilière Personnalisée en Israël',
+      en: 'Private Real Estate Search in Israel',
       he: 'חיפוש נדל"ן פרטי בישראל | מייזון ישראל',
     },
     metaDescription: {
@@ -183,8 +183,8 @@ export const SERVICES: LandingPage[] = [
       he: 'הנכסים שאינם בפורטלים',
     },
     seoTitle: {
-      fr: 'Immobilier Off-Market en Israël | Maison Israël',
-      en: 'Off-Market Real Estate Access in Israel | Maison Israël',
+      fr: 'Immobilier Off-Market en Israël',
+      en: 'Off-Market Real Estate Access in Israel',
       he: 'נדל"ן מחוץ לשוק בישראל | מייזון ישראל',
     },
     metaDescription: {
@@ -280,8 +280,8 @@ export const SERVICES: LandingPage[] = [
       he: 'הערכה על ידי יועץ שמכיר את הרחוב שלך',
     },
     seoTitle: {
-      fr: 'Estimation Immobilière en Israël | Maison Israël',
-      en: 'Real Estate Valuation in Israel | Maison Israël',
+      fr: 'Estimation Immobilière en Israël',
+      en: 'Real Estate Valuation in Israel',
       he: 'הערכת נדל"ן בישראל | מייזון ישראל',
     },
     metaDescription: {
@@ -376,8 +376,8 @@ export const SERVICES: LandingPage[] = [
       he: 'נדל"ן ישראלי כסוג נכס',
     },
     seoTitle: {
-      fr: 'Conseil en Investissement Immobilier en Israël | Maison Israël',
-      en: 'Israeli Real Estate Investment Advisory | Maison Israël',
+      fr: 'Conseil en Investissement Immobilier en Israël',
+      en: 'Israeli Real Estate Investment Advisory',
       he: 'ייעוץ השקעות נדל"ן בישראל | מייזון ישראל',
     },
     metaDescription: {
@@ -477,8 +477,8 @@ export const CLIENTELE: LandingPage[] = [
       he: 'נדל"ן ישראלי לקונים מחוץ לישראל',
     },
     seoTitle: {
-      fr: 'Investisseurs Internationaux en Immobilier Israélien | Maison Israël',
-      en: 'International Investors in Israeli Real Estate | Maison Israël',
+      fr: 'Investisseurs Internationaux en Immobilier Israélien',
+      en: 'International Investors in Israeli Real Estate',
       he: 'משקיעים בינלאומיים בנדל"ן ישראלי | מייזון ישראל',
     },
     metaDescription: {
@@ -565,8 +565,8 @@ export const CLIENTELE: LandingPage[] = [
       he: 'רכישת נדל"ן בתכנון העלייה',
     },
     seoTitle: {
-      fr: 'Acheteurs Aliyah — Immobilier en Israël | Maison Israël',
-      en: 'Aliyah Buyers — Israeli Real Estate | Maison Israël',
+      fr: 'Acheteurs Aliyah — Immobilier en Israël',
+      en: 'Aliyah Buyers — Israeli Real Estate',
       he: 'עולים — נדל"ן בישראל | מייזון ישראל',
     },
     metaDescription: {
@@ -662,8 +662,8 @@ export const CLIENTELE: LandingPage[] = [
       he: 'דיסקרטיות, ביטחון, וגמישות לוח זמנים',
     },
     seoTitle: {
-      fr: 'Logement Diplomatique en Israël | Maison Israël',
-      en: 'Diplomatic Housing in Israel | Maison Israël',
+      fr: 'Logement Diplomatique en Israël',
+      en: 'Diplomatic Housing in Israel',
       he: 'דיור דיפלומטי בישראל | מייזון ישראל',
     },
     metaDescription: {
@@ -750,8 +750,8 @@ export const CLIENTELE: LandingPage[] = [
       he: 'מגורים בישראל למשפחות עם אופק ארוך',
     },
     seoTitle: {
-      fr: 'Familles Internationales — Résidence en Israël | Maison Israël',
-      en: 'International Families — Residence in Israel | Maison Israël',
+      fr: 'Familles Internationales — Résidence en Israël',
+      en: 'International Families — Residence in Israel',
       he: 'משפחות בינלאומיות — מגורים בישראל | מייזון ישראל',
     },
     metaDescription: {

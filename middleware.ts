@@ -16,6 +16,18 @@ function getLocale(request: NextRequest): Locale {
 }
 
 export async function middleware(request: NextRequest) {
+  // ── Migration de domaine : immobilierenisrael.com → luxuryisraelrealestate.com ──
+  // L'ancien domaine continue de fonctionner mais redirige (308 permanent) vers le
+  // nouveau domaine principal, en conservant le chemin et les paramètres.
+  const host = (request.headers.get('host') ?? '').toLowerCase()
+  if (host === 'immobilierenisrael.com' || host === 'www.immobilierenisrael.com') {
+    const url = request.nextUrl.clone()
+    url.hostname = 'luxuryisraelrealestate.com'
+    url.port = ''
+    url.protocol = 'https:'
+    return NextResponse.redirect(url, 308)
+  }
+
   const { pathname } = request.nextUrl
 
   // Skip static files and API routes

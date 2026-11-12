@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 
 const INSTAGRAM_HANDLE = 'luxuryrealestateisrael'
@@ -62,22 +62,45 @@ export default function InstagramFeed({ locale, messages }: Props) {
   const [configured, setConfigured] = useState(false)
   const [loading, setLoading] = useState(true)
   const [hoveredId, setHoveredId] = useState<string | null>(null)
+  const sectionRef = useRef<HTMLElement>(null)
   const isRTL = locale === 'he'
   const l = labels[locale] ?? labels.fr
 
+  // Différé : on ne récupère le flux Instagram que lorsque la section approche
+  // du viewport, pour ne pas charger réseau + rendu pendant le chargement initial.
   useEffect(() => {
-    fetch('/api/instagram')
-      .then(r => r.json())
-      .then(data => {
-        setPosts(data.posts ?? [])
-        setConfigured(data.configured ?? false)
-      })
-      .catch(() => {})
-      .finally(() => setLoading(false))
+    const el = sectionRef.current
+    if (!el) return
+
+    let started = false
+    const run = () => {
+      if (started) return
+      started = true
+      fetch('/api/instagram')
+        .then(r => r.json())
+        .then(data => {
+          setPosts(data.posts ?? [])
+          setConfigured(data.configured ?? false)
+        })
+        .catch(() => {})
+        .finally(() => setLoading(false))
+    }
+
+    const observer = new IntersectionObserver(
+      entries => {
+        if (entries.some(e => e.isIntersecting)) {
+          run()
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '300px 0px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
   }, [])
 
   return (
-    <section style={{
+    <section ref={sectionRef} style={{
       padding: '6rem 2rem',
       background: '#0A0A0B',
       direction: isRTL ? 'rtl' : 'ltr',

@@ -7,6 +7,7 @@ import { getMessages } from '@/i18n'
 import { createClient } from '@/lib/supabase/server'
 import type { Bien } from '@/types'
 import PropertyCard from '@/components/public/PropertyCard'
+import Parallax from '@/components/public/Parallax'
 import {
   getQuartierBySlug,
   getAdjacentQuartiers,
@@ -15,7 +16,7 @@ import {
 import { getArticleBySlug } from '@/data/journal-articles'
 import { renderMarkdown } from '@/lib/markdown'
 
-const BASE_URL = 'https://immobilierenisrael.com'
+const BASE_URL = 'https://luxuryisraelrealestate.com'
 
 export async function generateStaticParams() {
   return QUARTIERS.map((q) => ({ city: q.city, slug: q.slug }))
@@ -64,7 +65,7 @@ export default async function QuartierPage({ params }: { params: Promise<{ local
 
   // Fetch properties matching this quartier
   const supabase = await createClient()
-  let query = supabase.from('biens').select('*').eq('ville', q.dbVille).eq('statut', 'actif').eq('off_market', false)
+  let query = supabase.from('biens').select('*').eq('ville', q.dbVille).eq('statut', 'actif').eq('off_market', false).not('masque', 'is', true)
   if (q.dbQuartier) query = query.eq('quartier', q.dbQuartier)
   const { data: biens } = await query.order('created_at', { ascending: false }).limit(6)
 
@@ -118,7 +119,9 @@ export default async function QuartierPage({ params }: { params: Promise<{ local
       {/* Hero */}
       <section style={{ position: 'relative', height: '70vh', minHeight: '500px', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: '#0A0A0B' }} />
-        <Image src={q.hero} alt={q.names[l]} fill priority sizes="100vw" style={{ objectFit: 'cover', opacity: 0.5 }} />
+        <Parallax>
+          <Image src={q.hero} alt={q.names[l]} fill priority sizes="100vw" style={{ objectFit: 'cover', opacity: 0.5 }} />
+        </Parallax>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,10,11,0.9) 0%, rgba(10,10,11,0.2) 60%)' }} />
 
         <div style={{ position: 'absolute', bottom: '4rem', left: 0, right: 0, padding: '0 2rem', textAlign: 'center', direction: isRTL ? 'rtl' : 'ltr' }}>

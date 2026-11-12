@@ -44,7 +44,15 @@ const COORDS: Record<string, { default: LatLng; [q: string]: LatLng }> = {
     'Centre-Ville':      [32.3296, 34.8596],
     'Ir Yamim':          [32.3190, 34.8553],
     'Poleg':             [32.2982, 34.8530],
+    'Ramat Poleg':       [32.2960, 34.8560],
+    'Nitza':             [32.3380, 34.8530],
     'Kikar HaAtzmaut':   [32.3310, 34.8565],
+  },
+  'Hadera': {
+    default:             [32.4340, 34.9196],
+    'Givat Olga':        [32.4530, 34.8865],
+    'Givat Olga ':       [32.4530, 34.8865],
+    'Bord de Mer':       [32.4555, 34.8830],
   },
   'Caesarea': {
     default: [32.4991, 34.8938],

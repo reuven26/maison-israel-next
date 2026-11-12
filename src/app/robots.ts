@@ -38,7 +38,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'cohere-ai', allow: '/' },
       { userAgent: 'Bytespider', allow: '/' },
     ],
-    sitemap: 'https://immobilierenisrael.com/sitemap.xml',
-    host: 'https://immobilierenisrael.com',
+    sitemap: 'https://luxuryisraelrealestate.com/sitemap.xml',
+    host: 'https://luxuryisraelrealestate.com',
   }
 }

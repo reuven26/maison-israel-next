@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import { optImg } from '@/lib/img'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -316,7 +317,14 @@ export default async function VillePage({ params }: { params: Promise<{ locale: 
     .select('*')
     .eq('ville', cityData.dbVille)
     .eq('statut', 'actif')
+    .not('off_market', 'is', true)
+    .not('masque', 'is', true)
     .order('created_at', { ascending: false })
+
+  // Image d'en-tête éditable depuis l'admin (réglage city_images), sinon défaut
+  const { data: cityImgSetting } = await supabase
+    .from('site_settings').select('value').eq('key', 'city_images').single()
+  const heroImg = (cityImgSetting?.value as Record<string, string> | null)?.[slug] || cityData.img
 
   return (
     <>
@@ -324,7 +332,7 @@ export default async function VillePage({ params }: { params: Promise<{ locale: 
       <div style={{ position: 'relative', height: '70vh', minHeight: '500px', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: '#0A0A0B' }} />
         <Image
-          src={cityData.img}
+          src={heroImg}
           alt={cityName}
           fill
           priority
@@ -407,7 +415,7 @@ export default async function VillePage({ params }: { params: Promise<{ locale: 
                 {biens.map((bien: Bien) => (
                   <Link key={bien.id} href={`/${locale}/projets/${bien.slug}`} className="pcard">
                     <div className="pcard-img-wrap">
-                      <img src={bien.image_principale} alt={bien.nom} className="pcard-img" />
+                      <img src={optImg(bien.image_principale, 828, 70)} alt={bien.nom} loading="lazy" className="pcard-img" />
                       <div className="pcard-overlay" />
                       {bien.badge && (
                         <div className="pcard-badges">

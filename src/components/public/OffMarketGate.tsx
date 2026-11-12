@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { optImg } from '@/lib/img'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
 import type { Bien } from '@/types'
@@ -43,6 +44,7 @@ export default function OffMarketGate({ locale, isRTL, variant = 'inline' }: Pro
       .from('biens')
       .select('*')
       .eq('off_market', true)
+      .not('masque', 'is', true)
       .order('created_at', { ascending: false })
     setBiens(data ?? [])
     setLoading(false)
@@ -337,7 +339,7 @@ export default function OffMarketGate({ locale, isRTL, variant = 'inline' }: Pro
                   style={{ cursor: 'pointer' }}
                 >
                   <div className="pcard-img-wrap">
-                    <img src={bien.image_principale} alt={bien.nom} className="pcard-img" />
+                    <img src={optImg(bien.image_principale, 828, 70)} alt={bien.nom} loading="lazy" className="pcard-img" />
                     <div className="pcard-overlay" />
                     <div className="pcard-badges">
                       {bien.badge && <span className="pbadge pbadge-gold">{bien.badge}</span>}
@@ -439,7 +441,7 @@ export default function OffMarketGate({ locale, isRTL, variant = 'inline' }: Pro
           >
             {/* Image */}
             <div style={{ position: 'relative', height: '320px', overflow: 'hidden' }}>
-              <img src={lightbox.image_principale} alt={lightbox.nom} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={optImg(lightbox.image_principale, 1080, 75)} alt={lightbox.nom} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,10,11,0.7) 0%, transparent 50%)' }} />
               <button
                 onClick={() => setLightbox(null)}

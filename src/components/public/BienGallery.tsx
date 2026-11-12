@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import Image from 'next/image'
+import { optImg, hiRes } from '@/lib/img'
 
 interface Props {
   images: string[]
@@ -39,15 +41,15 @@ export default function BienGallery({ images, mainImage, nom }: Props) {
 
   return (
     <>
-      <div style={{ background: '#0A0A0B', padding: '0 0 2px' }}>
+      <div style={{ background: '#0A0A0B', padding: '0 clamp(0.5rem, 2vw, 2.25rem) 2px' }}>
         {/* Mosaic layout: first image big left, up to 4 thumbs right */}
         <div style={{
-          maxWidth: '1400px',
+          maxWidth: '1860px',
           margin: '0 auto',
           display: 'grid',
           gridTemplateColumns: rest.length > 0 ? '1fr 1fr' : '1fr',
-          gridTemplateRows: rest.length > 1 ? '260px 260px' : '360px',
-          gap: '2px',
+          gridTemplateRows: rest.length > 1 ? 'clamp(240px, 21vw, 380px) clamp(240px, 21vw, 380px)' : 'clamp(340px, 36vw, 560px)',
+          gap: '3px',
         }}
           className="bien-gallery-grid"
         >
@@ -56,10 +58,13 @@ export default function BienGallery({ images, mainImage, nom }: Props) {
             style={{ gridRow: 'span 2', position: 'relative', overflow: 'hidden', cursor: 'zoom-in' }}
             onClick={() => openLightbox(0)}
           >
-            <img
-              src={first}
+            <Image
+              src={hiRes(first)}
               alt={`${nom} — 1`}
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.5s' }}
+              fill
+              sizes="(max-width: 640px) 100vw, 50vw"
+              quality={72}
+              style={{ objectFit: 'cover', transition: 'transform 0.5s' }}
               onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.03)')}
               onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
             />
@@ -74,10 +79,13 @@ export default function BienGallery({ images, mainImage, nom }: Props) {
                 style={{ position: 'relative', overflow: 'hidden', cursor: 'zoom-in' }}
                 onClick={() => openLightbox(i + 1)}
               >
-                <img
+                <Image
                   src={url}
                   alt={`${nom} — ${i + 2}`}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.5s' }}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 25vw"
+                  quality={68}
+                  style={{ objectFit: 'cover', transition: 'transform 0.5s' }}
                   onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
                 />
@@ -145,6 +153,7 @@ export default function BienGallery({ images, mainImage, nom }: Props) {
               </span>
               <button
                 onClick={closeLightbox}
+                aria-label="Fermer la galerie"
                 style={{
                   background: 'none', border: '1px solid rgba(255,255,255,0.2)',
                   color: '#fff', width: 36, height: 36,
@@ -160,8 +169,9 @@ export default function BienGallery({ images, mainImage, nom }: Props) {
             flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center',
             position: 'relative', overflow: 'hidden', padding: '1rem 5rem',
           }}>
+            {/* Pleine résolution optimisée — chargée uniquement à l'ouverture */}
             <img
-              src={images[lightboxIdx]}
+              src={optImg(images[lightboxIdx], 1920, 78)}
               alt={`${nom} — ${lightboxIdx + 1}`}
               style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}
             />
@@ -170,6 +180,7 @@ export default function BienGallery({ images, mainImage, nom }: Props) {
             {images.length > 1 && (
               <button
                 onClick={e => { e.stopPropagation(); prev() }}
+                aria-label="Photo précédente"
                 style={{
                   position: 'absolute', left: '1rem',
                   top: '50%', transform: 'translateY(-50%)',
@@ -185,6 +196,7 @@ export default function BienGallery({ images, mainImage, nom }: Props) {
             {images.length > 1 && (
               <button
                 onClick={e => { e.stopPropagation(); next() }}
+                aria-label="Photo suivante"
                 style={{
                   position: 'absolute', right: '1rem',
                   top: '50%', transform: 'translateY(-50%)',
@@ -215,7 +227,7 @@ export default function BienGallery({ images, mainImage, nom }: Props) {
                     transition: 'all 0.2s',
                   }}
                 >
-                  <img src={url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  <img src={optImg(url, 256, 55)} alt="" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 </div>
               ))}
             </div>

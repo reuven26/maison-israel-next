@@ -50,7 +50,19 @@ function ContactFormInner({ locale, messages }: Props) {
       source: `site-${locale}`,
     }])
     if (error) { setError(c.error ?? 'Error'); setLoading(false) }
-    else setSent(true)
+    else {
+      // Notification WhatsApp à l'admin (n'échoue jamais le formulaire)
+      fetch('/api/notify-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nom: form.nom, email: form.email,
+          telephone: form.telephone, message: form.message,
+          source: `site-${locale}`,
+        }),
+      }).catch(() => {})
+      setSent(true)
+    }
   }
 
   if (sent) {
