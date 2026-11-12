@@ -161,6 +161,7 @@ export default async function GuideDetailPage({ params }: { params: Promise<{ lo
                         <img
                           src={rel.image}
                           alt={rel.titre}
+                          loading="lazy"
                           style={{ width: '80px', height: '80px', objectFit: 'cover', flexShrink: 0 }}
                         />
                       )}

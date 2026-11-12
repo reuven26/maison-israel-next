@@ -173,6 +173,7 @@ export default function BienGallery({ images, mainImage, nom }: Props) {
             <img
               src={optImg(images[lightboxIdx], 1920, 78)}
               alt={`${nom} — ${lightboxIdx + 1}`}
+              loading="lazy"
               style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}
             />
 

@@ -191,6 +191,7 @@ export default function InstagramFeed({ locale, messages }: Props) {
                   <img
                     src={img}
                     alt=""
+                    loading="lazy"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'brightness(0.55)' }}
                   />
                   {i === 4 && (
