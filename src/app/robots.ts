@@ -9,7 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: [
           '/admin/',
           '/api/',
-          '/_next/',
           '/*?utm_*',
           '/*?fbclid=*',
           '/*?gclid=*',
@@ -39,6 +38,5 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: 'Bytespider', allow: '/' },
     ],
     sitemap: 'https://luxuryisraelrealestate.com/sitemap.xml',
-    host: 'https://luxuryisraelrealestate.com',
   }
 }
